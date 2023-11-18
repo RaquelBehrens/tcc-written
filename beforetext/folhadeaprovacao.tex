@@ -1,0 +1,83 @@
+
+
+\addtotextpreliminarycontent{\lang{Approval Sheet}{Folha de Aprovação}}
+
+\begin{folhadeaprovacao}
+
+    \begin{center}
+        {\imprimirautor}
+
+        \begin{center}
+            \ABNTEXchapterfont\bfseries\MakeUppercase{Integração Moodle-Beecrowd}\ifnotempty{\imprimirsubtitulo}{: \imprimirsubtitulo}
+        \end{center}
+
+        \begin{minipage}{\textwidth}
+            \lang
+            {
+                This \imprimirtipotrabalho~was considered appropriate to get the \imprimirformacao,
+                \ifnotempty{\imprimirarea}{in the area of \imprimirarea,}
+                and it was approved by the \imprimirprograma~of \imprimircentro~of \imprimirinstituicao.
+            }
+            {
+                Este \imprimirtipotrabalho~foi julgado adequado para obtenção do Título de \imprimirformacao,
+                \ifnotempty{\imprimirarea}{na área de concentração de \imprimirarea,}
+                e foi aprovado em sua forma final pelo \imprimirprograma~
+                do \imprimircentro~da \imprimirinstituicao.
+            }
+         \end{minipage}%
+    \end{center}
+
+    \begin{center}
+        \imprimirlocal, \imprimirdata.
+    \end{center}
+
+    \assinatura{%
+        \textbf{\imprimircoordenador} \\
+        \imprimircoordenadorRotulo~\lang{of}{do} \imprimirprograma
+    }
+
+    \vspace*{1cm}
+
+    % \newpage
+    \begin{flushleft}
+        \textbf{\lang{Examination Board}{Banca Examinadora}:}
+    \end{flushleft}
+
+    \vspace*{0.5cm}
+
+    \begin{center}
+        \assinatura{%
+            \textbf{\imprimirorientador} \\ \imprimirorientadorRotulo\\
+            \imprimirinstituicao~--~\imprimirinstituicaosigla
+        }
+        \vspace*{0.5cm}
+
+        \ifnotempty{\imprimircoorientador}{%
+            \assinatura{%
+                \textbf{\imprimircoorientador} \\ \imprimircoorientadorRotulo \\
+                \imprimirinstituicao~--~\imprimirinstituicaosigla
+            }
+        }
+
+        \vspace*{0.5cm}
+
+        \assinatura{%
+            \textbf{Prof. Álvaro Junio Pereira Franco, \lang{PhD.}{Dr.}} \\
+            Avaliador \\
+            \imprimirinstituicao~--~\imprimirinstituicaosigla
+        }
+    
+    \end{center}
+
+    \vspace*{1cm}
+
+    \begin{center}
+        \assinatura{%
+            \textbf{Profa. Luciana de Oliveira Rech, \lang{PhD.}{Dra.}} \\
+            Avaliadora \\
+            \imprimirinstituicao~--~\imprimirinstituicaosigla
+        }
+    \end{center}
+
+\end{folhadeaprovacao}
+

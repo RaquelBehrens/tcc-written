@@ -1,0 +1,201 @@
+%% intro.tex
+%%
+%% Copyright 2017 Evandro Coan
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% The Current Maintainer of this work is the Evandro Coan.
+%%
+%% The last Maintainer of this work was the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on
+%% https://www.abntex.net.br/
+%%
+%% This work consists of a bunch of files. But originally there ware 3 files
+%% which are renamed as follows:
+%% Renamed the `abntex2-modelo-include-comandos` to `chapters/chapter_1.tex`
+%% Renamed the `abntex2-modelo-trabalho-academico.tex` to `chapters/intro.tex`
+%% Renamed the `abntex2-modelo-references.bib` to `aftertext/modelo-ufsc-references.bib`
+%%
+%% This file was originally the main template file, however this main file was
+%% split into several new files, which are respectively drastically changed,
+%% except this files which contains most of the main documentation message.
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
+% mestrado e trabalhos monograficos em geral) em conformidade com
+% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
+% Apresentacao
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+% The \phantomsection command is needed to create a link to a place in the document that is not a
+% figure, equation, table, section, subsection, chapter, etc.
+% https://tex.stackexchange.com/questions/44088/when-do-i-need-to-invoke-phantomsection
+\phantomsection
+
+% https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
+\chapter{\lang{Introduction}{Introdução}}
+\phantomsection
+
+% What does [t] and [ht] mean?
+% https://tex.stackexchange.com/questions/8652/what-does-t-and-ht-mean
+%
+% How can I get rid of the LaTeX warning: Float too large for page?
+% https://tex.stackexchange.com/questions/36252/how-can-i-get-rid-of-the-latex-warning-float-too-large-for-page
+%
+% "warning: Text page X contains only floats" How to suppress this warning?
+% https://tex.stackexchange.com/questions/223149/warning-text-page-x-contains-only-floats-how-to-suppress-this-warning
+%
+% Make a table span multiple pages
+% https://tex.stackexchange.com/questions/26462/make-a-table-span-multiple-pages
+%
+% How to make the longtable to work with centering & caption on memoir class?
+% https://tex.stackexchange.com/questions/386541/how-to-make-the-longtable-to-work-with-centering-caption-on-memoir-class
+%
+% How to fix this Package array Error: Only one column-spec allowed?
+% https://tex.stackexchange.com/questions/367069/how-to-fix-this-package-array-error-only-one-column-spec-allowed
+%
+% How to auto adjust my last table column width, and why is there Underfull \vbox badness on this table?
+% https://tex.stackexchange.com/questions/387238/how-to-auto-adjust-my-last-table-column-width-and-why-is-there-underfull-vbox/387251
+\setlength\extrarowheight{2pt}
+
+% EXEMPLO DE TABELA
+% \begin{tabularx}{\linewidth}{>{\RaggedRight}p{3cm}|>{\arraybackslash}X}
+
+% \caption[Formatação do texto]{Formatação do texto \showfont}
+% \label{tab:a_table_formatacao_de_texto} \\
+% \hline
+% \endfirsthead
+
+% % How to set font size of footnotes correctly in memoir?
+% % https://tex.stackexchange.com/questions/213927/how-to-set-font-size-of-footnotes-correctly-in-memoir
+% \multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\ufsccaptionsize\tablename~\thetable:
+% Formatação do texto (continuação) \showfont} \\
+% \hline
+% \endhead
+
+% % Set multicolumn width to default table width
+% % https://tex.stackexchange.com/questions/99326/set-multicolumn-width-to-default-table-width
+% \hline
+% \multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\footnotesize continua na próxima página\protect\englishword{\showfont}}
+% \endfoot
+
+% \hline
+% \multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\fonte{O autor -- \showfont} }
+% \endlastfoot
+%     Cor                          & Branco - \englishword{\showfont}                                 \\ \hline
+%     Formato do papel             & A4                                                               \\ \hline
+%     Gramatura                    & 75                                                               \\ \hline
+%     Impressão                    & Frente e verso                                                   \\ \hline
+%     Margens                      & Direita e superior 3, Inferior e esquerda: 2.                    \\ \hline
+%     Cabeçalho                    & 0,7                                                              \\ \hline
+%     Rodapé                       & 0,7                                                              \\ \hline
+%     Paginação                    & Externa                                                          \\ \hline
+%     Alinhamento vertical         & Superior                                                         \\ \hline
+%     Alinhamento do texto         & Justificado                                                      \\ \hline
+%     Fonte sugerida               & Times New Roman                                                  \\ \hline
+%     Tamanho da fonte             & 12 para o texto incluindo os títulos das seções e subseções.
+%                                    As citações com mais de três linhas as legendas das ilustrações
+%                                    e tabelas, fonte 10.                                             \\ \hline
+%     Espaçamento entre linhas     & Um e meio (1,5)                                                  \\ \hline
+%     Espaçamento entre parágrafos & Anterior 0,0; Posterior 0,0                                      \\ \hline
+%     Numeração da seção           & As seções  primárias devem  começar  sempre em páginas ímpares.
+%                                    Deixar um espaço (simples) entre o título da seção e o texto e
+%                                    entre o texto e o título da subseção.                            \\ \hline
+
+% \end{tabularx}
+
+
+% EXEMPLO DE FIGURA
+% \begin{figure}
+%     \caption{Exemplo de figura}
+%     \label{fig:ex01}
+%     \centering
+%     \includegraphics[width=\linewidth]{pictures/ex01}
+% \fonte{o autor -- \showfont}
+% \end{figure}
+
+
+
+A utilização da tecnologia no âmbito educacional aumenta o potencial de um vínculo proveitoso entre educadores e alunos, possibilitando a disponibilização de materiais, cronogramas, fóruns, entre outras atividades, por ambientes virtuais, e motivando, assim, os educandos  \cite[p.~18-19]{franciscojuniorambrosio}. Isto posto, há ambientes virtuais de aprendizado que servem de apoio às instituições de ensino no gerenciamento pedagógico dos cursos, como o software livre Moodle – (Modular Object-Oriented Dynamic Learning Environment) – Ambiente de Aprendizagem Dinâmico Orientado a Objetos Modulares. O Moodle disponibiliza diversas ferramentas computacionais que proporcionam acesso a materiais didáticos, tarefas interativas e integração entre os membros do curso em que estão matriculados, reproduzindo, dessa forma, uma sala de aula \cite{limamoodle}. 
+
+Por conseguinte, a fim de proporcionar uma maior assistência à cursos da área de tecnologia da informação, algumas iniciativas de integração de recursos de suporte à disciplinas de programação no ambiente Moodle foram elaboradas, como o VPL (Virtual Programming Lab)  \cite[p.~712]{franca2011}. 
+
+O VPL é um módulo integrável ao Moodle que permite o desenvolvimento remoto de programas, permitindo realizar as seguintes atividades no navegador: editar o código-fonte dos programas, executá-los interativamente, realizar testes para revisá-los, definir restrições de edição e evitar colagem de texto externo \cite{rodriguezdelpino}. 
+
+Contudo, \textcite[p.~129]{freitas} constata que, em sua pesquisa de avaliação do uso do VPL em disciplinas de programação no curso de graduação de Tecnologias de Informação e Comunicação da UFSC, apesar da ferramenta cumprir seu papel de auxílio virtual à prática de programação, ela possui diversos problemas de interface gráfica e de usabilidade. Assim, destacou a falta de mensagens de ajuda apresentadas pela interface ao encontrar-se erros na submissão do código, a obrigatoriedade de casos de testes serem inseridos manualmente pelo criador da atividade, e a existência de botões não intuitivos para criação de atividades, como alguns dos defeitos encontrados, e sugeriu uma lista de melhorias necessárias nesse módulo.  Além disso, \textcite[p.~58]{freitas} cita que o VPL não permite o balanceamento de carga, já que há apenas um servidor responsável pela compilação e execução do código, podendo gerar um possível gargalo se muitos alunos submeterem trabalhos simultaneamente em um mesmo ambiente do Moodle. 
+
+Em contrapartida, \textcite[p.~5]{cruz2022} destaca a plataforma Beecrowd como uma ferramenta que possibilita a resolução de problemas e desenvolvimento de algoritmos pelos alunos, ao mesmo tempo em que incentiva a participação em maratonas de programação e auxilia o educador na correção automatizada das respostas às questões. Do mesmo modo, \textcite[p.~239]{beztonin2014} mostra que a construção do Beecrowd (antigo URI Online Judge) foi inteiramente focada nas necessidades dos professores e, sobretudo, nas necessidades dos alunos. Nos aspectos didáticos e pedagógicos, é possível que o professor utilize o módulo acadêmico do portal a fim de fornecer aos alunos listas de exercícios, acompanhando o desempenho individual de cada um, podendo categorizar as listas por tema e estabelecer prazos para sua conclusão. Ainda, o portal possui recursos extremamente importantes para uma vida estudantil acadêmica, como “um nível de  problemas  para  iniciantes,  sistema  de  recompensa  por badges,  um  módulo  acadêmico completo  para  acompanhamento  de  listas  de  exercícios  pelos  alunos,  ranking  dos  alunos  por Universidade, entre outros.” \cite[p.~239]{beztonin2014}. 
+
+À vista disso, e ressaltando que o maior problema no ensino de algoritmos e programação para novos estudantes é atender com eficiência à grande diversidade de alunos e seus diferentes modos e ritmos de aprendizado \cite[p.~1]{beztonin2012}, “a possibilidade de utilização de ferramentas online com grande disponibilidade para aprendizagem ativa pode ser uma forma de possibilitar que cada aluno aprenda em seu próprio ritmo e velocidade” \cite[p.~5]{cruz2022}. Ademais, o uso de ferramentas online de auto aprendizado faz com que os educandos possam desenvolver suas habilidades de programação, desenvolvimento de código e solução de problemas com confiança e segurança, seguindo seu próprio ritmo de aprendizado \cite[p.~239-240]{beztonin2014}. 
+
+\textcite[p.~248]{berssanettefrancisco}, salientou que o uso do Beecrowd contribui para o processo de aprendizagem de programação dos alunos ao proporcionar feedback em tempo real aos estudantes e estimular a competitividade entre os alunos, por meio da gamificação presente na ferramenta, com badges e ranking dos estudantes. Também evidenciou o crescimento do anseio dos alunos por aprofundarem seus conhecimentos na resolução de problemas, e o envolvimento mais intenso dos mesmos na disciplina. Equitativamente, \textcite[p.~31]{ferreira2022} informa que a plataforma Beecrowd possui estudantes de mais de 240 países registrados, e frisou alguns dos seus recursos interessantes, como: a existência de uma base de problemas classificados em categorias e níveis de dificuldade, e a presença de um modelo de solução para cada problema, o qual é comparado com os dados de saída do programa do usuário, informando se o programa possui algum percentual de erro. 
+
+De maneira geral, os alunos respondem de forma positiva ao feedback imediato. No ambiente de laboratório, a rápida avaliação de cada pergunta motiva os alunos a buscar notas positivas, sendo raros os casos em que avançam sem corrigir eventuais erros. Eles apreciam a capacidade de acompanhar seu progresso durante todo o laboratório. Em exames, o feedback imediato elimina a incerteza sobre o desempenho, permitindo que os alunos saiam da sala de exame com clareza sobre suas notas \cite[p.~49]{lobbharlow}. 
+
+Ainda, de acordo com \textcite[p.~24]{lima2023}, é notável que a plataforma Beecrowd seja uma das poucas no Brasil a disponibilizar questões em português brasileiro, o que a torna uma escolha significativa por parte dos professores para a utilização em sala de aula. Essa preferência amplia consideravelmente a acessibilidade do juiz online, beneficiando principalmente os iniciantes na área que ainda não possuem habilidades de leitura em inglês. 
+
+Vale ressaltar que o autor também identificou duas outras plataformas, a Neps Academy e a CodeBench, que possuem questões em portugês brasileiro. Entretanto, essas alternativas não oferecem a mesma gama de recursos encontrados no Beecrowd. A Neps Academy, por exemplo, não permite o registro de turmas e a inscrição de alunos, funcionalidades que o Beecrowd oferece. Por outro lado, a CodeBench, embora seja amigável para professores e alunos, disponibiliza problemas privados. Nessa plataforma, apenas é possível visualizar as questões por meio de turmas com acesso restrito criadas pelos professores, o que impede que os alunos tentem resolver exercícios fora do ambiente de sala de aula \cite[p.~41]{lima2023}. 
+
+Além disso, os autores \textcite[p.~41]{beztonin2012} testaram o uso dos juizes online BOCA e UVa Online Judge em sala de aula. Quanto ao BOCA, os professores explicaram que era necessário fazer uma limpeza no site a cada semestre, e novos problemas tinham de ser registrados. E, toda vez que isso tinha de ser feito, a classificação dos problemas e dos usuários eram perdidas. Já no uso do UVa Online Judge, apesar desse juiz conter uma enorme variedade de problemas em todos os assuntos de algoritmos, o período de manutenção do servidor geralmente coincidia com os horários das aulas, ficando off-line, e impossibilitando a dependência da ferramenta /cite[p.~1]{beztonin2012}. 
+
+\textcite[p.~248]{beztonin2014} também registraram que, uma semana após o lançamento online da plataforma Beecrowd (conhecida como URI Online Judge na época), estudantes da área de Computação em todo o país já acessaram o portal, e, após um mês, os dados do Google Analytics revelaram a presença constante de usuários em todos os estados brasileiros e além-fronteiras. Após cerca de um ano e meio de operação, o Beecrowd mostrou-se sendo recebido, tanto nacional quanto internacionalmente, sendo regularmente utilizado por estudantes ao redor do globo, apresentando uma notável taxa de crescimento de usuários. 
+
+Dessa maneira, ao considerar as limitações do módulo VPL, incluindo problemas de interface gráfica e usabilidade, e as desvantagens dos diversos juízes online mencionados anteriormente, destaca-se a popularidade do Beecrowd dentro e fora do Brasil, bem como seus diversos recursos avançados. Esses recursos foram desenvolvidos para atender às necessidades de alunos e professores, promovendo efetivamente o aprendizado. O crescente interesse da comunidade acadêmica em adotar o Beecrowd reflete uma demanda crescente por essa plataforma, que tem demonstrado sucesso em alcançar seus objetivos \cite[p.~31]{ferreira2022}. Portanto, deve-se estimular o uso do portal em ambientes acadêmicos, a fim de melhorar a qualidade do ensino de programação e resolução de problemas nas salas de aula.
+
+\section{OBJETIVOS}
+
+Nesse contexto, busca-se a integração de elementos do Beecrowd ao Moodle, por meio de um plugin, facilitando seu uso para os educandos, e proporcionando tanto aos docentes quanto aos discentes um maior controle sobre as listas de exercícios e avaliações realizadas por meio da plataforma Beecrowd. Entre as possibilidades, destacam-se a transferência automática das notas do Beecrowd para o Moodle, o registro automático dos alunos no Beecrowd, bem como a configuração das listas de exercícios e avaliações no Moodle, com a correção sendo realizada pelo Beecrowd.
+
+\subsection{\textbf{Objetivo Geral}}
+
+O objetivo do trabalho proposto consiste em criar um plugin Moodle, para o público geral, com o propósito de integrar o Beecrowd ao Moodle, facilitando e incentivando seu uso para os discentes e docentes ao oferecer uma plataforma com recursos desenvolvidos que atendem às necessidades de ambientes acadêmicos. Assim, será utilizado um ambiente de teste do Moodle e um módulo externo do Beecrowd para o desenvolvimento do projeto.
+
+\subsection{\textbf{Objetivos Específicos}}
+
+O plugin Moodle para integrar o Beecrowd ao Moodle deverá possuir as seguintes funcionalidades:
+
+\begin{enumerate}[label=(\alph*)]
+    \item importar notas do Beecrowd para o Moodle; 
+    \item  permitir ao aluno cadastro automático do aluno no Beecrowd, pelo Moodle; 
+    \item  criação automática de disciplina no Beecrowd ao habilitar uso do Beecrowd no Moodle; 
+    \item  permitir visualizar submissões de alunos no Beecrowd pelo Moodle, visualizando o feedback do Beecrowd; 
+    \item  permitir ao professor criar listas de exercícios e competições pelo Moodle; 
+    \item  permitir ao aluno submeter uma solução via Moodle ou Beecrowd; 
+    \item  permitir ao professor visualizar o progresso de cada aluno (geral e de acordo com cada lista de exercícios); 
+    \item  permitir ao aluno visualizar seu próprio progresso (geral e de acordo com cada lista de exercícios, e de cada exercício); 
+    \item  permitir ao aluno e ao professor abrir lista de exercícios do Beecrowd, bem como suas questões (enunciados), no Moodle; 
+    \item  permitir ao professor definir a linguagem de programação de submissão das questões do Beecrowd, diretamente no Moodle, minimizando erros de seleção de versões erradas do Python; 
+    \item  permitir o envio de feedback da resposta do Beecrowd ao aluno diretamente no Moodle.
+\end{enumerate}
+
+
+\section{MÉTODOS DE PESQUISA}
+O trabalho teve início com uma análise teórica abrangente sobre juízes online e suas aplicações no contexto acadêmico, com um foco mais detalhado na plataforma Beecrowd e no BOCA Online Contest Administrator, investigando suas operações e funcionalidades. Em seguida, procedeu-se a uma análise aprofundada do ambiente AVA Moodle, explorando os conceitos de plugins e suas relações com o Moodle. Posteriormente, foram realizados estudos detalhados sobre os conceitos de API e LTI. Em seguida, foi conduzida uma pesquisa bibliográfica na área de integrações de juízes online com o Moodle, e desenvolveu-se diagramas UML para definir uma arquitetura geral da integração proposta. 
+
+Os próximos procedimentos metodológicos para a realização da pesquisa são os seguintes:
+
+\begin{enumerate}[label=(\alph*)]
+    \item Estudo contínuo da plataforma Beecrowd por meio de testes nesta;
+    \item Estudo das APIs LTI que integram a Beecrowd ao o Moodle; 
+    \item Uso o ambiente de teste do Moodle para desenvolver o plugin; 
+    \item Realização de testes em ambiente de teste e produção do Moodle; 
+    \item Avaliação do o plugin desenvolvido em disciplina, de acordo com as funcionalidades especificadas na seção de Objetivos Específicos; 
+    \item Finalização da monografia do Trabalho de Conclusão de Curso, juntamente com a escrita de artigo sobre o TCC.
+\end{enumerate}
+
+
+\section{ESTRUTURA DO TRABALHO}
+
+A estrutura deste trabalho é organizada da seguinte maneira: a seção de Fundamentação Teórica apresenta os conceitos essenciais para compreender o desenvolvimento do projeto; em Trabalhos Relacionados, é mostrado um artigo que descreve a plataforma Beecrowd, bem como outros artigos que abordam a integração do Moodle com ferramentas de avaliação de código; no capítulo do Desenvolvimento, será apresentada uma arquitetura abrangente da integração proposta; o Cronograma detalha a sequência das próximas atividades, juntamente com suas datas de início e conclusão previstas; e, por fim, a Conclusão reúne as considerações finais deste trabalho.
+
