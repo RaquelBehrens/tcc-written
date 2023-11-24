@@ -71,7 +71,7 @@ A figura 10 representa uma edição da tela de cadastro da questão, proporciona
         \fonte{\cite[p.~27]{galasso}}
 \end{figure}
 
-Nesta solução, é recomendável que o Moodle e o BOCA sejam executados em servidores separados. Essa abordagem visa garantir que uma possível sobrecarga no BOCA, ao avaliar muitos algoritmos, não comprometa o desempenho do Moodle. É importante observar que o BOCA foi desenvolvido para o Sistema Gerenciador de Banco de Dados (SGBD) PostgreSQL, exigindo que o Moodle seja instalado utilizando a mesma plataforma \cite[p.~27-28]{galasso}. 
+Nesta solução, é recomendável que o Moodle e o BOCA sejam executados em servidores separados. Essa abordagem visa garantir que uma possível sobrecarga no BOCA, ao avaliar muitos algoritmos, não comprometa o desempenho do Moodle. É importante observar que o BOCA foi desenvolvido para o Sistema Gerenciador de Banco de Dados (SGBD) PostgreSQL, exigindo que o Moodle seja instalado utilizando o mesmo sistema \cite[p.~27-28]{galasso}. 
 
 Para possibilitar a comunicação entre bancos de dados em locais distintos, os autores usaram o Dblink no PostgreSQL. Segundo eles, Dblink, um conjunto de funções, facilita a conexão entre bancos de dados PostgreSQL para acesso a dados externos. Essa funcionalidade permite o acesso remoto a tabelas específicas em uma base de dados, bem como a execução de consultas \cite[p.~27-28]{galasso}.
 
@@ -99,7 +99,7 @@ Os autores explicaram o fluxo de gatilhos exibidos na figura 12:
     \item Posteriormente, outro gatilho registrado no BOCA entra em ação, pegando o arquivo com a resposta do aluno e as informações da questão, cadastrando-os na tabela "runtable" do BOCA.
 \end{enumerate}
 
-O BOCA utiliza um processo chamado "autojuding" para verificar a correção de problemas submetidos. Esse script PHP, em execução contínua no servidor, compila o algoritmo do aluno, comparando a saída com a padrão definida pelo professor. A avaliação ocorre a cada minuto, identificando e julgando novos problemas. Os resultados são registrados na tabela "runtable" do BOCA, acionando um gatilho que atualiza as tabelas no Moodle para que os alunos visualizem o feedback  \cite[p.~29]{galasso}.
+O BOCA utiliza um processo chamado "autojuding\" para verificar a correção de problemas submetidos. Esse script PHP, em execução contínua no servidor, compila o algoritmo do aluno, comparando a saída com a padrão definida pelo professor. A avaliação ocorre a cada minuto, identificando e julgando novos problemas. Os resultados são registrados na tabela "runtable" do BOCA, acionando um gatilho que atualiza as tabelas no Moodle para que os alunos visualizem o feedback  \cite[p.~29]{galasso}.
 
 Ao submeter uma questão, é exibida uma imagem de carregamento indicando a espera pelo julgamento. Após a avaliação, a área do algoritmo muda para verde se a resposta estiver correta, ou vermelho para resposta incorreta. A figura 13 ilustra um exemplo  \cite[p.~30]{galasso}.
 
@@ -164,7 +164,7 @@ Apesar de o CodeRunner ter se revelado altamente eficaz em diversas atividades d
     \item O CodeRunner destaca-se em tarefas relativamente simples com especificações claras. Embora, teoricamente, qualquer pergunta com resposta mensurável por um programa de computador possa ser formulada como uma pergunta do CodeRunner, o esforço demandado para criar avaliadores para tarefas complexas muitas vezes inviabiliza essa abordagem, especialmente em turmas de menor tamanho;
     \item Ferramentas de qualidade de código, como o pylint, provaram ser muito valiosas para aumentar a conscientização sobre o estilo e melhorar a qualidade do código, mas ainda ocorrem abusos das regras de estilo, e a qualidade dos comentários e identificadores não pode ser avaliada por computador. Por isso, a avaliação humana ainda é reservada para a qualidade do código;
     \item A resposta a uma pergunta do CodeRunner deve ser apresentada como um único bloco de texto, predominantemente composto por código. Embora os autores das perguntas possam gerar diversos formatos de feedback, inclusive gráficos, a apresentação padrão dos resultados é tabular, com uma linha para cada caso de teste e correspondência direta entre a saída esperada e a saída real. Caso os testes exijam blocos extensos de código ou resultem em saídas volumosas, a visualização dos resultados pode dificultar a compreensão pelos alunos do motivo pelo qual uma resposta foi marcada como incorreta;
-    \item A avaliação de perguntas com resultados gráficos representa um desafio, embora tenhamos iniciado alguns avanços nessa direção. Criamos uma simulação do kit de ferramentas GUI tkinter em Python para avaliar interfaces gráficas na disciplina e incluímos perguntas que verificam a precisão de gráficos gerados por chamadas à biblioteca de gráficos do Matlab. Contudo, a avaliação da correção de imagens ou mesmo da saída de programas que envolvem gráficos complexos, como os da biblioteca de tartarugas, é uma tarefa difícil, senão impossível;
+    \item A avaliação de perguntas com resultados gráficos representa um desafio. Foi criado uma simulação do kit de ferramentas GUI tkinter em Python para avaliar interfaces gráficas na disciplina, incluindo perguntas que verificam a precisão de gráficos gerados por chamadas à biblioteca de gráficos do Matlab. Contudo, a avaliação da correção de imagens ou mesmo da saída de programas que envolvem gráficos complexos, como os da biblioteca de tartarugas, foi considerada uma tarefa difícil, senão impossível;
     \item Por último, é importante ressaltar que a elaboração de perguntas de qualidade e testes eficazes pode demandar considerável tempo, mesmo em cursos de programação de nível básico. O compartilhamento de bancos de dados de perguntas entre professores seria altamente benéfico nesse contexto.
 \end{enumerate}
 
@@ -248,5 +248,65 @@ O plágio é abordado pelo VPL através de uma ferramenta de verificação de pl
 A tokenização visa obter uma assinatura normalizada para facilitar a comparação eficiente, envolvendo análise lexical, filtragem e normalização. Esse processo cria uma assinatura do programa, que é uma representação normalizada dos arquivos de código-fonte de um usuário, otimizando o processo de comparação, permitindo a detecção eficaz de plágio.
 
 Em resumo, o Virtual Programming Lab (VPL) apresenta-se como uma ferramenta abrangente para o gerenciamento de atividades de programação. Com recursos que vão desde a configuração detalhada de atividades no Moodle até a execução de testes avançados e a detecção de plágio, o VPL oferece uma variedade de funcionalidades para apoiar a aprendizagem prática e avaliação de habilidades de programação. Destaca-se, além disso, a necessidade de configurar todos os exercícios e seus casos de teste, para disponibilização destes aos alunos.
+
+\section{COMPARAÇÃO ENTRE OS TRABALHOS}
+
+O estudo de \cite{cruz2022} ressalta a eficácia da integração da plataforma Beecrowd em um plano de ensino inovador para disciplinas de programação. Ao incorporar estratégias como sala de aula invertida e gamificação, a pesquisa conclui que o Beecrowd, utilizado como suporte para a gamificação, não só melhora o processo de ensino e aprendizagem, oferecendo suporte aos educadores e motivando os alunos, mas também contribui para a redução da evasão em cursos superiores de informática.
+
+A aplicação das metodologias propostas no estudo dos autores demonstrou um impacto significativo no desempenho dos alunos ao longo do tempo na universidade dos autores, resultando em um crescimento notável e consistente nas notas. A ferramenta Beecrowd, destacada no estudo, é elogiada pela sua organização meticulosa de desafios em categorias e níveis de dificuldade, além de sua abordagem de maratona de programação, revelando-se eficaz em envolver os alunos de maneira imersiva.
+
+Dessa forma, a tabela 1 fornece uma comparação detalhada da integração entre o Moodle e o Beecrowd, consolidada neste trabalho, com outras integrações de ferramentas ao Moodle discutidas em trabalhos relacionados. O objetivo é analisar as diversas decisões de implementação adotadas em cada projeto, proporcionando uma base para este estudo.
+
+\begin{table}[htb]
+        \IBGEtab{%
+          \caption[Comparação entre quatro integrações de sistemas, que auxiliam no ensino da programação, com o Moodle: Beecrowd, BOCA, CodeRunner e VPL]{Comparação entre quatro integrações de sistemas, que auxiliam no ensino da programação, com o Moodle: Beecrowd, BOCA, CodeRunner e VPL}%
+          \label{tabela-ibge}
+        }{%
+          \begin{tabular}{c c c c c}
+          \toprule
+           \textbf{Aspecto} & \textbf{Beecrowd} & \textbf{BOCA} & \textbf{VPL} & \textbf{CodeRunner} \\
+          \midrule
+          Possui Juiz Online	                        &  Sim	& Sim	& Sim	& Sim   \\ \midrule
+          Fornece Feedback Imediato	                &  Sim	& Sim	& Sim	& Sim   \\ \midrule
+          Criação Manual de Questões	                &  Não	& Sim	& Sim	& Sim   \\ \midrule
+          Questões Prontas para Professores	        &  Sim	& Não	& Não	& Não   \\ \midrule
+          Ajuste Manual de Resultados	                &  Não	& Sim	& Não	& Não   \\ \midrule
+          Inserção Manual de Casos de Teste	        &  Não	& Sim	& Sim	& Sim   \\ \midrule
+          Suporta Diversas Linguagens	                &  Sim	& Sim	& Sim	& Sim   \\ \midrule
+          Pré-processamento de Submissões	        &  Não	& Não	& Não	& Sim   \\ \midrule
+          Comentários de Testes Falhados	        &  Não	& Não	& Sim	& Não   \\ \midrule
+          Prevenção de Plágio	                        &  Sim	& Não	& Sim	& Não   \\ 
+          \bottomrule
+        \end{tabular}%
+        }{%
+          \fonte{
+              Produzido pela autora. 
+          }%
+        }
+      \end{table}
+
+A análise da tabela destaca o Beecrowd como notavelmente diferenciado em relação aos outros sistemas, sobretudo devido à presença de questões pré-existentes para os professores. Essa característica elimina a necessidade de cadastramento manual das questões de programação e seus respectivos testes, uma exigência presente nas plataformas BOCA, VPL e CodeRunner.
+
+É importante destacar que a integração do presente trabalho vai ser feita por meio da criação de um Plugin. Já o BOCA e o CodeRunner são um tipo de questão do Moodle, e o VPL é um Módulo do Moodle.
+
+Um aspecto distintivo e relevante nos sistemas BOCA, VPL e CodeRunner é a abordagem de desenvolvimento que incorpora a utilização de servidores separados para o Moodle e os sistemas juízes online. Essa estratégia visa garantir a execução independente e eficiente de cada componente, proporcionando benefícios tanto em termos de desempenho quanto de segurança.
+
+Ao adotar servidores separados para o Moodle e os sistemas juízes online, essas plataformas buscam otimizar a distribuição de carga, evitando interferências ou sobrecargas que poderiam ocorrer se ambos compartilhassem o mesmo ambiente de execução. Isso resulta em uma operação mais estável e responsiva, melhorando a experiência do usuário e a eficácia do sistema como um todo.
+
+Além disso, a separação de servidores contribui para a segurança do ambiente. Isolar o Moodle e os sistemas juízes online em ambientes independentes reduz os riscos de conflitos de segurança e potenciais vulnerabilidades que poderiam surgir se compartilhassem recursos ou permissões. Essa segregação promove uma abordagem mais robusta em termos de proteção de dados e integridade do sistema.
+
+A escolha de servidores separados também permite uma escalabilidade mais eficiente, pois cada componente pode ser dimensionado de acordo com suas necessidades específicas sem afetar diretamente o desempenho do outro. Isso é particularmente crucial em ambientes acadêmicos, nos quais a demanda por plataformas como o Moodle e sistemas juízes online pode variar significativamente com base em fatores como o número de usuários e atividades acadêmicas.
+
+Por outro lado, a prevenção contra plágio é uma característica crucial e distintiva tanto no Beecrowd quanto no VPL, destacando-se como um diferencial significativo dessas plataformas. Essa funcionalidade visa salvaguardar a integridade acadêmica, garantindo que os trabalhos submetidos pelos alunos sejam autênticos e originais.
+
+No contexto do Beecrowd, a prevenção contra plágio pode envolver mecanismos avançados de análise de código-fonte, identificando padrões suspeitos que indicam possível cópia indevida. Além disso, o sistema pode empregar algoritmos e técnicas que comparam soluções de diferentes alunos, buscando similaridades que ultrapassem limites aceitáveis de coincidência.
+
+No caso do VPL, a prevenção contra plágio pode ser implementada através de verificações rigorosas durante o processo de submissão. Isso pode incluir a comparação automática de códigos submetidos em busca de trechos idênticos ou substancialmente semelhantes. Além disso, o VPL pode adotar métodos de análise mais avançados, como a detecção de técnicas de programação específicas que são características de trabalhos plagiados.
+
+Ambas as plataformas podem adotar abordagens proativas, educando os alunos sobre a importância da originalidade e as consequências éticas e acadêmicas do plágio. Isso pode incluir a disponibilização de recursos educativos sobre a elaboração de código autêntico, boas práticas de programação e a importância de citações apropriadas.
+
+Agora sobre outros aspectos técnicos, o trabalho que relata a integração BOCA-Moodle, estudo conduzido por \cite{galasso}, traz detalhes técnicos de decisões de implementação interessantes. Os autores adotaram uma abordagem em que os dois ambientes, Moodle e BOCA, operam de forma independente. Uma característica notável é o uso do PostgreSQL como banco de dados, exigindo que o Moodle use o mesmo sistema. Assim, para que seja possível a comunicação entre banco de dados em locais distintos, foi usado o Dblink no PostgreSQL. Além disso, foram utilizadas doze tabelas no banco de dados do sistema BOCA, sendo que a integração entre o BOCA e o Moodle foi feita através da criação de gatilhos (triggers). 
+
+Já o trabalho de \textcite{rodriguezdelpinoandroyo} traz detalhes interessantes do módulo Virtual Programming Lab (VPL). Ele possui um editor de código em Java para editar, executar, depurar e avaliar programas em um ambiente simples de desenvolvimento. Dessa forma, para utilizar todas as funcionalidades é necessário um navegador com suporte a JavaScript e applets Java. Também é composto por um componente Jail: servidor que compila e executa códigos de alunos em um ambiente seguro, usando o comando linux chroot para restrições de leitura, que possui algumas especificações de execução. 
 
 \end{otherlanguage*}
