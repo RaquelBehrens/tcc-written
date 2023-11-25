@@ -232,7 +232,7 @@ Como software de código aberto, possibilita personalização e adaptação, com
 
 Contando com forte apoio de uma comunidade global ativa, equipe de desenvolvedores dedicados e parceiros certificados, o Moodle recebe atualizações rápidas, correções de bugs e melhorias em lançamentos significativos a cada seis meses \cite{moodle}.
 
-Atualmente, diversas instituições educacionais buscam modernizar seus sistemas de aprendizagem para facilitar o acesso ao conhecimento. Nesse contexto, o ambiente Moodle tem se destacado como uma escolha frequente. O Moodle adota o conceito construcionista social de educação, conforme destacado por Galasso e Moreira \cite[p.~22]{galasso}. Esse enfoque pedagógico enfatiza as demandas contemporâneas por métodos de ensino mais dinâmicos e participativos.
+Atualmente, diversas instituições educacionais buscam modernizar seus sistemas de aprendizagem para facilitar o acesso ao conhecimento. Nesse contexto, o ambiente Moodle tem se destacado como uma escolha frequente. O Moodle adota o conceito construcionista social de educação, conforme destacado por \cite[p.~22]{galasso}. Esse enfoque pedagógico enfatiza as demandas contemporâneas por métodos de ensino mais dinâmicos e participativos.
 
 \subsection{\textbf{Características Gerais do Moodle}}
 
@@ -339,7 +339,7 @@ Existem vários tipos de plugins disponíveis, e a seleção deve ser feita cons
 
 
 \begin{enumerate} [label=(\alph*)]
-    \item version,php: contém metadata do plugin, incluindo informações como o número da versão, a lista de dependências, a versão mínima do Moodle requerida, e a maturidade do plugin;
+    \item version.php: contém metadata do plugin, incluindo informações como o número da versão, a lista de dependências, a versão mínima do Moodle requerida, e a maturidade do plugin;
     \item lang/en/plugintype\_pluginname.php: um arquivo contendo o nome do plugin, pelo menos na língua inglesa. Assim, dentro do diretório ‘lang/en’, deve existir o arquivo ‘plugintype\_pluginname.php’;
     \item lib.php: funciona como uma ponte entre o núcleo do Moodle e o plugin. É usado apenas para definir retornos de chamada e funcionalidades relacionadas que atualmente não são suportadas como uma classe recarregável automaticamente. Todas as funções definidas neste arquivo devem atender aos requisitos estabelecidos na seção relevante do estilo de codificação;
     \item db/install.xml: usado para definir quaisquer tabelas, campos, índices e chaves do banco de dados que devem ser criados para um plug-in durante a instalação inicial;
