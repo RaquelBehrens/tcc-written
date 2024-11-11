@@ -41,18 +41,10 @@ Dessa forma, constatou-se que integrar o Beecrowd como um suporte para a impleme
 
 \section{INTEGRAÇÃO DO AMBIENTE BOCA COM O AMBIENTE MOODLE PARA AVALIAÇÃO AUTOMÁTICA DE ALGORITMOS}
 
-No estudo conduzido por \cite{galasso}, destaca-se a integração entre o BOCA Online Contest Administrator e a plataforma Moodle, focalizando a disciplina de algoritmos como um pilar crucial no ensino da programação. O estudo ressalta a importância de proporcionar uma experiência facilitada tanto para alunos quanto para professores, reconhecendo-a como essencial para o eficaz aprendizado e aproveitamento dessa disciplina. 
+O estudo de \textcite{galasso} explora a integração entre o sistema BOCA Online Contest Administrator e a plataforma Moodle, direcionada para o ensino de algoritmos. Essa integração visa proporcionar uma experiência simplificada para alunos e professores, facilitando o processo de avaliação automática de algoritmos no Moodle, já que o BOCA, além de gerenciar competições de programação, permitindo, assim, eventos como maratonas de programação, possui também um juiz automático para correção de algoritmos. Essa funcionalidade possibilita que os alunos recebam respostas imediatas sobre a correção de seus algoritmos, contribuindo para um aprendizado mais ágil e eficiente.
 
-O BOCA Online Contest Administrator representa um ambiente dedicado à administração de competições que abrangem a programação de computadores, incluindo eventos como a Maratona de Programação. Uma característica fundamental é a presença de um juiz online que realiza avaliações automáticas dos algoritmos submetidos pelos participantes. 
+Na integração proposta, os professores podem criar questões de programação no Moodle, onde os alunos submetem códigos-fonte que são automaticamente avaliados pelo BOCA. Os algoritmos submetidos são compilados e executados com os dados de entrada predefinidos no Moodle, e suas saídas são comparadas com uma saída padrão para determinar se estão corretos. A resposta ao aluno é binária (correta ou incorreta), sem avaliação parcial, mas Moodle permite múltiplas tentativas, oferecendo a oportunidade de corrigir erros como problemas de compilação, formatação ou limite de tempo. Adicionalmente, o professor pode revisar manualmente os resultados, caso deseje realizar uma avaliação mais detalhada e parcial das respostas.
 
-Os autores do estudo concentraram seus esforços no desenvolvimento dessa integração, visando possibilitar a criação de questões na plataforma Moodle nas quais as respostas consistem de algoritmos. Estes, por sua vez, são avaliados de forma automática, gerando resultados para cada submissão dos alunos. Além disso, a integração foi concebida de modo a garantir que os ambientes envolvidos fossem implementados em servidores independentes. Isso assegura que a utilização do BOCA durante a avaliação dos algoritmos não comprometa o desempenho do ambiente Moodle.
-
-Dessa forma, a proposta apresentada introduz um novo tipo de questão, denominada "Juiz online", destinada a ser incorporada nos questionários do ambiente Moodle. O processo requer que o professor insira uma questão para cada problema que deseja abordar. Uma vantagem oferecida pelo próprio Moodle é a capacidade do professor de utilizar várias dessas questões para compor um questionário abrangente.
-	
-Para construir os problemas, o professor preenche campos específicos no ambiente Moodle, incluindo o título do problema, o corpo do problema (enunciado) e um conjunto de casos de teste. Cada caso de teste inclui entradas para o algoritmo e a saída esperada correspondente à entrada fornecida. Durante o cadastro, é necessário especificar a linguagem de programação para a resolução do problema. A instalação padrão do BOCA suporta as linguagens C, C++ e Java, compilando o algoritmo com o compilador apropriado para a linguagem indicada no momento do cadastro.
-
-Os alunos submetem algoritmos em código-fonte no Moodle, utilizando a linguagem indicada pelo professor. Depois, o BOCA avalia automaticamente, compilando e executando o código com entradas cadastradas pelo professor, e comparando com uma saída padrão predefinida. A resposta ao aluno pode ser apenas correta ou incorreta, sem possibilidade de avaliação parcial. Diversos tipos de erros podem ocorrer, tais como problemas de compilação, formatação inadequada ou tempo excedido. O Moodle permite múltiplas tentativas, proporcionando aos alunos a oportunidade de corrigir possíveis equívocos. Além disso, o professor tem a prerrogativa de ajustar manualmente os resultados, focando sua avaliação nas partes incorretas, o que contribui significativamente para aliviar a carga de correções.
- 
 A figura 10 representa uma edição da tela de cadastro da questão, proporcionando uma visão ilustrativa desta fase do processo, já a figura 11 oferece uma representação visual da avaliação de uma questão como correta.
 
 \begin{figure}[h!]
@@ -71,13 +63,11 @@ A figura 10 representa uma edição da tela de cadastro da questão, proporciona
         \fonte{\cite[p.~27]{galasso}}
 \end{figure}
 
-Nesta solução, é recomendável que o Moodle e o BOCA sejam executados em servidores separados. Essa abordagem visa garantir que uma possível sobrecarga no BOCA, ao avaliar muitos algoritmos, não comprometa o desempenho do Moodle. É importante observar que o BOCA foi desenvolvido para o Sistema Gerenciador de Banco de Dados (SGBD) PostgreSQL, exigindo que o Moodle seja instalado utilizando o mesmo sistema \cite[p.~27-28]{galasso}. 
+Para manter o desempenho do Moodle, a integração foi concebida de modo a garantir que os ambientes envolvidos fossem implementados em servidores independentes. Essa separação minimiza a possibilidade de sobrecarga no Moodle durante a avaliação dos algoritmos no BOCA. A integração foi desenvolvida com o PostgreSQL, e os bancos de dados do Moodle e do BOCA se comunicam via Dblink, um recurso que permite o acesso remoto a tabelas específicas.
 
-Para possibilitar a comunicação entre bancos de dados em locais distintos, os autores usaram o Dblink no PostgreSQL. Segundo eles, Dblink, um conjunto de funções, facilita a conexão entre bancos de dados PostgreSQL para acesso a dados externos. Essa funcionalidade permite o acesso remoto a tabelas específicas em uma base de dados, bem como a execução de consultas \cite[p.~27-28]{galasso}.
+As tabelas principais do BOCA envolvidas na avaliação automática incluem a “problemtable”, para cadastro de questões, “runtable”, para submissões dos alunos, “answertable”, para dados de correção, e “langtable”, com as linguagens de programação suportadas (C, C++ e Java). Os autores também criaram duas tabelas auxiliares, “tempaluno” e “tempprofessor”, para facilitar a transferência de dados entre o Moodle e o BOCA.
 
-Os autores destacaram também que o banco de dados do sistema BOCA consiste em doze tabelas, sendo quatro delas essenciais para o funcionamento do juiz online do BOCA: Problemtable, utilizada para cadastro de questões na competição; Runtable, usada quando o aluno submete algoritmos; Answertable, armazenando dados de correção após o algoritmo ser executado; e Langtable, a qual armazena as linguagens de programação a serem utilizadas. Além disso, duas tabelas adicionais, "tempaluno" e "tempprofessor", foram criadas para a manipulação de dados entre as tabelas preexistentes \cite[p.~27-28]{galasso}. 
-
-“A integração do BOCA com o ambiente Moodle foi realizada através da criação de gatilhos (triggers), que é um recurso existente em diversos SGBD, dispensando alterações no código do Moodle e do BOCA” \cite[p.~28-29]{galasso}. A Figura 12 oferece uma visualização do fluxo de dados entre as bases de dados, destacando a atuação dos gatilhos.
+Os gatilhos (triggers) configurados no banco de dados são fundamentais para o fluxo de dados entre Moodle e BOCA, eliminando a necessidade de alterações no código. O fluxo começa quando o professor cadastra uma questão no Moodle, acionando gatilhos que transferem os dados para o BOCA, onde a questão é registrada. Da mesma forma, quando um aluno responde, gatilhos adicionais transferem as submissões para a tabela de execução no BOCA.
 
 \begin{figure}[h!]
 	   \centering
@@ -87,21 +77,7 @@ Os autores destacaram também que o banco de dados do sistema BOCA consiste em d
         \fonte{\cite[p.~29]{galasso}}
 \end{figure}
 
-Os autores explicaram o fluxo de gatilhos exibidos na figura 12:
-
-
-\begin{enumerate} [label=(\alph*)]
-    \item Quando um professor cadastra uma questão no Moodle, essa informação é registrada no banco de dados do Moodle, ativando o primeiro gatilho;
-    \item Este gatilho grava os dados da questão na tabela "tempprofessor" no banco de dados do BOCA;
-    \item Uma vez que os dados são registrados na tabela "tempprofessor", outro gatilho é acionado, carregando os dados relacionados ao problema criado pelo professor, incluindo o arquivo compactado com as configurações da questão necessário para o BOCA;
-    \item Esses dados são então adicionados à tabela "problemtable", registrando assim o problema no BOCA;
-    \item À medida que os alunos respondem às questões no Moodle, os envios são registrados nas tabelas do banco de dados do ambiente e um novo gatilho é acionado para a tabela "tempaluno";
-    \item Posteriormente, outro gatilho registrado no BOCA entra em ação, pegando o arquivo com a resposta do aluno e as informações da questão, cadastrando-os na tabela "runtable" do BOCA.
-\end{enumerate}
-
-O BOCA utiliza um processo chamado "autojuding\" para verificar a correção de problemas submetidos. Esse script PHP, em execução contínua no servidor, compila o algoritmo do aluno, comparando a saída com a padrão definida pelo professor. A avaliação ocorre a cada minuto, identificando e julgando novos problemas. Os resultados são registrados na tabela "runtable" do BOCA, acionando um gatilho que atualiza as tabelas no Moodle para que os alunos visualizem o feedback  \cite[p.~29]{galasso}.
-
-Ao submeter uma questão, é exibida uma imagem de carregamento indicando a espera pelo julgamento. Após a avaliação, a área do algoritmo muda para verde se a resposta estiver correta, ou vermelho para resposta incorreta. A figura 13 ilustra um exemplo  \cite[p.~30]{galasso}.
+Durante o julgamento das respostas, o BOCA executa scripts em intervalos de um minuto, verificando novas submissões e atualizando o status no Moodle. Os alunos visualizam uma área verde para respostas corretas e vermelha para incorretas. Figuras incluídas no estudo ilustram etapas do cadastro das questões e o feedback visual ao aluno.
 
 \begin{figure}[h!]
 	   \centering
@@ -111,18 +87,13 @@ Ao submeter uma questão, é exibida uma imagem de carregamento indicando a espe
         \fonte{\cite[p.~26]{galasso}}
 \end{figure}
 
-Os autores revelaram que foi encontrado um erro ao fazer uma tentativa de enviar um arquivo “zip” diretamente para o banco de dados. Também não foi possível enviar arquivos de entrada e saída diretamente pelo banco de dados, resultando em problemas de codificação das tabulações e identificadores de nova linha. A solução envolveu o envio desses arquivos via FTP, requerendo a instalação de um servidor FTP no ambiente de execução do BOCA \cite[p.~30]{galasso}.
-
-Ao final, \textcite[p.~30-31]{galasso} destacaram que a implementação da solução proposta demanda a criação manual dos gatilhos nos bancos de dados tanto do Moodle quanto do BOCA. “Uma instalação simplificada é crucial para garantir uma utilização eficiente, assim como uma distribuição do BOCA pronta para integração é essencial” \cite[p.~31]{galasso}.
-
+Houve desafios técnicos, como a tentativa inicial de enviar arquivos “zip” diretamente para o banco de dados, o que levou a problemas de codificação. Para contornar isso, os arquivos foram transferidos via FTP, necessitando a instalação de um servidor FTP no ambiente do BOCA. Ao final, os autores ressaltam a importância de uma instalação simplificada e recomendam uma versão do BOCA já configurada para integração com o Moodle. Essa abordagem visa facilitar a adoção da solução e sua eficácia no ensino de algoritmos.
 
 \section{CODERUNNER: A TOOL FOR ASSESSING COMPUTER PROGRAMING SKILLS}
 
-O estudo de \textcite{lobbharlow} destaca as dificuldades na avaliação de alunos em disciplinas de programação por meio de provas tradicionais com papel e caneta. Aponta que a complexidade dos códigos e a natureza do processo de programação moderna dificultam a avaliação precisa sem a possibilidade de testes e debugagem. O artigo propõe uma nova ferramenta para atender às diversas exigências de avaliação, reconhecendo que as provas são apenas uma parte do processo, sendo também necessário avaliar em laboratórios e tarefas em sala de aula.
+O estudo de \textcite{lobbharlow} examina as dificuldades encontradas na avaliação de alunos em disciplinas de programação utilizando métodos tradicionais, como provas de papel e caneta. O artigo destaca que a complexidade dos códigos e a natureza da programação moderna tornam a avaliação precisa um desafio, pois esses métodos não oferecem a possibilidade de realizar testes ou debug. O artigo propõe o uso de ferramentas de avaliação automatizadas, como o CodeRunner, que proporciona correção e feedback imediato para os alunos.	
 
-A integração foi feita de modo que os alunos recebem feedback imediato ao clicar no botão "Check" (Verificar), apresentado em uma tabela que detalha os testes usados, resultados esperados e reais da função do aluno. Marcas verdes indicam respostas corretas, enquanto cruzes vermelhas indicam incorreções. O painel de comentários torna-se vermelho se houver algum resultado errado, seguindo o método de avaliação "tudo ou nada", resultando em nota zero. Após reenvio de uma resposta correta, o painel fica verde, concedendo 100\%, com desconto de eventuais penalidades acumuladas (neste caso, 10\%). Testes ocultos são incluídos para evitar estratégias que atendam apenas aos testes fornecidos, garantindo uma avaliação abrangente \cite[p.~48]{lobbharlow}. 
-
-As Figuras 14 e 15 ilustram uma pergunta simples no Python CodeRunner, solicitando aos alunos que escrevam uma função squares(n), retornando uma lista dos quadrados dos números inteiros de 1 a n, inclusive. Na Figura 2, é exibido o feedback após um envio incorreto, enquanto a Figura 3 representa o estado após um envio correto.
+Pelo CodeRunner, plugin do Moodle, os alunos recebem um feedback binário, onde as respostas corretas são indicadas por marcas verdes e as incorretas por cruzes vermelhas. A ferramenta adota o método de avaliação "tudo ou nada", ou seja, uma resposta só é considerada correta se atender completamente aos requisitos do teste, sendo a nota zero atribuída para respostas incorretas. Contudo, o sistema permite que os alunos façam múltiplas tentativas, oferecendo a chance de corrigir falhas como erros de compilação, formatação inadequada ou problemas de tempo de execução, com a possibilidade de aplicar penalidades em caso de envio tardio ou repetido.
 
 \begin{figure}[h!]
 	   \centering
@@ -140,28 +111,12 @@ As Figuras 14 e 15 ilustram uma pergunta simples no Python CodeRunner, solicitan
         \fonte{\cite[p.~48]{lobbharlow}}
 \end{figure}
 
-O CodeRunner possui algumas particularidades para a criação de perguntas:
-
-\begin{enumerate} [label=(\alph*)]
-    \item Cada pergunta no CodeRunner é uma instância de um protótipo de pergunta, que define o "tipo" da pergunta. Existem protótipos incorporados para perguntas comuns, como "escreva uma função", "escreva um programa" ou "escreva uma classe";
-    \item Desenvolvedores de perguntas têm a liberdade de criar protótipos personalizados para oferecer funcionalidades adicionais, proporcionando uma ampla gama de possibilidades;
-    \item O protótipo, por meio de um modelo, especifica o programa a ser executado para uma resposta específica do aluno, e a ser usado em caso de teste. A saída é então comparada com a saída esperada para avaliação;
-    \item O uso de um modelo personalizável oferece flexibilidade ao autor da pergunta para utilizar a resposta do aluno de maneiras diversas, incluindo pré-processamentos antes da execução do código;
-    \item Uma aplicação significativa dessa flexibilidade é o pré-processamento para validar submissões. Isso pode incluir a verificação de estilo usando ferramentas como pylint para Python, antes da aceitação do código para execução;
-    \item O modelo também permite impor ou restringir o uso de determinadas construções de programação. Por exemplo, a reescrita do código usando um loop while em vez de um loop for pode ser obrigatória em algumas perguntas;
-    \item Para garantir a segurança, a execução do código do aluno ocorre em um servidor sandbox separado, isolado do ambiente principal.
-\end{enumerate}
-
-O CodeRunner apresenta uma particularidade notável: permite que a linguagem utilizada no protótipo seja diferente daquela empregada na execução do envio do aluno. Isso é exemplificado pelo uso de um verificador de estilo local para Octave, que utiliza um modelo em Python para verificar o código antes de enviá-lo ao Octave para execução. Essa distinção entre a linguagem do modelo e o código verificado pode ser observada também, exemplificadamente, em um tipo de pergunta em que o aluno descreve uma Máquina de Estado Finito (FSM) textualmente, e o código do desenvolvedor (em Python) valida e classifica o comportamento da FSM.
-
-A correção tradicionalmente ocorre comparando o resultado real da execução com o esperado para cada teste. No entanto, o CodeRunner possibilita incorporar o processo de classificação diretamente no modelo, como exemplificado na questão FSM. Em suma, o CodeRunner é ideal para uma ampla gama de exercícios avaliáveis por computador, oferecendo suporte a diferentes tipos de perguntas e métodos de correção.
-
-Esse estudo mostrou um dado interessante: Realizar uma prova online em vez de uma prova escrita à mão oferece insights valiosos. O Moodle fornece estatísticas detalhadas sobre o desempenho dos alunos em cada questão, permitindo a identificação imediata de áreas temáticas que exigem mais atenção no ensino futuro, bem como questões problemáticas. A trajetória de nota de cada aluno, mostrando seu progresso durante o exame, revela padrões interessantes, como a maioria se aproximando da nota final em uma hora, enquanto alguns alunos demonstram melhora constante ao longo do tempo.
+O CodeRunner também apresenta uma abordagem flexível para a criação de perguntas, permitindo que os desenvolvedores de questões criem protótipos personalizados. Esses protótipos podem ser usados para perguntas que exigem funcionalidades adicionais ou para impor restrições, como o uso de determinado tipo de estrutura de controle no código. Além disso, a execução do código do aluno ocorre em um ambiente seguro, isolado do servidor principal, o que evita riscos de segurança.
 
 Apesar de o CodeRunner ter se revelado altamente eficaz em diversas atividades de avaliação, os autores destacaram algumas limitações fundamentais:
 
 \begin{enumerate} [label=(\alph*)]
-    \item O CodeRunner destaca-se em tarefas relativamente simples com especificações claras. Embora, teoricamente, qualquer pergunta com resposta mensurável por um programa de computador possa ser formulada como uma pergunta do CodeRunner, o esforço demandado para criar avaliadores para tarefas complexas muitas vezes inviabiliza essa abordagem, especialmente em turmas de menor tamanho;
+    \item O CodeRunner destaca-se em tarefas relativamente simples com especificações claras. Embora, teoricamente, qualquer pergunta com resposta mensurável por um programa de computador possa ser formulada como uma pergunta do CodeRunner, o esforço demandado para criar avaliadores para tarefas complexas muitas vezes inviabiliza essa abordagem, especialmente em turmas de maior tamanho;
     \item Ferramentas de qualidade de código, como o pylint, provaram ser muito valiosas para aumentar a conscientização sobre o estilo e melhorar a qualidade do código, mas ainda ocorrem abusos das regras de estilo, e a qualidade dos comentários e identificadores não pode ser avaliada por computador. Por isso, a avaliação humana ainda é reservada para a qualidade do código;
     \item A resposta a uma pergunta do CodeRunner deve ser apresentada como um único bloco de texto, predominantemente composto por código. Embora os autores das perguntas possam gerar diversos formatos de feedback, inclusive gráficos, a apresentação padrão dos resultados é tabular, com uma linha para cada caso de teste e correspondência direta entre a saída esperada e a saída real. Caso os testes exijam blocos extensos de código ou resultem em saídas volumosas, a visualização dos resultados pode dificultar a compreensão pelos alunos do motivo pelo qual uma resposta foi marcada como incorreta;
     \item A avaliação de perguntas com resultados gráficos representa um desafio. Foi criado uma simulação do kit de ferramentas GUI tkinter em Python para avaliar interfaces gráficas na disciplina, incluindo perguntas que verificam a precisão de gráficos gerados por chamadas à biblioteca de gráficos do Matlab. Contudo, a avaliação da correção de imagens ou mesmo da saída de programas que envolvem gráficos complexos, como os da biblioteca de tartarugas, foi considerada uma tarefa difícil, senão impossível;
@@ -185,27 +140,7 @@ O VPL é composto por três elementos: um módulo do Moodle, um editor de códig
         \fonte{\cite[p.~2]{rodriguezdelpinoandroyo}}
 \end{figure}
 
-O VPL possui um editor de código em Java para editar, executar, depurar e avaliar programas em um ambiente simples de desenvolvimento. Para utilizar todas as funcionalidades, é necessário um navegador com suporte a JavaScript e applets Java 1.5. 
-
-O módulo do Moodle oferece características típicas, como backup, integração com o livro de notas e controle de eventos, além de recursos específicos, como gerenciamento de submissões, suporte à avaliação e prevenção contra plágio. O módulo VPL requer Moodle 1.9.x e PHP5 ou superior. 
-
-O componente Jail é um servidor que compila e executa códigos de alunos em um ambiente seguro, usando o comando linux chroot para restrições de leitura. Para executar ou avaliar uma submissão, é necessário ter pelo menos um servidor Jail, preferencialmente com uma distribuição Linux Ubuntu ou compatível com Red Hat. O servidor Jail atende a solicitações para execuções interativas e não interativas, com a diferença de que o segundo tipo exige dados específicos para redirecionar a entrada/saída da execução. 
-
-Para fornecer execução no console, os servidores do Moodle precisam abrir pelo menos duas portas, sendo recomendável um número maior. Devido ao tempo prolongado para executar scripts PHP de submissões, é necessário aumentar o limite de tempo na configuração do PHP.
-
-O módulo VPL utiliza um duplo proxy para comunicação: um lado com os clientes da Internet, atendendo às solicitações, e outro lado com os servidores Jail, executando tarefas associadas a essas solicitações. Essa abordagem possibilita diversas topologias de rede. A configuração mais simples envolve a execução do servidor Jail e do servidor Moodle no mesmo computador, embora precisem se comunicar via intranet, perdendo as vantagens de segurança do isolamento em computadores distintos. 
-
-Uma topologia mais apropriada conecta um servidor Moodle a um ou mais servidores Jail separados, que podem estar em uma rede privada (Figura 16). Uma opção mais robusta é compartilhar vários servidores Jail entre diferentes servidores Moodle, adaptando-se a picos de carga ao alterar o número de servidores Jail usados por um servidor Moodle. A desvantagem é que os servidores Jail devem estar em um domínio público para disponibilizá-los a todos os servidores Moodle sem aumentar a complexidade da rede. 
-
-A utilização de vários Jails não só suporta escalabilidade e melhora o desempenho, mas também oferece tolerância a falhas. Quando uma solicitação de execução é recebida pelo módulo VPL, ele escolhe aleatoriamente um servidor Jail disponível e funcional, garantindo uma resposta positiva à solicitação de disponibilidade. Se nenhum servidor for encontrado, o processo é repetido, considerando servidores que falharam anteriormente.
-
-\begin{figure}[h!]
-	   \centering
-            \caption{VPL - Topologia de Rede Complexa}
-            \label{fig:ModeloConceitual}
-	   	\includegraphics[scale=0.3]{pictures/VPL_topologia.png}
-        \fonte{\cite[p.~2]{rodriguezdelpinoandroyo}}
-\end{figure}
+O editor de código, construído em Java, possibilita a edição, execução, depuração e avaliação de programas em um ambiente simples de desenvolvimento. Já o módulo do Moodle oferece características típicas, como backup, integração com o livro de notas e controle de eventos, além de recursos específicos, como gerenciamento de submissões, suporte à avaliação e prevenção contra plágio. E o componente Jail é um servidor que compila e executa códigos de alunos em um ambiente seguro, usando o comando linux chroot para restrições de leitura. 
 
 O VPL permite configurar, gerenciar e avaliar atividades de aprendizagem, classificadas por tipo (exemplos, exercícios de cloze, exercícios de desenvolvimento de código) e escopo (tarefas fora da sala de aula ou exames em sala).
 
@@ -249,13 +184,81 @@ A tokenização visa obter uma assinatura normalizada para facilitar a comparaç
 
 Em resumo, o Virtual Programming Lab (VPL) apresenta-se como uma ferramenta abrangente para o gerenciamento de atividades de programação. Com recursos que vão desde a configuração detalhada de atividades no Moodle até a execução de testes avançados e a detecção de plágio, o VPL oferece uma variedade de funcionalidades para apoiar a aprendizagem prática e avaliação de habilidades de programação. Destaca-se, além disso, a necessidade de configurar todos os exercícios e seus casos de teste, para disponibilização destes aos alunos.
 
+
+\section{UMA FERRAMENTA BASEADA EM JUÍZES ONLINE PARA APOIO ÀS ATIVIDADES DE PROGRAMAÇÃO DE COMPUTADORES NO MOODLE}
+
+No projeto conduzido por \textcite{joseosvaldochaves}, foi desenvolvido o Módulo de Integração com Juízes Online (MOJO), ferramenta que integra os Juízes Online, como o Timus Online Judge e o Beecrowd (conhecido como URI Online Judge na época) ao Moodle, para evitar que os professores de disciplinas de programação ficassem sobrecarregados ao ter que elaborar, submeter, abaliar e fornecer o feedback necessário das questões aos alunos. O MOJO automatizou o processo de Elaboração, Submissão e Avaliação (ESA) das atividades de programação, fornecendo um ambiente unificado que facilita o acompanhamento dos alunos e amplia o acesso a um maior número de questões.
+
+O MOJO, portanto, integra o Moodle com os Juízes Online para atividades de programação, sem interação direta entre as plataformas. Ele automatiza o processo ESA (Elaboração, Submissão e Avaliação), permitindo que professores submetam questões no Moodle, estudantes enviem suas respostas, e os Juízes Online avaliem automaticamente o código, com os resultados retornando ao Moodle para análise de professores e alunos. O professor pode monitorar o progresso dos estudantes e acessar os códigos submetidos, enquanto o Repositório de Integração armazena as questões para uso futuro.
+
+Na arquitetura geral do MOJO, o Moodle gerencia a interface e o controle das atividades de programação, enquanto o MOJO se encarrega da comunicação e interação com os Juízes Online. A arquitetura conta com o Módulo Principal (MOP), responsável pelas funcionalidades essenciais e pelo controle do Módulo de Carga e Atualização (MOCA), que, por sua vez, realiza o carregamento inicial e atualizações constantes das questões, armazenando-as no Repositório de Integração. Esse repositório mantém as questões e resultados para uso e acompanhamento contínuo no Moodle.
+
+Como os juízes online não oferecem APIs ou serviços Web, foram necessárias implementações específicas para cada juiz, utilizando PHP (a mesma linguagem do Moodle) e JavaScript para a interface. O banco de dados PostgreSQL foi escolhido por ser open-source e por permitir a criação de tabelas personalizadas para armazenar dados dos alunos, viabilizando um feedback direcionado e adequado.
+
+O objetivo do MOJO é reduzir a carga de trabalho dos professores no processo ESA, permitindo um acompanhamento mais próximo dos alunos. Em uma pesquisa inicial com sete professores, os resultados apontaram que 71,4\% acreditam que a ferramenta pode economizar tempo; 28,6\% gostariam de poder criar e avaliar suas próprias atividades automaticamente; 42,8\% mencionaram questões de legibilidade do código; 28,6\% observaram a clareza dos resultados; 85,7\% valorizam o feedback mais rápido aos alunos; e 100\% acreditam que a redução de tarefas possibilitará um acompanhamento mais eficaz, especialmente para alunos com dificuldades.
+
+
+\section{BUILDING OF A RULE-BASED EXPERT SYSTEM FOR ACADEMIC ADVISING VIA WEB EXPERT SYSTEM TOOLS}
+
+O projeto conduzido por \textcite{osmannasr} aborda o desenvolvimento de um sistema especialista voltado para otimizar o aconselhamento acadêmico na Universidade King Khalid. A proposta central do estudo é criar uma ferramenta que simule as funções do conselheiro acadêmico humano, utilizando técnicas de inteligência empresarial para auxiliar na tomada de decisões informadas por estudantes e funcionários, baseadas nas regulamentações acadêmicas da instituição.
+
+O processo de desenvolvimento do sistema é dividido em várias fases, cada uma com objetivos específicos:
+
+Fase de Análise: Esta etapa inicial é dedicada à coleta de informações sobre as questões mais recorrentes entre os estudantes, além de procedimentos acadêmicos frequentes, como matrícula em cursos, transferências de departamento e pedidos de suspensão. A análise dessas necessidades foi realizada por meio de entrevistas com estudantes e conselheiros acadêmicos, utilizando uma abordagem de árvore de decisão (UML), mostrada na Figura 20, para entender melhor os requisitos do sistema.
+
+\begin{figure}[h!]
+        \centering
+         \caption{Sistema especialista baseado em regras - Árvore de decisão}
+         \label{fig:ModeloConceitual}
+                \includegraphics[scale=0.3]{pictures/Rule_Based_Expert_System_arvore_decisao.png}
+     \fonte{\cite[p.~305]{neildunstan}}
+\end{figure}
+
+Fase de Design: Com base na análise anterior, o design do sistema foi estruturado utilizando uma metodologia baseada em regras (rule-based). Esse método foi escolhido por sua adequação à modelagem dos processos de aconselhamento acadêmico, que envolvem uma lógica condicional do tipo "se-então". Durante essa fase, também foi projetada uma interface amigável, alinhada com o estilo visual e os padrões de interação do portal da universidade, garantindo que os usuários pudessem facilmente se adaptar ao sistema.
+
+Fase de Implementação: A construção do sistema foi realizada utilizando o ES Builder, uma ferramenta de código aberto que facilita a criação de sistemas especialistas baseados em regras. O sistema foi projetado para ser acessível via plataforma web, o que possibilita seu uso por uma grande variedade de usuários, incluindo estudantes e conselheiros acadêmicos.
+
+Fase de Testes e Avaliação: O sistema foi testado com diferentes cenários, utilizando tanto estudantes quanto conselheiros acadêmicos, a fim de validar sua eficácia. Os resultados indicaram que o sistema é capaz de fornecer respostas adequadas e de auxiliar no processo de aconselhamento de forma precisa e eficiente.
+
+O estudo conclui que a implementação de sistemas especialistas no âmbito acadêmico tem um grande potencial para melhorar a eficiência do aconselhamento acadêmico, promovendo uma interação mais eficaz entre estudantes e conselheiros. Além disso, o sistema proposto pode se tornar uma ferramenta valiosa para a tomada de decisões informadas, não apenas para os estudantes, mas também para os docentes, que poderão fornecer orientações mais precisas e baseadas em dados. O sistema mostrou-se alinhado às expectativas dos usuários, que manifestaram interesse em expandir sua funcionalidade para cobrir mais áreas do aconselhamento acadêmico.
+
+Este trabalho evidencia o papel transformador que a tecnologia pode desempenhar no setor educacional, especialmente no contexto do aconselhamento acadêmico, apontando para a necessidade de continuar a pesquisa e o desenvolvimento de sistemas dessa natureza para atender de forma mais abrangente às necessidades dos estudantes e professores.
+
+
+\section{AN INTERACTIVE WEB-BASED EXPERT SYSTEM DEGREE PLANNER}
+
+O artigo desenvolvido por \textcite{neildunstan} descreve o desenvolvimento de um planejador de grau acadêmico baseado na web (seu layout é mostrado na Figura 21), utilizando XML (Extensible Markup Language) e sistemas especialistas. O sistema possui um servidor que hospeda arquivos XML para cada grau acadêmico, descrevendo unidades e regras associadas. Essas regras são importadas para uma interface web genérica, permitindo a personalização do visual com uma paleta de unidades e horários disponíveis para os semestres. As regras do grau acadêmico em formato XML são convertidas em código Prolog, que permite ao sistema responder a consultas complexas relacionadas ao planejamento de cursos.
+
+\begin{figure}[h!]
+        \centering
+         \caption{Planejador de grau acadêmico - Layout da página}
+         \label{fig:ModeloConceitual}
+                \includegraphics[scale=0.3]{pictures/degree_planner_page_layout.png}
+     \fonte{\cite[p.~305]{neildunstan}}
+\end{figure}
+
+O design do sistema é baseado na separação clara entre o tratamento da interface do usuário no cliente e o processamento de regras no servidor (Figura 22). O servidor utiliza um sistema especialista em Prolog para resolver consultas mais complexas, enquanto o cliente lida com informações mais simples por meio de JavaScript. O sistema é acessível via navegador e não requer plugins específicos, sendo adequado para dispositivos móveis, como smartphones.
+
+\begin{figure}[h!]
+        \centering
+         \caption{Planejador de grau acadêmico - Interação cliente-servidor}
+         \label{fig:ModeloConceitual}
+                \includegraphics[scale=0.3]{pictures/degree_planner_client_server.png}
+     \fonte{\cite[p.~304]{neildunstan}}
+\end{figure}
+
+A interface do usuário é composta por várias seções, incluindo uma paleta de unidades, um cronograma de programa semestral e um painel de exibição de detalhes das unidades selecionadas. Os estudantes podem explorar opções de inscrição e verificar se suas escolhas atendem aos requisitos do curso. O sistema permite que os alunos ajustem seu programa acadêmico, respondendo a perguntas sobre requisitos de unidades e pré-requisitos, de forma interativa e personalizada.
+
+Conclui-se que o uso de sistemas especialistas em planejadores de grau acadêmico baseados na web pode melhorar a interatividade e fornecer orientações mais precisas aos alunos, ajudando-os a construir um programa de graduação adequado aos seus interesses e cronograma, sem a necessidade de plugins ou instalações específicas.
+
+
 \section{COMPARAÇÃO ENTRE OS TRABALHOS}
 
 O estudo de \cite{cruz2022} ressalta a eficácia da integração da plataforma Beecrowd em um plano de ensino inovador para disciplinas de programação. Ao incorporar estratégias como sala de aula invertida e gamificação, a pesquisa conclui que o Beecrowd, utilizado como suporte para a gamificação, não só melhora o processo de ensino e aprendizagem, oferecendo suporte aos educadores e motivando os alunos, mas também contribui para a redução da evasão em cursos superiores de informática.
 
 A aplicação das metodologias propostas no estudo dos autores demonstrou um impacto significativo no desempenho dos alunos ao longo do tempo na universidade dos autores, resultando em um crescimento notável e consistente nas notas. A ferramenta Beecrowd, destacada no estudo, é elogiada pela sua organização meticulosa de desafios em categorias e níveis de dificuldade, além de sua abordagem de maratona de programação, revelando-se eficaz em envolver os alunos de maneira imersiva.
 
-Dessa forma, a tabela 1 fornece uma comparação detalhada da integração entre o Moodle e o Beecrowd, consolidada neste trabalho, com outras integrações de ferramentas ao Moodle discutidas em trabalhos relacionados. O objetivo é analisar as diversas decisões de implementação adotadas em cada projeto, proporcionando uma base para este estudo.
+A Tabela 1 apresenta uma comparação detalhada das vantagens do Beecrowd em relação a outras ferramentas integradas ao Moodle, como BOCA, VPL e CodeRunner, conforme discutido nos trabalhos relacionados. O objetivo é analisar os benefícios específicos do uso do Beecrowd, oferecendo uma base sólida para este estudo. Vale ressaltar que este trabalho propõe o incentivo ao uso da integração entre Moodle e Beecrowd por meio de LTI. Em contraste, o BOCA e o CodeRunner funcionam como tipos de questões no Moodle, enquanto o VPL é um módulo próprio da plataforma.
 
 \begin{table}[htb]
         \IBGEtab{%
@@ -270,11 +273,13 @@ Dessa forma, a tabela 1 fornece uma comparação detalhada da integração entre
           Fornece Feedback Imediato	                &  X	& X	& X	& X   \\ \midrule
           Criação Manual de Questões	                &  	& X	& X	& X   \\ \midrule
           Questões Prontas para Professores	        &  X	& 	& 	&    \\ \midrule
+          Questões Prontas classificadas por categoria  &  X	& 	& 	&    \\ \midrule
           Inserção Manual de Casos de Teste	        &  	& X	& X	& X   \\ \midrule
           Suporta Diversas Linguagens	                &  X	& X	& X	& X   \\ \midrule
           Pré-processamento de Submissões	        &  	& 	& 	& X   \\ \midrule
           Comentários de Testes Falhados	        &  	& 	& X	&    \\ \midrule
-          Prevenção de Plágio	                        &  X	& 	& X	&    \\ 
+          Prevenção de Plágio	                        &  X	& 	& X	&    \\ \midrule
+          Incentiva participar de maratonas de prog.    &  X	& 	& 	&    \\ 
           \bottomrule
         \end{tabular}%
         }{%
@@ -284,28 +289,34 @@ Dessa forma, a tabela 1 fornece uma comparação detalhada da integração entre
         }
       \end{table}
 
-A análise da tabela destaca o Beecrowd como notavelmente diferenciado em relação aos outros sistemas, sobretudo devido à presença de questões pré-existentes para os professores. Essa característica elimina a necessidade de cadastramento manual das questões de programação e seus respectivos testes, uma exigência presente nas plataformas BOCA, VPL e CodeRunner.
-
-É importante destacar que a integração do presente trabalho vai ser feita por meio da criação de um Plugin. Já o BOCA e o CodeRunner são um tipo de questão do Moodle, e o VPL é um Módulo do Moodle.
+A análise da tabela destaca o Beecrowd como notavelmente diferenciado em relação aos outros sistemas, sobretudo devido à presença de questões pré-existentes para os professores. Essa característica elimina a necessidade de cadastramento manual das questões de programação e seus respectivos testes, uma exigência presente nas plataformas BOCA, VPL e CodeRunner. Com confirmação, uma das limitações do CodeRunner apontadas por \textcite{lobbharlow} é o fato de a criação de perguntas e testes de qualidade demandar tempo, além de ser mais adequado para tarefas simples e bem definidas, já que a criação de testes para atividades complexas exige muito esforço, especialmente em turmas grandes.
 
 Um aspecto distintivo e relevante nos sistemas BOCA, VPL e CodeRunner é a abordagem de desenvolvimento que incorpora a utilização de servidores separados para o Moodle e os sistemas juízes online. Essa estratégia visa garantir a execução independente e eficiente de cada componente, proporcionando benefícios tanto em termos de desempenho quanto de segurança.
 
-Ao adotar servidores separados para o Moodle e os sistemas juízes online, essas plataformas buscam otimizar a distribuição de carga, evitando interferências ou sobrecargas que poderiam ocorrer se ambos compartilhassem o mesmo ambiente de execução. Isso resulta em uma operação mais estável e responsiva, melhorando a experiência do usuário e a eficácia do sistema como um todo.
+A adoção de servidores separados para o Moodle e os sistemas juízes online tem como objetivo otimizar a distribuição de carga, prevenindo sobrecargas e garantindo uma operação mais estável e responsiva. Essa separação também fortalece a segurança, pois ao isolar cada plataforma, diminui-se os riscos de conflitos e vulnerabilidades. Da mesma forma, ela possibilita uma escalabilidade mais eficiente, permitindo que cada sistema seja dimensionado conforme suas necessidades específicas, sem afetar o desempenho do outro. Isso é particularmente importante em ambientes acadêmicos, onde a demanda por plataformas e sistemas pode variar significativamente.
 
-Além disso, a separação de servidores contribui para a segurança do ambiente. Isolar o Moodle e os sistemas juízes online em ambientes independentes reduz os riscos de conflitos de segurança e potenciais vulnerabilidades que poderiam surgir se compartilhassem recursos ou permissões. Essa segregação promove uma abordagem mais robusta em termos de proteção de dados e integridade do sistema.
+O trabalho de \textcite{rodriguezdelpinoandroyo} mostra que o módulo Virtual Programming Lab (VPL) possui um editor de código em Java para editar, executar, depurar e avaliar programas em um ambiente simples de desenvolvimento. Dessa forma, para utilizar todas as funcionalidades é necessário um navegador com suporte a JavaScript e applets Java. Já os trabalhos de \textcite{lobbharlow} e \textcite{galasso} mostram que tanto o CodeRunner quanto o BOCA disponibilizam caixas de texto nas quais os usuários podem escrever ou colar o código, permitindo sua subsequente avaliação.
 
-A escolha de servidores separados também permite uma escalabilidade mais eficiente, pois cada componente pode ser dimensionado de acordo com suas necessidades específicas sem afetar diretamente o desempenho do outro. Isso é particularmente crucial em ambientes acadêmicos, nos quais a demanda por plataformas como o Moodle e sistemas juízes online pode variar significativamente com base em fatores como o número de usuários e atividades acadêmicas.
+Neste trabalho, a integração LTI fornecida pelo Beecrowd será utilizada, de modo que a criação de listas de exercícios, a resolução de exercícios pelos alunos e a correção das soluções pelo juiz online ocorrerão diretamente nos servidores do Beecrowd.
 
-Por outro lado, a prevenção contra plágio é uma característica crucial e distintiva tanto no Beecrowd quanto no VPL, destacando-se como um diferencial significativo dessas plataformas. Essa funcionalidade visa salvaguardar a integridade acadêmica, garantindo que os trabalhos submetidos pelos alunos sejam autênticos e originais.
+Além disso, a prevenção contra plágio é uma característica crucial e distintiva tanto no Beecrowd quanto no VPL, destacando-se como um diferencial significativo dessas plataformas. Essa funcionalidade visa salvaguardar a integridade acadêmica, garantindo que os trabalhos submetidos pelos alunos sejam autênticos e originais.
 
-No contexto do Beecrowd, a prevenção contra plágio pode envolver mecanismos avançados de análise de código-fonte, identificando padrões suspeitos que indicam possível cópia indevida. Além disso, o sistema pode empregar algoritmos e técnicas que comparam soluções de diferentes alunos, buscando similaridades que ultrapassem limites aceitáveis de coincidência.
+No contexto do Beecrowd, de acordo com \cite{cruz2022}, a prevenção contra plágio pode envolver mecanismos avançados de análise de código-fonte, identificando padrões suspeitos que indicam possível cópia indevida. Além disso, o sistema pode empregar algoritmos e técnicas que comparam soluções de diferentes alunos, buscando similaridades que ultrapassem limites aceitáveis de coincidência.
 
-No caso do VPL, a prevenção contra plágio pode ser implementada através de verificações rigorosas durante o processo de submissão. Isso pode incluir a comparação automática de códigos submetidos em busca de trechos idênticos ou substancialmente semelhantes. Além disso, o VPL pode adotar métodos de análise mais avançados, como a detecção de técnicas de programação específicas que são características de trabalhos plagiados.
+No caso do VPL, de acordo com \textcite{rodriguezdelpinoandroyo}, a prevenção contra plágio pode ser implementada através de verificações rigorosas durante o processo de submissão. Isso pode incluir a comparação automática de códigos submetidos em busca de trechos idênticos ou substancialmente semelhantes. Além disso, o VPL pode adotar métodos de análise mais avançados, como a detecção de técnicas de programação específicas que são características de trabalhos plagiados.
 
-Ambas as plataformas podem adotar abordagens proativas, educando os alunos sobre a importância da originalidade e as consequências éticas e acadêmicas do plágio. Isso pode incluir a disponibilização de recursos educativos sobre a elaboração de código autêntico, boas práticas de programação e a importância de citações apropriadas.
+O projeto de \textcite{joseosvaldochaves} descreve o desenvolvimento do Módulo de Integração com Juízes Online (MOJO), uma ferramenta criada para integrar juízes online, como o Beecrowd (anteriormente URI Online Judge), ao Moodle. O MOJO visa delegar ao Moodle o gerenciamento da interface e do controle das atividades de programação, enquanto centraliza a comunicação e interação com os juízes online. Devido à ausência de APIs ou serviços web nos juízes à época, foram necessárias implementações específicas para cada plataforma, utilizando PHP (a mesma linguagem do Moodle) e JavaScript para a interface. O banco de dados PostgreSQL foi adotado por ser open-source e pela flexibilidade de criação de tabelas personalizadas para armazenamento de dados dos alunos, o que possibilita um feedback direcionado e preciso.
 
-Agora sobre outros aspectos técnicos, o trabalho que relata a integração BOCA-Moodle, estudo conduzido por \cite{galasso}, traz detalhes técnicos de decisões de implementação interessantes. Os autores adotaram uma abordagem em que os dois ambientes, Moodle e BOCA, operam de forma independente. Uma característica notável é o uso do PostgreSQL como banco de dados, exigindo que o Moodle use o mesmo sistema. Assim, para que seja possível a comunicação entre banco de dados em locais distintos, foi usado o Dblink no PostgreSQL. Além disso, foram utilizadas doze tabelas no banco de dados do sistema BOCA, sendo que a integração entre o BOCA e o Moodle foi feita através da criação de gatilhos (triggers). 
+Este trabalho utilizará a integração LTI fornecida pelo Beecrowd, a qual facilita a interação de docentes e alunos com a plataforma. Além disso, será disponibilizado um manual para orientar o uso da LTI, juntamente com um sistema especialista que auxiliará os alunos na resolução das questões e os docentes no esclarecimento de dúvidas dos estudantes.
 
-Já o trabalho de \textcite{rodriguezdelpinoandroyo} traz detalhes interessantes do módulo Virtual Programming Lab (VPL). Ele possui um editor de código em Java para editar, executar, depurar e avaliar programas em um ambiente simples de desenvolvimento. Dessa forma, para utilizar todas as funcionalidades é necessário um navegador com suporte a JavaScript e applets Java. Também é composto por um componente Jail: servidor que compila e executa códigos de alunos em um ambiente seguro, usando o comando linux chroot para restrições de leitura, que possui algumas especificações de execução. 
+É relevante notar que 100\% dos professores entrevistados para avaliar a eficácia do MOJO acreditam que a redução de tarefas permitirá um acompanhamento mais eficaz dos estudantes, especialmente daqueles que apresentam maiores dificuldades.
+
+Por fim, os projetos de \textcite{osmannasr} e \textcite{neildunstan} abordam a construção de sistemas especialistas para o aconselhamento e planejamento acadêmico, porém apresentam enfoques e abordagens técnicas distintas.
+
+No primeiro trabalho, \textcite{osmannasr} desenvolve um sistema especialista baseado em regras para o aconselhamento acadêmico na Universidade King Khalid. Este sistema é focado em replicar o processo de tomada de decisão dos conselheiros acadêmicos humanos, utilizando uma metodologia de árvore de decisão, implementada através do ES Builder, uma ferramenta de código aberto para sistemas especialistas baseados em regras, com uma interface web simples e uma lógica de "se-então". Essa escolha reflete a necessidade de simular de forma prática e direta o trabalho dos conselheiros humanos sem uma complexidade computacional elevada.
+
+No segundo trabalho, \textcite{neildunstan} foca em um planejador de grau acadêmico, utilizando uma abordagem híbrida com XML e Prolog para gerenciar e responder a consultas complexas. As regras para cada programa acadêmico são estruturadas em XML e convertidas em Prolog, possibilitando que o sistema lide com consultas interativas e personalizadas. A arquitetura desse sistema é distribuída, com o cliente manipulando a interface e o servidor processando as regras em Prolog. Essa separação facilita o uso em dispositivos móveis e oferece flexibilidade ao permitir que os alunos construam e verifiquem seu programa acadêmico de maneira independente e intuitiva, sem plugins específicos.
+
+Já neste trabalho, será utilizado o Prolog como servidor da aplicação, responsável pelo gerenciamento de requisições HTTP, armazenamento de dados de sessão e comunicação contínua com o front-end. O servidor proporcionará um ambiente dinâmico para o carregamento modular de arquivos específicos de cada questão, permitindo a adaptação das perguntas e a personalização das respostas conforme as interações do usuário. Além disso, configurará permissões de CORS para integrar facilmente com a interface web, que será desenvolvida utilizando o React, uma biblioteca JavaScript para construção de interfaces de usuário interativas e reativas.
 
 \end{otherlanguage*}

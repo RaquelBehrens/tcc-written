@@ -262,110 +262,78 @@ O Moodle, flexível e de fácil instalação em plataformas que suportam PHP, ex
 
 \begin{itemize}
     \item Professores têm controle total sobre os parâmetros do curso, podendo restringir outros professores;
-\item Oferece flexibilidade na composição de atividades, como fóruns, jornais, questionários, recursos, pesquisas de opinião, tarefas e chats. 
-\item Todas as notas para os fóruns, jornais, questionários e tarefas podem ser vistas em uma página;
-\item Rastreamento detalhado dos usuários, relatórios de atividade com gráficos, e história detalhada do envolvimento de cada aluno, como postagens.
-
+    \item Oferece flexibilidade na composição de atividades, como fóruns, jornais, questionários, recursos, pesquisas de opinião, tarefas e chats. 
+    \item Todas as notas para os fóruns, jornais, questionários e tarefas podem ser vistas em uma página;
+    \item Rastreamento detalhado dos usuários, relatórios de atividade com gráficos, e história detalhada do envolvimento de cada aluno, como postagens.
 \end{itemize}
 
-\subsection{\textbf{Módulos do Moodle}}
+\subsection{\textbf{LTI External tools}}
 
-Um módulo no Moodle adiciona funcionalidades específicas à plataforma, como fóruns, questionários e tarefas, para enriquecer a experiência de ensino e aprendizagem. Cada módulo atende a uma necessidade educacional única.
+Ferramentas Externas LTI do Moodle são aplicativos adicionais que você pode integrar curso, como conteúdo interativo, atividades ou avaliações. Os professores podem vincular essas atividades diretamente na página do curso no Moodle, e os alunos podem acessá-las sem sair do curso no Moodle ou precisar fazer login em um sistema diferente. Onde disponível, e dependendo de cada ferramenta, os professores também podem fazer com que as notas sejam enviadas de volta ao Moodle \cite{moodle}.
 
-\subsubsection{\textbf{\textit{Tarefa}}}
+A conexão entre o Moodle e essas ferramentas é feita através do padrão Learning Tools Interoperability (LTI), que integra plataformas de aprendizado com ferramentas de aprendizado para criar uma experiência de aprendizado mais rica e contínua. Essencialmente, o padrão LTI permite uma troca segura e bidirecional de informações entre o Moodle e ferramentas de aprendizado externas \cite{moodle}. 
+
+O administrador tem permissão para gerenciar Ferramentas Externas LTI, podendo adicionar novas ferramentas aos seus cursos usando o botão ‘Adicionar ferramenta’ na página de Ferramentas Externas LTI \cite{moodle}.
+
+As ferramentas adicionadas no nível do curso aparecerão na sua lista de atividades por padrão, sendo possível removê-las da lista de atividades acessando a página do curso > Mais > Ferramentas Externas LTI e desmarcando-as na coluna ‘Mostrar na lista de atividades’ \cite{moodle}.
+
+Para configurar uma ferramenta externa LTI, é necessário ir até "Configurações da ferramenta", fornecer um nome para a ferramenta (e, opcionalmente, uma descrição). Para preencher os outros campos nesta seção, incluindo a versão LTI, deve-se seguir as instruções do fornecedor da sua ferramenta. Se a ferramenta não fornecer informações sobre algumas dessas configurações, você pode deixá-las em branco \cite{moodle}.
+
+De acordo com \textcite{moodle}, os campos a serem preenchidos para configuração de uma ferramenta externa LTI são:
 
 \begin{itemize}
-    \item Permite marcação com data de cumprimento e nota máxima;
-    \item Alunos podem enviar tarefas em qualquer formato para o servidor;
-    \item Possibilidade de avaliação por formulário único e feedback anexado à página da tarefa.
+    \item URL da ferramenta – Esta é a URL para conectar ao site. Se o site Moodle usar SSL (estiver em HTTPS), só é possível usar uma ferramenta que também use SSL. É necessário certificar-se de que a URL da ferramenta tenha HTTPS antes de tentar usá-la;
+    \item Versão LTI – A versão LTI da ferramenta que está sendo adicionada; 
+    \item Chave do consumidor – Isso informa ao site LTI compatível conectado que o Moodle está autorizado a se conectar. O "fornecedor da ferramenta", ou seja, o gerente do site LTI compatível conectado, fornecerá essa chave. Se o administrador estiver apenas vinculando a uma ferramenta sem acesso seguro ou compartilhamento de notas, não será necessário uma chave do consumidor. Se estiver vinculando a um curso ou atividade de outro site Moodle, o administrador pode adicionar qualquer chave do consumidor;
+    \item Segredo compartilhado – Este é o "senha" para conectar à ferramenta – o site LTI compatível;
+    \item Parâmetros personalizados – Na maioria das vezes, esse campo pode ficar em branco. O fornecedor da ferramenta pode usar isso para permitir que o administrador exiba um recurso específico;
+    \item Contêiner de lançamento padrão – Esta é a forma como a ferramenta externa será exibida;
+    \item Incorporar – O conteúdo aparecerá dentro da página de atividade onde a ferramenta é usada, sem afastar os usuários da página, mas ocultando quaisquer blocos que o curso possa ter;
+    \item Incorporar sem blocos – O conteúdo será exibido na guia ou janela existente. Os usuários terão que navegar de volta para o curso usando o botão ‘Voltar’ assim que terminarem;
+    \item Janela existente – O conteúdo será exibido na guia ou janela existente. Os usuários terão que navegar de volta para o curso usando o botão ‘Voltar’ assim que terminarem;
+    \item Nova janela – A ferramenta externa será aberta em uma nova janela. (Uma nova janela ou guia será aberta com a ferramenta externa e a janela do navegador antiga contendo a página do curso não será alterada);
+    \item URL de seleção de conteúdo – A URL de Seleção de Conteúdo será usada para abrir a página de seleção de conteúdo do fornecedor da ferramenta. Se estiver vazia, a URL da ferramenta será usada;
+    \item URL do ícone – É possível exibir um ícone diferente do ícone padrão da Ferramenta Externa inserindo sua URL nesse campo;
+    \item URL do ícone seguro – É possível inserir URL de um ícone diferente aqui se os alunos estiverem acessando o Moodle com segurança via SSL
 \end{itemize}
 
-\subsubsection{\textbf{\textit{Chat}}}
+\section{LTI}
 
-\begin{itemize}
-    \item Facilita interações síncronas por texto, incluindo figuras do perfil na tela;
-    \item Documenta todas as sessões para verificação posterior.
-\end{itemize}
+A especificação Learning Tools Interoperability (LTI) foi inicialmente introduzida como Basic LTI em maio de 2010 pelo IMS Global Learning Consortium (agora conhecida como LTI 1.0). Desde então, essa especificação ganhou ampla aceitação como um método simples, mas eficaz, para integrar conteúdos e produtos de terceiros aos Ambientes Virtuais de Aprendizagem (VLEs). Hoje em dia, ela faz parte integral dos principais VLEs, como o Moodle, Blackboard Learn 9, Desire2Learn e o Canvas da Instructure \cite[p.4]{vickers}.
 
-\subsubsection{\textbf{\textit{Pesquisa de Opinião}}}
+Assim, o padrão LTI permite uma troca segura de dados entre o LMS e ferramentas de aprendizagem externas, centralizando o acesso a conteúdo interno e externo, oferecendo uma experiência de aprendizado consistente, eliminando a necessidade de múltiplos logins para diferentes plataformas \cite{verdaguer}.
 
-\begin{itemize}
-    \item Semelhante a uma eleição, pode ser usado para votação ou obtenção de feedback dos alunos;
-    \item Apresenta resultados intuitivos em tabelas e gráficos.
-\end{itemize}
+\section{SISTEMA ESPECIALISTA}
 
-\subsubsection{\textbf{\textit{Fórum}}}
+De acordo com \textcite{jimmysingla}, um sistema especialista é um conjunto de programas que manipula conhecimento para resolver problemas em um domínio especializado que exige a expertise humana. Já \textcite{markobohanec} definem sistemas especialistas como sistemas inteligentes de informação que imitam, em certo grau, o comportamento de um especialista humano no domínio em questão.
 
-\begin{itemize}
-    \item Oferece diversos tipos de fóruns e opções de visualização de discussões;
-    \item Incentiva inscrição em fóruns e permite avaliações restritas a períodos específicos.
-\end{itemize}
+Também chamados de sistemas baseados em conhecimento, esses programas de computador armazenam o conhecimento específico de um ou mais especialistas humanos \cite{jimmysingla}. Os principais componentes de um sistema especialista são a base de conhecimento e a máquina de inferência. A base de conhecimento armazena informações sobre um domínio específico de problemas, enquanto a máquina de inferência utiliza esse conhecimento para resolver problemas indicados pelo usuário, gerando explicações orientadas a ele sobre as soluções propostas \cite{markobohanec}. 
 
-\subsubsection{\textbf{\textit{Questionário}}}
+Assim, a base de conhecimento contém o conhecimento do domínio necessário para resolver problemas, geralmente na forma de regras, um dos paradigmas mais populares para a representação de conhecimento; e o motor de inferência é o núcleo do sistema, responsável por gerar conclusões a partir da base de conhecimento através de inferência ou raciocínio \cite{jimmysingla}. Portanto, um sistema especialista para tomada de decisão precisa estabelecer uma base de conhecimento apropriada e usá-la para o cálculo de utilidade \cite{markobohanec}.
 
-\begin{itemize}
-    \item Permite a definição de bancos de questões reutilizáveis e avaliação automática;
-    \item Questões podem ser embaralhadas e importadas de arquivos externos.
-\end{itemize}
+O autor \textcite{jimmysingla} ressaltou que as principais características de um sistema especialista incluem interface com o usuário, representação de dados, inferência, capacidade de explicação e habilidade de lidar com incertezas. Entre as vantagens, esse tipo de sistema oferece resposta rápida, maior confiabilidade, redução de custos e de erros, uso de múltiplas expertises, banco de dados inteligente e mitigação de riscos. Contudo, o sistema apresenta algumas limitações, como a ausência de senso comum, a incapacidade de responder a casos excepcionais e a dificuldade de adaptação a ambientes em constante mudança \cite{jimmysingla}. 
 
-\subsubsection{\textbf{\textit{Recursos}}}
+\subsubsection{\textbf{\textit{Prolog}}}
 
-\begin{itemize}
-    \item Suporta acesso a diversos tipos de conteúdo eletrônico e arquivos;
-    \item Facilita a interligação de aplicativos externos.
-\end{itemize}
+De acordo com \textcite{keithclark}, o Prolog, uma linguagem de programação baseada na lógica de predicados proposta por Kowalski, foi desenvolvida pelo grupo de Alain Colmerauer em Marselha. Sua implementação mais conhecida é o compilador DEC-10 de Edimburgo, que apresenta eficiência comparável à de LISP, mas com maior suporte a inferências, essencial em sistemas especialistas. Em Marselha, é aplicada no processamento de linguagem natural, enquanto em Edimburgo é usada para planejamento, resolução de problemas e desenvolvimento de compiladores \cite{keithclark}.
 
-\subsubsection{\textbf{\textit{Pesquisa de Avaliação}}}
+\textcite{keithclark} também explicam que, na Hungria, a linguagem de programação Prolog é amplamente utilizada em sistemas especialistas, especialmente na farmacologia, incluindo previsão de atividades biológicas e interações medicamentosas. Experiências como um sistema de diagnóstico de falhas no Imperial College demonstram o potencial de PROLOG para sistemas especialistas, incentivando novas aplicações \cite{keithclark} .
 
-\begin{itemize}
-    \item Utiliza pesquisas incorporadas como instrumentos válidos para análise de classes em cursos online;
-    \item Oferece relatórios online e comparações com resultados médios da classe.
-\end{itemize}
+Já \textcite{stuartrussel} mostram que o Prolog é, de longe, a linguagem de programação lógica mais amplamente utilizada, sendo popular para prototipação rápida e manipulação simbólica, como no desenvolvimento de compiladores e análise de linguagem natural. Além disso, diversos sistemas especialistas foram implementados em Prolog para áreas como direito, medicina \cite{jimmysingla}, finanças e outros domínios especializados \cite{stuartrussel}.
 
+Além disso, o Prolog é ideal para desenvolver serviços Web robustos devido à sua semântica segura e gerenciamento automático de memória \cite{wielemaker}.
 
-\subsubsection{\textbf{\textit{Laboratório de Avaliação}}}
+Programas em Prolog consistem em conjuntos de cláusulas escritas com a seguinte notação:  as variáveis são indicadas por letras maiúsculas, enquanto as constantes são escritas em letras minúsculas; e  a estrutura das cláusulas, ao invés de A ∧ B ⇒ C, utiliza-se C :- A, B, com vírgulas separando os elementos da conjunção \cite{stuartrussel}.
 
-\begin{itemize}
-    \item Possibilita a avaliação de documentos por parceiros e fornece flexibilidade com várias opções.
-\end{itemize}
+\subsubsection{\textbf{\textit{SWI-Prolog}}}
 
-\section{PLUGIN NO MOODLE}
+O SWI-Prolog é uma implementação de Prolog baseada em um subconjunto da WAM (Warren Abstract Machine), que possui um ambiente robusto de desenvolvimento, priorizando compatibilidade, portabilidade, escalabilidade e estabilidade \cite{wielemakerswiprolog}. 
 
-Um de seus princípios fundamentais do Moodle é sua capacidade de extensão, principalmente por meio do desenvolvimento de plugins. Plugins são diretórios de código que podem ser facilmente inseridos em qualquer instalação do Moodle, sendo detectados, instalados e automaticamente disponibilizados como ferramentas dentro da interface do Moodle \cite{moodle}. 
+O SWI-Prolog, projeto de código aberto, foi moldado para desenvolver protótipos de pesquisa, especialmente em sistemas interativos e que exigem intensivo uso de conhecimento \cite{wielemakerswiprolog2}. Além do sistema básico, foram integrados ao SWI-Prolog várias interfaces e bibliotecas de restrições. Assim, o SWI-Prolog atua como uma ferramenta integradora e versátil, permitindo a interação com diversos recursos externos e apoiando inovações da comunidade Prolog \cite{wielemakerswiprolog2}.
 
-Embora qualquer pessoa possa criar um plugin para o Moodle, é necessário ter algum conhecimento em PHP e codificação HTML, já que a linguagem principal de desenvolvimento no Moodle é o PHP. Assim, para que um plugin seja incluído no diretório oficial de plugins do Moodle, a equipe de desenvolvedores do Moodle realiza uma avaliação do código do plugin, tendo ele que passar por verificações básicas de padrões em PHP, e de estilo de codificação do Moodle. Para facilitar essa tarefa, estão disponíveis ferramentas para detectar violações de padrões de código definidas \cite{moodle}.
+Como o SWI-Prolog inclui uma extensa gama de biblioteca, que permite integração com gráficos (XPCE), bancos de dados, redes, outras linguagens de programação e diferentes formatos de documentos, ele é uma escolha poderosa para o desenvolvimento de aplicações que requerem integração e lógica sofisticada, mantendo uma estrutura de código organizada e eficiente \cite[p.~1]{wielemakerswiprologversion7}.
 
-Existem vários tipos de plugins disponíveis, e a seleção deve ser feita considerando as necessidades específicas. Embora haja diversidade nos tipos de plugins, alguns arquivos são essenciais e devem estar presentes em todos eles. Esses arquivos incluem \cite{moodle}:
-
-
-\begin{enumerate} [label=(\alph*)]
-    \item version.php: contém metadata do plugin, incluindo informações como o número da versão, a lista de dependências, a versão mínima do Moodle requerida, e a maturidade do plugin;
-    \item lang/en/plugintype\_pluginname.php: um arquivo contendo o nome do plugin, pelo menos na língua inglesa. Assim, dentro do diretório ‘lang/en’, deve existir o arquivo ‘plugintype\_pluginname.php’;
-    \item lib.php: funciona como uma ponte entre o núcleo do Moodle e o plugin. É usado apenas para definir retornos de chamada e funcionalidades relacionadas que atualmente não são suportadas como uma classe recarregável automaticamente. Todas as funções definidas neste arquivo devem atender aos requisitos estabelecidos na seção relevante do estilo de codificação;
-    \item db/install.xml: usado para definir quaisquer tabelas, campos, índices e chaves do banco de dados que devem ser criados para um plug-in durante a instalação inicial;
-    \item db/upgrade.php: contém etapas de upgrade, incluindo alterações no esquema do banco de dados, alterações nas configurações e outras etapas que devem ser executadas durante o upgrade;
-    \item db/access.php: contém a configuração inicial das regras de controle de acesso de um plug-in;
-    \item db/install.php: permite definir uma hook pós-instalação, que é chamado imediatamente após a criação inicial do esquema do banco de dados;
-    \item db/uninstall.php: permite definir uma hook de pré-desinstalação, que é chamado imediatamente antes da remoção de todas as tabelas e dados do plug-in;
-    \item db/events.php: permite definir as assinaturas de eventos que o plugin precisa ouvir;
-    \item db/messages.php: permite declarar as mensagens que o plugin envia;
-    \item db/services.php: é usado para descrever as funções externas disponíveis para uso em serviços da Web. Isso inclui funções de serviço da Web definidas para JavaScript;
-    \item db/tasks.php: contém a configuração de agendamento inicial para cada uma das tarefas agendadas dos plugins. As tarefas adhoc não são executadas em uma programação regular e, portanto, não são descritas neste arquivo;
-    \item db/renamedclasses.php: detalhes das classes que foram renomeadas para se adequarem ao carregamento automático;
-    \item classes/: o Moodle suporta e recomenda o uso de classes PHP com carregamento automático. Ao colocar os arquivos no diretório de classes ou nos subdiretórios apropriados, e com o espaço de nome PHP e o nome da classe corretos, o Moodle é capaz de carregar automaticamente as classes sem a necessidade de solicitá-las ou incluí-las manualmente;
-    \item cli/: para plugins que usam scripts da CLI, a convenção é que eles sejam colocados na pasta cli para que seu objetivo seja claro e fácil de encontrar;
-    \item settings.php: permite definir configurações para o plugin que o administrador pode configurar;
-    \item amd/: o JavaScript no Moodle é escrito no formato ESM e compilado e traduzido em módulos AMD para implantação;
-    \item backup/: Se o plugin armazena dados, talvez seja necessário implementar o recurso Backup, que permite fazer backup, restaurar e duplicar a atividade;
-    \item styles.css: os plugins podem definir um '/styles.css' para fornecer um estilo específico do plugin;
-    \item pix/icon.svg: os plugins podem fornecer ícones em vários formatos, e a maioria dos tipos de plugins exige que seja fornecido um ícone padrão. Quando um navegador oferece suporte a ele, o formato svg é usado, voltando aos formatos png quando um SVG não está disponível;
-    \item thirdpartylibs.xml: Os detalhes de todas as bibliotecas de terceiros devem ser declarados nesse arquivo. Essas informações são usadas para gerar a configuração do arquivo ignore para as ferramentas de linting. Para o núcleo do Moodle, também são usadas para gerar informações sobre a biblioteca como parte das notas de versão e dos créditos. No XML, o local é um arquivo ou diretório relativo à raiz do plug-in;
-    \item readme\_moodle.txt: em qualquer diretório, ao importar uma biblioteca de terceiros para o seu plug-in, é recomendável criar um arquivo readme\_moodle.txt detalhando as informações relevantes, incluindo URLs de download e instruções de construção;
-    \item upgrade.txt: Cada componente e subsistema pode fazer uso de um arquivo upgrade.txt na pasta de nível superior. Um título de seção é usado para identificar a versão do Moodle em que a alteração foi introduzida, e as alterações significativas para essa versão relacionadas a esse componente ou subsistema são anotadas;
-    \item environment.xml: um plug-in pode declarar seus próprios requisitos de ambiente, além daqueles declarados pelo núcleo do Moodle. Isso pode incluir recursos como requisitos de extensão PHP, requisitos de versão e itens semelhantes;
-    \item README: é recomendado incluir todas as informações adicionais sobre o plugin em um arquivo README do projeto. O ideal é que ele funcione como uma versão off-line de todas as informações da página do plugin no diretório de plugins do Moodle;
-    \item CHANGES: Se o plugin incluir um changelog em seu diretório raiz, ele será usado para preencher automaticamente o campo de notas de versão ao carregar novas versões do plugin no diretório Plugins.
-\end{enumerate}
+Outra vantagem do SWI-Prolog é a disponibilidade de bibliotecas para servidor HTTP, o que facilita o desenvolvimento de controles de servidor \cite{wielemakerswish}. Essas bibliotecas foram projetadas para que o Prolog se comunique com outros componentes de aplicações Web por meio do protocolo HTTP padrão. Com isso, a arquitetura é capaz de gerenciar protocolos de transferência e realizar parsing, representação e geração dos principais formatos de documentos Web, como HTML, XML e RDF, de forma integrada e padronizada \cite{wielemaker}.
 
 \section{WEB API}
 
@@ -376,11 +344,3 @@ A interação com uma Web API envolve a realização de solicitações (requests
 Quando um programa cliente envia uma solicitação para uma Web API, ele está requisitando a execução de uma operação específica ou a obtenção de dados do serviço da Web. Essa solicitação é processada pelo serviço da Web, que fornece uma resposta (response) ao cliente. O formato comum para a estruturação dessas respostas é o JSON (JavaScript Object Notation), um padrão amplamente adotado para representar estruturas de dados \cite[p.~19-21]{richardson}. 
 
 Essa dinâmica de solicitação e resposta é a base do funcionamento de uma Web API. As solicitações podem conter parâmetros que informam ao serviço da Web sobre a operação desejada, e a resposta contém os dados solicitados ou uma confirmação da operação realizada. Esse modelo facilita a integração de sistemas e a comunicação entre diferentes componentes de software, sendo fundamental em ambientes de desenvolvimento web e integração de aplicativos \cite[p.~20-23]{richardson}.
-
-O Moodle tem várias APIs principais que fornecem ferramentas para os scripts do Moodle, as quais são essenciais para a criação de plugins do Moodle \cite{moodle}.
-
-\section{LTI}
-
-A especificação Learning Tools Interoperability (LTI) foi inicialmente introduzida como Basic LTI em maio de 2010 pelo IMS Global Learning Consortium (agora conhecida como LTI 1.0). Desde então, essa especificação ganhou ampla aceitação como um método simples, mas eficaz, para integrar conteúdos e produtos de terceiros aos Ambientes Virtuais de Aprendizagem (VLEs). Hoje em dia, ela faz parte integral dos principais VLEs, como o Moodle, Blackboard Learn 9, Desire2Learn e o Canvas da Instructure \cite[p.4]{vickers}.
-
-Assim, o padrão LTI permite uma troca segura de dados entre o LMS e ferramentas de aprendizagem externas, centralizando o acesso a conteúdo interno e externo, oferecendo uma experiência de aprendizado consistente, eliminando a necessidade de múltiplos logins para diferentes plataformas \cite{verdaguer}.
