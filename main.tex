@@ -126,7 +126,7 @@ section=TITLE, % Título de seções em caixa alta
 \campus{\brazilword{Campus Reitor João David Ferreira Lima}}
 
 % FIXME: Data da sua defesa
-\data{\lang{[day] of [month] of}{[dia] de [mês] de} 2019}
+\data{\lang{26 of november of}{26 de novembro de} 2024}
 
 % O preambulo deve conter tipo do trabalho, objetivo, nome da instituição e a área de concentração.
 \preambulo{\lang%
@@ -296,16 +296,17 @@ section=TITLE, % Título de seções em caixa alta
     % Glossário, consulte o manual da classe abntex2 para orientações sobre o glossário.
     % \ifforcedinclude\else\glossary\fi
 
-    % Inicia os apêndices
-    % \begin{apendicesenv}
-    %     % Imprime uma página indicando o início dos apêndices
-    %     \ifforcedinclude\else\partapendices\fi
-    %     \setlength\beforechapskip{50pt}
-    %     \setlength\midchapskip{20pt}
-    %     \setlength\afterchapskip{20pt}
+    Inicia os apêndices
+    \begin{apendicesenv}
+        % Imprime uma página indicando o início dos apêndices
+        \ifforcedinclude\else\partapendices\fi
+        \setlength\beforechapskip{50pt}
+        \setlength\midchapskip{20pt}
+        \setlength\afterchapskip{20pt}
 
-    %     \include{aftertext/apendice_a}
-    % \end{apendicesenv}
+        \include{aftertext/apendice_a}
+        \include{aftertext/apendice_b}
+    \end{apendicesenv}
 
     % Inicia os anexos
     % \begin{anexosenv}
