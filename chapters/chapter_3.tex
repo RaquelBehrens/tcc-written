@@ -130,7 +130,19 @@ TypeScript é uma linguagem de programação que é um superconjunto do JavaScri
 
 \section{ARQUITETURA DE SOFTWARE}
 
-A representação da integração é esquematizada na Figura 21, onde o plugin criado estabelece comunicação exclusivamente com a LTI do Beecrowd. A LTI (Learning Tools Interoperability) do Beecrowd, funcionando como uma interface receptora de requisições, interage diretamente com o site do Beecrowd, retornando dados ao plugin. Com essa abordagem, a integração permite que, ao ter o plugin incorporado ao Moodle, professores e alunos possam acessar e utilizar os recursos do Beecrowd pelo Moodle.
+A aplicação propõe uma interação dinâmica em que o usuário, ao informar o número da questão sobre a qual deseja obter orientações, inicia um diálogo com o sistema de chat. O chat responde com perguntas específicas para compreender melhor as necessidades do usuário, permitindo direcionar as orientações de forma mais precisa. Conforme o usuário responde com "sim" ou "não" a cada pergunta, o sistema adapta as próximas questões e sugestões, guiando-o progressivamente até fornecer uma orientação final ajustada ao contexto das respostas acumuladas.
+
+A Figura 27 apresenta o diagrama de atividades que detalha o fluxo de interação entre o usuário e o chat da aplicação. Após informar o número da questão sobre a qual deseja obter orientações, o usuário recebe uma pergunta inicial, respondendo com "sim" ou "não". Se houver mais perguntas, o chat continua a apresentá-las até que todas sejam respondidas, conduzindo o usuário a uma orientação final baseada nas respostas acumuladas. Ao final, o usuário pode iniciar o processo novamente com outro número de questão ou com o mesmo, caso deseje explorar outras sugestões e perguntas relacionadas.
+
+\begin{figure}[h!]
+    \centering
+            \caption{Diagrama de Atividades do Usuário da Aplicação}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.6]{pictures/atividade1.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
+A Figura 28 representa a estrutura da aplicação, mostrando a interação entre o frontend e o backend através de requisições. No frontend, o arquivo ActionProvider gerencia as mensagens enviadas pelo usuário no chat, processando tanto o número da questão informada (Imagem 29) quanto as respostas de "sim" ou "não" (Imagem 30). Por meio dessas requisições, o frontend envia esses dados ao backend, que, em resposta, fornece perguntas e dicas relacionadas à questão solicitada. Caso o usuário peça uma nova dica e o backend não tenha mais sugestões para aquela questão, ele notifica o frontend. Em resposta, o frontend faz uma nova requisição ao backend para obter a orientação final da questão, que é então apresentada ao usuário.
 
 \begin{figure}[h!]
     \centering
@@ -140,9 +152,134 @@ A representação da integração é esquematizada na Figura 21, onde o plugin c
         \fonte{Produzido pela autora.}
 \end{figure}
 
-Assim, o professor pode, ao usar o plugin no Moodle, criar disciplinas do Beecrowd, criar tarefas, ou seja, lista de exercícios, em uma disciplina do Beecrowd, editar tarefas de uma disciplina, definir a linguagem de programação de submissão de cada exercício em uma tarefa, visualizar tarefas de uma disciplina, bem como seus exercícios, e, por fim, visualizar as submissões de alunos nas tarefas. 
+\begin{lstlisting}
+const handleFirstMessage = async (questionNumber?: string) => {
+    const body = new URLSearchParams({ questionNumber: questionNumber?.toString() || '' });
+    const data = await fetchData("http://localhost:6358/server", body);
+    let additionalMessages: {
+        messages: {
+        message: string;
+        type: string;
+        id: number;
+        loading?: boolean;
+        widget?: string | undefined;
+        delay?: number | undefined;
+        payload?: any;
+        }[];
+    }[] = [];
 
-Já o aluno pode criar uma conta do Beecrowd pelo Moodle, ao usar a funcionalidade adicionada pelo plugin em uma disciplina, e entrar em uma disciplina do Beecrowd criada pelo seu professor, e disponibilizada no Moodle pelo seu professor. Também pode submeter soluções para exercícios de tarefas criadas pelo seu professor, e, assim, pode visualizar o resultado de suas submissões realizadas. Aleḿ disso, consegue visualizar seu progresso geral da disciplina, ou de cada tarefa disponibilizada no Moodle através do plugin.
+    await handleMessageResponse(data, additionalMessages);    
+    
+    setState((prev: {
+        messages: {
+        message: string;
+        type: string;
+        id: number;
+        loading?: boolean;
+        widget?: string | undefined;
+        delay?: number | undefined;
+        payload?: any;
+        }[];
+    }) => ({
+        ...prev,
+        messages: [...prev.messages, ...additionalMessages],
+    }));
+};
+\end{lstlisting}
+
+\begin{lstlisting}
+const handleFirstMessage = async (questionNumber?: string) => {
+    const body = new URLSearchParams({ questionNumber: questionNumber?.toString() || '' });
+    const data = await fetchData("http://localhost:6358/server", body);
+    let additionalMessages: {
+        messages: {
+        message: string;
+        type: string;
+        id: number;
+        loading?: boolean;
+        widget?: string | undefined;
+        delay?: number | undefined;
+        payload?: any;
+        }[];
+    }[] = [];
+
+    await handleMessageResponse(data, additionalMessages);    
+    
+    setState((prev: {
+        messages: {
+        message: string;
+        type: string;
+        id: number;
+        loading?: boolean;
+        widget?: string | undefined;
+        delay?: number | undefined;
+        payload?: any;
+        }[];
+    }) => ({
+        ...prev,
+        messages: [...prev.messages, ...additionalMessages],
+    }));
+};
+\end{lstlisting}
+
+
+\begin{lstlisting}
+const handleMessageResponse = async (data: any, additionalMessages: any[]) => {
+    const { question, result, error } = data;
+
+    if (error) {
+        additionalMessages.push(createChatBotMessage(error, {}));
+    } else if (question) {
+        /* Exemplo de atualização do messages-slice, caso precise no futuro
+        dispatch(addQuestion(question));
+        setTimeout(() => dispatch(startCount(question.length)), 5000);
+        */
+
+        const lines = question.split('\n');
+        lines.forEach((line: string, index: number) => {
+            if (line.trim() !== "") {
+                const isLastLine = index === lines.length - 1;
+                const message = isLastLine
+                    ? createChatBotMessage(line, { widget: "yesNo" })
+                    : createChatBotMessage(line, {});
+
+                additionalMessages.push(message);
+            }
+        });
+
+    } else if (result || error) {
+        additionalMessages.push(createChatBotMessage(error || result || "Mensagem inválida recebida.", {}));
+        const diagnosis = await handleEnd();
+        if (diagnosis) additionalMessages.push(createChatBotMessage(diagnosis, {}));
+        additionalMessages.push(createChatBotMessage("Gostaria de tirar dúvidas novamente?", { widget: "exerciseDropdown" }));
+    }
+};
+\end{lstlisting}
+
+
+\begin{lstlisting}
+const fetchData = async (url: string, body: URLSearchParams) => {
+    try {
+        const response = await fetch(url, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        credentials: 'include',
+        body,
+        });
+
+        if (response.status !== 200) throw new Error("Erro ao consultar o backend.");
+
+        return await response.json();
+    } catch (error) {
+        return { error: "Erro ao consultar o backend." };
+    }
+};
+\end{lstlisting}
+
+
+Também observa-se que o \textit{backend} é composto pelo arquivo principal \textit{server.pl} e por arquivos de questões nomeados no formato \textit{questao\_\{numeroDaQuestão\}.pl}, contendo as dicas para cada questão específica. Por exemplo, o arquivo \textit{questao\_1234.pl} armazena as dicas da questão 1234 do Beecrowd. O \textit{server.pl} inicia um servidor HTTP, configurando rotas para processar requisições e habilitando CORS para aceitar conexões da porta do \textit{frontend}. Ele recebe requisições \textit{POST} para iniciar ou continuar uma questão, associando cada sessão ao usuário que fez a requisição, além de aceitar requisições \textit{GET} para obter o diagnóstico final com base nas respostas acumuladas.
+
+Os arquivos de questões são carregados dinamicamente no \textit{server.pl} com base no número da questão recebido nas requisições \textit{POST}, e as informações fornecidas pelo usuário — como número da questão e respostas — são armazenadas na sessão do usuário para garantir a continuidade da interação. Se o usuário alterna para uma nova questão, por exemplo, a questão Y, o \textit{backend} carrega o arquivo \textit{questao\_Y.pl} e passa a conduzir a interação de acordo com suas informações. No final do processo, ao esgotarem-se as perguntas para o usuário, o \textit{backend} notifica o \textit{frontend}, que solicita então o resultado final, completando a interação com a entrega da orientação ao usuário.
 
 \section{REQUISITOS DA APLICAÇÃO}
 
