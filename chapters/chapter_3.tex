@@ -92,11 +92,11 @@ Por fim, a questão 2465 também gerou dúvidas em relação ao uso do comando w
 
 \subsubsection{Prolog e SWI-Prolog}
 
-Para o desenvolvimento do backend da aplicação, utilizou-se a linguagem Prolog, com o auxílio da implementação SWI-Prolog. O SWI-Prolog é uma versão amplamente utilizada do Prolog, que inclui uma série de bibliotecas essenciais para a manipulação de requisições HTTP e dados JSON, como http/thread\_httpd, http/http\_dispatch, http/json, http/http\_session, entre outras. Essas bibliotecas permitem a configuração de um servidor HTTP para o processamento de requisições web e a manipulação de dados JSON. Além disso, elas possibilitam o gerenciamento de sessões, o que viabiliza a integração com aplicações externas e permite o uso simultâneo da aplicação por diferentes usuários \cite{swiprologhttp}.
+Para o desenvolvimento do \textit{backend} da aplicação, utilizou-se a linguagem Prolog, com o auxílio da implementação SWI-Prolog. O SWI-Prolog é uma versão amplamente utilizada do Prolog, que inclui uma série de bibliotecas essenciais para a manipulação de requisições HTTP e dados JSON, como http/thread\_httpd, http/http\_dispatch, http/json, http/http\_session, entre outras. Essas bibliotecas permitem a configuração de um servidor HTTP para o processamento de requisições web e a manipulação de dados JSON. Além disso, elas possibilitam o gerenciamento de sessões, o que viabiliza a integração com aplicações externas e permite o uso simultâneo da aplicação por diferentes usuários \cite{swiprologhttp}.
 
 \subsubsection{API REST}
 
-O servidor definiu os endpoints HTTP (/server e /diagnosis) para o recebimento de requisições POST e GET, permitindo a interação com o backend por meio de uma arquitetura baseada em REST. 
+O servidor definiu os endpoints HTTP (/server e /diagnosis) para o recebimento de requisições POST e GET, permitindo a interação com o \textit{backend} por meio de uma arquitetura baseada em REST. 
 
 O termo REST (Representational State Transfer) é um estilo de comunicação baseado em padrões e protocolos da web, como HTTP, que permite a troca de dados entre sistemas de forma escalável e eficiente. Nesse modelo, as requisições são realizadas utilizando os métodos HTTP padrão (como GET, POST, PUT e DELETE), facilitando a comunicação entre sistemas de maneira eficiente e escalável \cite{whatisrest}.
 
@@ -104,7 +104,7 @@ O termo REST (Representational State Transfer) é um estilo de comunicação bas
 
 JSON (JavaScript Object Notation) é um formato leve e baseado em texto para intercâmbio de dados, independente de linguagem de programação. Derivado do padrão ECMAScript, o JSON define um conjunto simples de regras de formatação para a representação portátil de dados estruturados. Ele busca remover inconsistências com outras especificações e oferece orientações para melhorar a interoperabilidade entre sistemas \cite{whatisjson}.
 
-A biblioteca http/http\_json do SWI-Prolog é utilizada para formatar as respostas no formato JSON, possibilitando que o backend envie dados estruturados para o frontend em um formato amplamente compatível com diversos frameworks web, incluindo o React. Essa abordagem facilita a troca de informações entre o servidor e a interface do usuário, garantindo a interoperabilidade e a eficiência na comunicação entre as camadas da aplicação.
+A biblioteca http/http\_json do SWI-Prolog é utilizada para formatar as respostas no formato JSON, possibilitando que o \textit{backend} envie dados estruturados para o \textit{frontend} em um formato amplamente compatível com diversos frameworks web, incluindo o React. Essa abordagem facilita a troca de informações entre o servidor e a interface do usuário, garantindo a interoperabilidade e a eficiência na comunicação entre as camadas da aplicação.
 
 \subsubsection{HTTP e CORS}
 
@@ -112,7 +112,7 @@ CORS (Cross-Origin Resource Sharing) é um mecanismo que permite que requisiçõ
 
 HTTP (Hypertext Transfer Protocol) é um protocolo de aplicação para sistemas distribuídos e colaborativos de informações hipermídia. É um protocolo genérico e sem estado, utilizado em diversas tarefas além do hipertexto, como servidores de nomes e sistemas de gerenciamento de objetos distribuídos. O HTTP permite a negociação e tipificação da representação dos dados, possibilitando a construção de sistemas independentes dos dados transferidos \cite{whatishttp}.
 
-As bibliotecas http/thread\_httpd, http/http\_dispatch e http/http\_cors, do SWI-Prolog, configuram um servidor HTTP básico, sendo responsáveis pelo tratamento de requisições e respostas. Elas também gerenciam as permissões de CORS, permitindo que o frontend (React) acesse o backend Prolog, mesmo quando este está hospedado em uma origem diferente.
+As bibliotecas http/thread\_httpd, http/http\_dispatch e http/http\_cors, do SWI-Prolog, configuram um servidor HTTP básico, sendo responsáveis pelo tratamento de requisições e respostas. Elas também gerenciam as permissões de CORS, permitindo que o \textit{frontend} (React) acesse o \textit{backend} Prolog, mesmo quando este está hospedado em uma origem diferente.
 
 \subsubsection{Sessões HTTP}
 
@@ -122,13 +122,14 @@ A biblioteca http/http\_session do SWI-Prolog possibilita o gerenciamento de ses
 
 \subsubsection{React e Typescript (Frontend)}
 
-O frontend foi feito em React\footnote{\url{https://react.dev/}} e Typescript\footnote{\url{https://www.typescriptlang.org/}}, interagindo com o backend por meio de requisições HTTP, acessando endpoints para enviar as respostas do usuário e buscar o resultado final da questão.
+O \textit{frontend} foi feito em React\footnote{\url{https://react.dev/}} e Typescript\footnote{\url{https://www.typescriptlang.org/}}, interagindo com o \textit{backend} por meio de requisições HTTP, acessando endpoints para enviar as respostas do usuário e buscar o resultado final da questão.
 
 React é uma biblioteca para a construção de interfaces de usuário, tanto para a web quanto para aplicativos nativos. Ela permite criar interfaces a partir de unidades individuais chamadas componentes, que podem ser reutilizados e combinados para formar interfaces complexas e interativas. Cada componente em React gerencia seu próprio estado e pode ser renderizado de forma eficiente conforme as mudanças nos dados, facilitando o desenvolvimento de aplicações dinâmicas e de fácil manutenção. React pode ser utilizado com outras linguagens que compilam para JavaScript\footnote{\url{https://www.javascript.com/}}, como TypeScript.
 
 TypeScript é uma linguagem de programação que é um superconjunto do JavaScript, adicionando tipagem estática. Isso permite que os desenvolvedores definam tipos para variáveis e funções, ajudando a identificar erros antes da execução do código. TypeScript melhora a manutenção e segurança do código, especialmente em projetos grandes, e é amplamente utilizado com frameworks como React para criar aplicações mais escaláveis e robustas.
 
 \subsection{Requisitos da Aplicação}
+\label{sec:requisitos-aplicacao}
 
 Esta seção descreve os requisitos essenciais para o desenvolvimento da aplicação, divididos em Regras de Negócio, Requisitos Funcionais e Não Funcionais. As Regras de Negócio definem os processos do sistema, enquanto os Requisitos Funcionais especificam as funcionalidades necessárias. Já os Requisitos Não Funcionais tratam de aspectos de qualidade, como desempenho, segurança e arquitetura do sistema.
 
@@ -137,32 +138,18 @@ Esta seção descreve os requisitos essenciais para o desenvolvimento da aplica�
 \begin{enumerate}[label=RN\arabic* –]
     \item \textbf{Identificação da Questão}: O usuário deve informar o código da questão do Beecrowd que está tentando resolver para que o sistema possa fornecer dicas específicas.
     \item \textbf{Perguntas Binárias}: O sistema deve formular perguntas binárias (sim/não) para guiar o usuário, baseando-se em possíveis erros ou dificuldades comuns para cada questão.
-    \item \textbf{Personalização de Orientações}: Com base nas respostas do usuário, o sistema deve ajustar as perguntas para identificar a dificuldade específica e fornecer a dica mais apropriada.
+    \item \textbf{Personalização de Orientações}: Com base nas respostas do usuário, o sistema deve ajustar as perguntas para fornecer a dica mais apropriada.
     \item \textbf{Encerramento do Fluxo}: Ao atingir um número máximo de perguntas, o sistema deve fornecer uma dica final ao usuário.
 \end{enumerate}
 
 \subsubsection{Requisitos Funcionais}
 
 \begin{enumerate}[label=RF\arabic* –]
-    \item \textbf{Comunicação por Chat}:
-    \begin{itemize}
-        \item O usuário deve interagir com o sistema por uma interface de chat intuitiva, que apresente respostas sequenciais.
-    \end{itemize}
-
-    \item \textbf{Busca e Seleção de Questão}:
-    \begin{itemize}
-        \item O sistema deve permitir que o usuário informe o código da questão do Beecrowd que deseja resolver.
-    \end{itemize}
-    
-    \item \textbf{Fluxo de Perguntas Binárias}:
-    \begin{itemize}
-        \item O sistema apresenta perguntas binárias adaptadas conforme as respostas do usuário.
-    \end{itemize}
-
-    \item \textbf{Sistema de Dicas}:
-    \begin{itemize}
-        \item Após a análise das respostas, o sistema deve oferecer dicas relevantes para o problema informado.
-    \end{itemize}
+    \item \textbf{Comunicação por Chat}: usuário deve interagir com o sistema por uma interface de chat intuitiva, que apresente respostas sequenciais.
+    \item \textbf{Busca e Seleção de Questão}: O sistema deve permitir que o usuário informe o código da questão do Beecrowd que deseja resolver.
+    \item \textbf{Fluxo de Perguntas Binárias}: O sistema apresenta perguntas binárias adaptadas conforme as respostas do usuário.
+    \item \textbf{Sistema de Dicas}:Após a análise das respostas, o sistema deve oferecer dicas relevantes para o problema informado.
+    \item \textbf{Instruções sobre Erros Comuns do Beecrowd}: O sistema deve ter uma seção que informa ao usuário descrições dos principais erros retornados pelo Beecrowd, contidos na seção \ref{sec:beecrowd}.
 \end{enumerate}
 
 \subsubsection{Requisitos Não Funcionais}
@@ -196,11 +183,11 @@ Esta seção descreve os requisitos essenciais para o desenvolvimento da aplica�
     
     \item \textbf{Arquitetura Backend e Frontend}:
     \begin{itemize}
-        \item O sistema deve ter um backend desenvolvido em Prolog, utilizando SWI-Prolog para lidar com requisições HTTP.
-        \item O backend deve definir configurações de CORS apropriadas para permitir a comunicação entre cliente e servidor.
-        \item O backend deve seguir o padrão de API REST e devolver respostas no formato JSON.
-        \item O backend deve conter o sistema especialista, que processa as perguntas e respostas para oferecer suporte aos estudantes.
-        \item O frontend deve ser desenvolvido em React e TypeScript, proporcionando uma interface interativa e amigável para os alunos.
+        \item O sistema deve ter um \textit{backend} desenvolvido em Prolog, utilizando SWI-Prolog para lidar com requisições HTTP.
+        \item O \textit{backend} deve definir configurações de CORS apropriadas para permitir a comunicação entre cliente e servidor.
+        \item O \textit{backend} deve seguir o padrão de API REST e devolver respostas no formato JSON.
+        \item O \textit{backend} deve conter o sistema especialista, que processa as perguntas e respostas para oferecer suporte aos estudantes.
+        \item O \textit{frontend} deve ser desenvolvido em React e TypeScript, proporcionando uma interface interativa e amigável para os alunos.
     \end{itemize}
 \end{enumerate}
 
@@ -218,7 +205,7 @@ A Figura 27 apresenta o diagrama de atividades que detalha o fluxo de interaçã
         \fonte{Produzido pela autora.}
 \end{figure}
 
-A Figura 28 representa a estrutura da aplicação, mostrando a interação entre o frontend e o backend através de requisições. No frontend, o arquivo \textit{ActionProvider.tsx} gerencia as mensagens enviadas pelo usuário no chat, processando tanto o número da questão informada, quanto as respostas de "sim" ou "não". Por meio dessas requisições, o \textit{frontend} envia esses dados ao \textit{backend}, que, em resposta, fornece perguntas e dicas relacionadas à questão solicitada. Caso o usuário peça uma nova dica e o \textit{backend} não tenha mais sugestões para aquela questão, ele envia a orientação final da questão, que é então apresentada ao usuário.
+A Figura 28 representa a estrutura da aplicação, mostrando a interação entre o \textit{frontend} e o \textit{backend} através de requisições. No \textit{frontend}, o arquivo \textit{ActionProvider.tsx} gerencia as mensagens enviadas pelo usuário no chat, processando tanto o número da questão informada, quanto as respostas de "sim" ou "não". Por meio dessas requisições, o \textit{frontend} envia esses dados ao \textit{backend}, que, em resposta, fornece perguntas e dicas relacionadas à questão solicitada. Caso o usuário peça uma nova dica e o \textit{backend} não tenha mais sugestões para aquela questão, ele envia a orientação final da questão, que é então apresentada ao usuário.
 
 \begin{figure}[h!]
     \centering
@@ -228,12 +215,67 @@ A Figura 28 representa a estrutura da aplicação, mostrando a interação entre
         \fonte{Produzido pela autora.}
 \end{figure}
 
+\subsection{Elementos do Frontend}
+
+O \textit{frontend} da aplicação foi desenvolvido utilizando as tecnologias React e TypeScript, conforme especificado no requisito não funcional \textbf{RNF6}, descrito na seção \ref{sec:requisitos-aplicacao}. Essas tecnologias foram escolhidas por sua capacidade de criar interfaces dinâmicas, escaláveis e de fácil manutenção, proporcionando uma experiência de usuário fluida e interativa \textbf{(RNF2)}.
+
+Conforme o requisito funcional \textbf{RF1} e a regra de negócio \textbf{RN1}, foi implementado um sistema de chat como interface principal de interação com o usuário. Por meio deste chat, o usuário pode informar o código da questão do Beecrowd que está tentando resolver \textbf{(RF2)}. Além disso, conforme a regra de negócio \textbf{RN2}, o sistema especialista se comunica com o usuário por meio do chat, exibindo mensagens sequenciais baseadas nas respostas do sistema \textbf{(RF3)} em tempo real \textbf{(RNF1)}, e dicas finais \textbf{(RF4)}. O chat também permite que o usuário forneça respostas binárias (sim/não), conforme o fluxo de perguntas definido para personalizar a orientação fornecida, conforme as regras de negócios \textbf{RN2} e \textbf{RN3}.
+
+O desenvolvimento do \textit{frontend} foi baseado em bibliotecas e repositórios existentes que facilitaram a criação e configuração do sistema de chatbot. Especificamente, foi utilizado o repositório \textit{react-chatbot-kit} de FredrikOseberg\footnote{\url{https://github.com/FredrikOseberg/react-chatbot-kit}} como estrutura principal para a criação do chatbot, combinado com o repositório \textit{Chatbot-using-React-Chatbot-Kit} de Subid Das\footnote{\url{https://github.com/devsubid/Chatbot-using-React-Chatbot-Kit}}, que forneceu recursos adicionais para personalização da interface e integração do chatbot com o fluxo de mensagens interativo. Esses repositórios foram adaptados para atender às necessidades específicas da aplicação, garantindo que o \textit{frontend} fosse capaz de processar interações dinâmicas e personalizadas, conforme os requisitos estabelecidos.
+
+Pelo Código 1 é possível observar que, para a construção do compontente \texttt{Chat}, foi usado o componente \texttt{Chatbot} da biblioteca \texttt{react-chatbot-kit}.
+
+\begin{lstlisting}[style=ufscthesisx_style, caption={Componente Chat}]
+import { useState } from "react";
+import Chatbot from "react-chatbot-kit";
+import "react-chatbot-kit/build/main.css";
+import { styled } from "styled-components";
+import config from "../../bot/config";
+import ActionProvider from "../../bot/ActionProvider";
+import MessageParser from "../../bot/MessageParser";
+
+
+const Chat = () => {
+    const [isOpened, setIsOpened] = useState<boolean>(false)
+    return (
+    <StyledChat>
+        <div className="intro">
+        <h2>Aqui você pode tirar dúvidas sobre algumas questões do Beecrowd!</h2>
+        <button onClick={() => setIsOpened((prev) => !prev)}>
+            Comece agora!
+        </button>
+        </div>
+        {isOpened && (
+        <Chatbot
+            config={config}
+            messageParser={MessageParser}
+            actionProvider={ActionProvider}
+        />
+        )}
+    </StyledChat>
+    );
+};
+
+export default Chat;    
+\end{lstlisting}
+
+Para atender ao Requisito Funcional \textbf{RF5}, descrito na seção \ref{sec:requisitos-aplicacao}, foi criado um componente \texttt{Details} para a rota \text{\details} para mostrar as descrições das mensagens de resposta das questões do Beecrowd (Código 2).
+
+\begin{lstlisting}[style=ufscthesisx_style, caption={Rotas do frontend}]
+<Routes location={location} key={location.pathname}>
+    <Route path="/" element={<Chat />} />
+    <Route path="/details" element={<Details />} />
+    <Route path="*" element={<NotFound />} />
+</Routes>
+\end{lstlisting}
 
 \subsection{Comunicação Frontend-Backend}
 
-O Código 1 representa como o arquivo \textit{ActionProvider.tsx} informa para o backend o número da questão. Ele define duas funções assíncronas: \texttt{fetchData} e \texttt{handleFirstMessage}, usadas para interagir com um \textit{backend} via requisições HTTP. A função \texttt{fetchData} recebe uma URL e um corpo de dados (\texttt{URLSearchParams}) para fazer uma requisição \texttt{POST}. Ela define cabeçalhos para enviar os dados como \texttt{application/x-www-form-urlencoded}, garantindo que o backend receba os dados em um formato compatível e de fácil manipulação, especialmente em linguagens que interpretam parâmetros de URL de forma nativa. Além disso, a função inclui cookies nas requisições com \texttt{credentials: 'include'} para permitir que a sessão seja mantida entre as requisições, o que é crucial para a continuidade da comunicação com o backend. Caso a resposta não tenha o status 200, a função trata o erro, retornando uma mensagem de erro em vez do JSON da resposta. 
+O Código 3 representa como o arquivo \textit{ActionProvider.tsx}, do \textit{frontend}, informa para o \textit{backend} o número da questão. Ele define duas funções assíncronas: \texttt{fetchData} e \texttt{handleFirstMessage}, usadas para interagir com um \textit{backend} via requisições HTTP. 
 
-A função \texttt{handleFirstMessage} constrói um corpo de dados contendo \texttt{questionNumber} e chama \texttt{fetchData} para enviar esses dados ao \textit{backend} no endpoint \texttt{"http://localhost:6358/server"}. Em seguida, cria uma estrutura de mensagens adicionais vazia e invoca \texttt{handleMessageResponse} para manipular a resposta, preenchendo essa estrutura conforme a resposta recebida.
+A função \texttt{fetchData} recebe uma URL e um corpo de dados (\texttt{URLSearchParams}) para fazer uma requisição \texttt{POST}. Ela define cabeçalhos para enviar os dados como \texttt{application/x-www-form-urlencoded}, garantindo que o \textit{backend} receba os dados em um formato compatível e de fácil manipulação, especialmente em linguagens que interpretam parâmetros de URL de forma nativa. Além disso, a função inclui cookies nas requisições com \texttt{credentials: 'include'} para permitir que a sessão seja mantida entre as requisições, o que é crucial para a continuidade da comunicação com o \textit{backend} e possibilita cumprir o Requisito Não Funcional \textbf{RNF4} descrito na seção \ref{sec:requisitos-aplicacao}. Caso a resposta não tenha o status 200, a função trata o erro, retornando uma mensagem de erro em vez do JSON da resposta. 
+
+A função \texttt{handleFirstMessage} constrói um corpo de dados contendo \texttt{questionNumber} e chama \texttt{fetchData} para enviar esses dados ao \textit{backend} no endpoint \texttt{"{endereço}/server"}. Em seguida, cria uma estrutura de mensagens adicionais vazia e invoca \texttt{handleMessageResponse} para manipular a resposta, preenchendo essa estrutura conforme a resposta recebida.
 
 \begin{lstlisting}[style=ufscthesisx_style, caption={Funções assíncronas para requisição HTTP}]
     const fetchData = async (url: string, body: URLSearchParams) => {
@@ -255,7 +297,7 @@ A função \texttt{handleFirstMessage} constrói um corpo de dados contendo \tex
 
 const handleFirstMessage = async (questionNumber?: string) => {
     const body = new URLSearchParams({ questionNumber: questionNumber?.toString() || '' });
-    const data = await fetchData("http://localhost:6358/server", body);
+    const data = await fetchData("{endereço}/server", body);
     let additionalMessages: {
         messages: {
         message: string;
@@ -274,11 +316,13 @@ const handleFirstMessage = async (questionNumber?: string) => {
 
 \subsection{Elementos do Backend}
 
-Pela Figura 28 também observa-se que o \textit{backend} é composto pelo arquivo principal \textit{server.pl} e por arquivos específicos para cada questão, nomeados no formato \textit{questao\_\{numeroDaQuestao\}.pl}, onde cada um contém dicas voltadas para uma questão particular. Por exemplo, o arquivo \textit{questao\_1234.pl} armazena as orientações para a questão 1234 do Beecrowd.
+O \textit{backend} foi desenvolvido em Prolog, utilizando o SWI-Prolog para possibilitar o tratamento de requisições HTTP, conforme especificado no Requisito Não Funcional \textbf{RNF6}, na seção \ref{sec:requisitos-aplicacao}. 
+
+Além disso, conforme ilustrado na Figura 28, o \textit{backend} é composto pelo arquivo principal \texttt{server.pl} e por arquivos adicionais, cada um representando um sistema especialista específico para cada questão, seguindo, também, o Requisito Não Funcional \textbf{RNF6}. Esses arquivos são nomeados no formato \texttt{questao\_\{numeroDaQuestao\}.pl} e contêm dicas específicas para as respectivas questões. Por exemplo, o arquivo \texttt{questao\_1234.pl} armazena as orientações para a questão 1234 do Beecrowd.
 
 \subsubsection{Arquivos no formato questao\_\{numeroDaQuestao\}.pl}
 
-O Código 2 apresenta o arquivo \textit{questao\_1181.pl} como um exemplo de estrutura para arquivos do tipo \textit{questao\_\{numeroDaQuestao\}.pl}.
+O Código 4 apresenta o arquivo \textit{questao\_1181.pl} como um exemplo de estrutura para arquivos do tipo \textit{questao\_\{numeroDaQuestao\}.pl}.
 
 \begin{lstlisting}[style=ufscthesisx_style, caption={Arquivo \textit{questao\_1181.pl}}]
     :- module(questao_1181, [questao/3, diagnostico/3]).
@@ -360,13 +404,15 @@ Esse arquivo Prolog define um módulo especializado para auxiliar usuários na r
 
 Dessa forma, arquivos do formato \textit{questao\_\{numeroDaQuestao\}.pl} devem seguir essa estrutura, onde cada questão contém um predicado \textit{questao/3} para fornecer orientações sequenciais e um predicado \textit{diagnostico/3} para avaliação final. A matriz de decisões implementada no predicado \textit{questao/3} permite um processo dinâmico e adaptativo de interação, guiando o usuário de forma direcionada e progressiva na resolução da questão específica.
 
+Assim, para a inclusão de novas questões, basta criar um arquivo no formato especificado, seguindo a mesma estrutura.  Essa abordagem facilita a expansão do sistema, conforme estabelecido no requisito não funcional \textbf{RNF5}, descrito na seção \ref{sec:requisitos-aplicacao}.
+
 \subsubsection{Arquivo server.pl}
 
 \subsubsubsection{Configurando servidor HTTP}
 
 O arquivo \textit{server.pl} configura e inicializa um servidor HTTP, definindo rotas para processar requisições e habilitando o CORS, permitindo conexões da porta do \textit{frontend}. Ele recebe requisições \textit{POST} para iniciar ou continuar uma questão, associando cada sessão ao usuário correspondente, e também aceita requisições \textit{GET} para fornecer o diagnóstico final com base nas respostas acumuladas durante a interação.
 
-O Código 3 exemplifica a configuração de um servidor HTTP em Prolog utilizando o módulo \texttt{http\_dispatch}, no qual as rotas são definidas por meio de \texttt{http\_handler} para manipular requisições \textit{GET}, \textit{POST} e \textit{OPTIONS}. Especificamente, a requisição \textit{POST} é tratada pela rota \texttt{server}, sendo manipulada pela função \texttt{handle\_post\_request}.
+O Código 5 exemplifica a configuração de um servidor HTTP em Prolog utilizando o módulo \texttt{http\_dispatch}, no qual as rotas são definidas por meio de \texttt{http\_handler} para manipular requisições \textit{GET}, \textit{POST} e \textit{OPTIONS}. Especificamente, a requisição \textit{POST} é tratada pela rota \texttt{server}, sendo manipulada pela função \texttt{handle\_post\_request}.
 
 \begin{lstlisting}[style=ufscthesisx_style, caption={Arquivo \textit{server.pl} - \textit{Handlers} e Manipuladores de requisições}]
 % Define o handler para receber as requisições HTTP POST
@@ -384,7 +430,7 @@ handle_post_request(Request) :-
     http_read_data(Request, Data, [encoding(utf8)]),
 
     % Definindo os headers para permitir CORS
-    format('Access-Control-Allow-Origin: http://localhost:5173~n'),
+    format('Access-Control-Allow-Origin: {endereço}~n'),
     format('Access-Control-Allow-Credentials: true~n'),
     format('Content-Type: application/json; charset=UTF-8'),
     cors_enable(Request, [methods([post])]),
@@ -414,7 +460,7 @@ handle_post_request(Request) :-
     ).
 \end{lstlisting}    
 
-O \textbf{manipulador de requisições POST} (\texttt{handle\_post\_request}) tem como função processar requisições \textit{POST} enviadas ao servidor, gerenciando o fluxo de perguntas e respostas entre o cliente e o servidor. Inicialmente, ele habilita o CORS, permitindo requisições provenientes do frontend no endereço \texttt{http://localhost:5173}, além de configurar os cabeçalhos necessários para o envio de credenciais, como cookies de sessão. A função verifica se a sessão está ativa, garantindo a associação com um ID de sessão único.
+O \textbf{manipulador de requisições POST} (\texttt{handle\_post\_request}) tem como função processar requisições \textit{POST} enviadas ao servidor, gerenciando o fluxo de perguntas e respostas entre o cliente e o servidor. Inicialmente, ele habilita o CORS, seguindo o Requisito Não Funcional \textbf{RNF6}, descrito na seção \ref{sec:requisitos-aplicacao}. Isso permite requisições provenientes do \textit{frontend} no endereço \texttt{endereço}, e configura os cabeçalhos necessários para o envio de credenciais, como cookies de sessão. A função verifica se a sessão está ativa, garantindo a associação com um ID de sessão único, cumprindo os Requisitos Não Funcionais \textbf{RNF3} e \textbf{RNF4}.
 
 Dependendo do tipo de requisição, a função processa a primeira pergunta ou continua a sequência de perguntas baseadas nas respostas anteriores. Se for a primeira requisição, o número da questão é extraído, e a sessão é inicializada com os dados necessários. Além disso, o arquivo correspondente à questão é carregado dinamicamente. 
 
@@ -424,7 +470,7 @@ Caso seja uma resposta subsequente, a função valida a presença do número da 
 
 Os arquivos de questões são carregados dinamicamente no \textit{server.pl} com base no número da questão recebido nas requisições \textit{POST}. Se o usuário alterna para uma nova questão, por exemplo, a questão Y, o \textit{backend} carrega o arquivo \textit{questao\_Y.pl} e passa a conduzir a interação de acordo com suas informações. 
 
-No Código 4, é mostrado o trecho do \texttt{server.pl} que realiza esse carregamento dinâmico. O predicado \texttt{start\_question/2} tem como objetivo inicializar uma nova questão dentro de um sistema interativo, baseado no número da questão fornecido. O primeiro passo do código é construir o caminho para o arquivo que contém a definição da questão, concatenando o prefixo \texttt{questao\_} com o número da questão \texttt{(QuestionNumber)} e adicionando a extensão \texttt{.pl} para formar o nome completo do arquivo. Isso é realizado através do predicado \texttt{atom\_concat\/3}, que concatena átomos (strings) para formar o caminho completo do arquivo a ser carregado.
+No Código 6, é mostrado o trecho do \texttt{server.pl} que realiza esse carregamento dinâmico. O predicado \texttt{start\_question/2} tem como objetivo inicializar uma nova questão dentro de um sistema interativo, baseado no número da questão fornecido. O primeiro passo do código é construir o caminho para o arquivo que contém a definição da questão, concatenando o prefixo \texttt{questao\_} com o número da questão \texttt{(QuestionNumber)} e adicionando a extensão \texttt{.pl} para formar o nome completo do arquivo. Isso é realizado através do predicado \texttt{atom\_concat\/3}, que concatena átomos (strings) para formar o caminho completo do arquivo a ser carregado.
 
 \begin{lstlisting}[style=ufscthesisx_style, caption={Arquivo \textit{server.pl} - \textit{Handlers} e Manipuladores de requisições}]
 start_question(QuestionNumber, FirstQuestion) :-
@@ -445,7 +491,7 @@ Depois, o código verifica se o arquivo gerado existe no sistema de arquivos uti
 
 \subsubsubsection{Recebe respostas}
 
-O arquivo \textit{server.pl} também armazena na sessão do usuário as informações fornecidas, como número da questão e respostas, para garantir a continuidade da interação. O Código 5 apresenta a função \textbf{continue\_question}, responsável por processar respostas subsequentes enviadas pelo usuário para uma questão em andamento, armazenando a resposta na sessão e determinando o próximo passo com base nas respostas acumuladas. Inicialmente, a função adiciona a nova resposta à lista de respostas da sessão, atualizando a variável de sessão \texttt{answers("Answers")}. Em seguida, tenta gerar a próxima pergunta por meio da chamada ao predicado \texttt{questao/3}. Se \texttt{questao/3} retornar uma nova pergunta (\texttt{NextQuestion}), esta é enviada ao cliente para dar continuidade à interação. Caso contrário, a função verifica se uma resposta final pode ser gerada utilizando o predicado \texttt{diagnostico/3}. O resultado final, seja uma nova pergunta ou uma conclusão, é então enviado ao cliente no formato JSON, permitindo que a interação prossiga ou seja concluída de acordo com o progresso da sessão.
+O arquivo \textit{server.pl} também armazena na sessão do usuário as informações fornecidas, como número da questão e respostas, para garantir a continuidade da interação. O Código 7 apresenta a função \textbf{continue\_question}, responsável por processar respostas subsequentes enviadas pelo usuário para uma questão em andamento, armazenando a resposta na sessão e determinando o próximo passo com base nas respostas acumuladas. Inicialmente, a função adiciona a nova resposta à lista de respostas da sessão, atualizando a variável de sessão \texttt{answers("Answers")}. 
 
 \begin{lstlisting}[style=ufscthesisx_style, caption={Arquivo \textit{server.pl} - \textit{Handlers} e Manipuladores de requisições}]
 continue_question(QuestionNumber, Answer, Response) :-
@@ -470,10 +516,9 @@ continue_question(QuestionNumber, Answer, Response) :-
         ),
         Response = _{result: Result}
     ).
-
 \end{lstlisting}
 
-\subsection{Elementos do Frontend}
+Em seguida, tenta gerar a próxima pergunta por meio da chamada ao predicado \texttt{questao/3}. Se \texttt{questao/3} retornar uma nova pergunta (\texttt{NextQuestion}), esta é enviada ao cliente para dar continuidade à interação. Caso contrário, a função verifica se uma resposta final pode ser gerada utilizando o predicado \texttt{diagnostico/3}. O resultado final, seja uma nova pergunta ou uma conclusão, é então enviado ao cliente no formato JSON, permitindo que a interação prossiga ou seja concluída de acordo com o progresso da sessão, como consta no Requisito Não Funcional \textbf{RNF6}, descrito na seção \ref{sec:requisitos-aplicacao}.
 
 \end{otherlanguage*}
 
