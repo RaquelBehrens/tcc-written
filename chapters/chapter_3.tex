@@ -128,7 +128,83 @@ React é uma biblioteca para a construção de interfaces de usuário, tanto par
 
 TypeScript é uma linguagem de programação que é um superconjunto do JavaScript, adicionando tipagem estática. Isso permite que os desenvolvedores definam tipos para variáveis e funções, ajudando a identificar erros antes da execução do código. TypeScript melhora a manutenção e segurança do código, especialmente em projetos grandes, e é amplamente utilizado com frameworks como React para criar aplicações mais escaláveis e robustas.
 
-\section{Arquitetura de Software}
+\subsection{Requisitos da Aplicação}
+
+Esta seção descreve os requisitos essenciais para o desenvolvimento da aplicação, divididos em Regras de Negócio, Requisitos Funcionais e Não Funcionais. As Regras de Negócio definem os processos do sistema, enquanto os Requisitos Funcionais especificam as funcionalidades necessárias. Já os Requisitos Não Funcionais tratam de aspectos de qualidade, como desempenho, segurança e arquitetura do sistema.
+
+\subsubsection{Regras de Negócio}
+
+\begin{enumerate}[label=RN\arabic* –]
+    \item \textbf{Identificação da Questão}: O usuário deve informar o código da questão do Beecrowd que está tentando resolver para que o sistema possa fornecer dicas específicas.
+    \item \textbf{Perguntas Binárias}: O sistema deve formular perguntas binárias (sim/não) para guiar o usuário, baseando-se em possíveis erros ou dificuldades comuns para cada questão.
+    \item \textbf{Personalização de Orientações}: Com base nas respostas do usuário, o sistema deve ajustar as perguntas para identificar a dificuldade específica e fornecer a dica mais apropriada.
+    \item \textbf{Encerramento do Fluxo}: Ao atingir um número máximo de perguntas, o sistema deve fornecer uma dica final ao usuário.
+\end{enumerate}
+
+\subsubsection{Requisitos Funcionais}
+
+\begin{enumerate}[label=RF\arabic* –]
+    \item \textbf{Comunicação por Chat}:
+    \begin{itemize}
+        \item O usuário deve interagir com o sistema por uma interface de chat intuitiva, que apresente respostas sequenciais.
+    \end{itemize}
+
+    \item \textbf{Busca e Seleção de Questão}:
+    \begin{itemize}
+        \item O sistema deve permitir que o usuário informe o código da questão do Beecrowd que deseja resolver.
+    \end{itemize}
+    
+    \item \textbf{Fluxo de Perguntas Binárias}:
+    \begin{itemize}
+        \item O sistema apresenta perguntas binárias adaptadas conforme as respostas do usuário.
+    \end{itemize}
+
+    \item \textbf{Sistema de Dicas}:
+    \begin{itemize}
+        \item Após a análise das respostas, o sistema deve oferecer dicas relevantes para o problema informado.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Requisitos Não Funcionais}
+
+\begin{enumerate}[label=RNF\arabic* –]
+    \item \textbf{Desempenho}:
+    \begin{itemize}
+        \item O sistema deve responder em tempo real a cada interação do usuário, mantendo a fluidez do chat.
+    \end{itemize}
+    
+    \item \textbf{Usabilidade}:
+    \begin{itemize}
+        \item O sistema deve ser intuitivo e fácil de usar, com uma interface de chat amigável.
+        \item Deve ser compatível com os principais navegadores modernos.
+    \end{itemize}
+
+    \item \textbf{Escalabilidade}:
+    \begin{itemize}
+        \item O sistema deve suportar o uso simultâneo de múltiplos usuários.
+    \end{itemize}
+    
+    \item \textbf{Segurança}:
+    \begin{itemize}
+        \item As sessões de chat devem ser isoladas, para evitar vazamento de informações entre os usuários.
+    \end{itemize}
+    
+    \item \textbf{Manutenibilidade}:
+    \begin{itemize}
+        \item O sistema deve ter um código modular, facilitando a inclusão de novas perguntas e dicas para futuras questões do Beecrowd.
+    \end{itemize}
+    
+    \item \textbf{Arquitetura Backend e Frontend}:
+    \begin{itemize}
+        \item O sistema deve ter um backend desenvolvido em Prolog, utilizando SWI-Prolog para lidar com requisições HTTP.
+        \item O backend deve definir configurações de CORS apropriadas para permitir a comunicação entre cliente e servidor.
+        \item O backend deve seguir o padrão de API REST e devolver respostas no formato JSON.
+        \item O backend deve conter o sistema especialista, que processa as perguntas e respostas para oferecer suporte aos estudantes.
+        \item O frontend deve ser desenvolvido em React e TypeScript, proporcionando uma interface interativa e amigável para os alunos.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Arquitetura de Software}
 
 A aplicação propõe uma interação dinâmica em que o usuário, ao informar o número da questão sobre a qual deseja obter orientações, inicia um diálogo com o sistema de chat. O chat responde com perguntas específicas para compreender melhor as necessidades do usuário, permitindo direcionar as orientações de forma mais precisa. Conforme o usuário responde com "sim" ou "não" a cada pergunta, o sistema adapta as próximas questões e sugestões, guiando-o progressivamente até fornecer uma orientação final ajustada ao contexto das respostas acumuladas.
 
@@ -397,121 +473,7 @@ continue_question(QuestionNumber, Answer, Response) :-
 
 \end{lstlisting}
 
-\section{REQUISITOS DA APLICAÇÃO}
-
-\subsection{Regras de Negócio}
-
-\textbf{RG1 – Importação de Notas:} O sistema deve importar as notas do Beecrowd para o Moodle apenas para disciplinas e tarefas previamente associadas, evitando importações não autorizadas;
-
-\vspace{12pt}
-
-\textbf{RG2 – Cadastro Automático de Alunos:} Alunos podem se cadastrar automaticamente no Beecrowd pelo Moodle somente se estiverem matriculados nas disciplinas habilitadas para uso do Beecrowd;
-
-\vspace{12pt}
-
-\textbf{RG3 – Criação Automática de Disciplina:} A criação automática de disciplinas no Beecrowd ao habilitar o uso deve seguir uma estrutura de nomenclatura padronizada para facilitar a identificação;
-
-\vspace{12pt}
-
-\textbf{RG4 – Visualização de Submissões:} A visualização de submissões de alunos no Beecrowd pelo Moodle só é permitida para professores associados às disciplinas correspondentes;
-
-\vspace{12pt}
-
-\textbf{RG5 – Submissão de Solução:} Alunos só podem submeter soluções no Beecrowd via Moodle para as listas de exercícios ativas e dentro dos prazos estabelecidos;
-
-\vspace{12pt}
-
-\textbf{RG5 – Acesso às Listas de Exercícios:} O acesso às listas de exercícios e questões no Moodle está disponível apenas durante o período em que a disciplina está em andamento.
-
-\vspace{12pt}
-
-\subsection{Requisitos Não Funcionais}
-
-\textbf{RNF01 – Linguagem de Programação e Tecnologias Front-end:} O plugin deve ser desenvolvido utilizando a linguagem de programação PHP para a lógica de back-end e HTML, CSS e Javascript para adaptar o frontend;
-
-\vspace{12pt}
-
-\textbf{RNF02 – Interface Responsiva:} A interface do usuário deve ser responsiva e seguir as melhores práticas de design para garantir uma experiência do usuário consistente;
-
-\vspace{12pt}
-
-\textbf{RNF03 – Estrutura de Diretórios e Arquivos:} O código do plugin deve seguir a estrutura de diretórios e arquivos especificada na seção "Fundamentos Teóricos", na subseção "Plugin do Moodle";
-
-\vspace{12pt}
-
-\textbf{RNF04 – Padrões de Desenvolvimento:} O código do plugin deve aderir aos padrões de codificação estabelecidos para o desenvolvimento de plugins no ambiente Moodle, incluindo boas práticas de programação, documentação e modularidade para assegurar a qualidade e manutenibilidade do código;
-
-\vspace{12pt}
-
-\textbf{RNF05 – Diagrama UML:} A implementação do plugin deve seguir as especificações detalhadas no diagrama UML fornecido, garantindo que a estrutura e os relacionamentos definidos sejam fielmente reproduzidos no sistema;
-
-\vspace{12pt}
-
-\textbf{RNF06 – Integração com LTI (Learning Tools Interoperability):} O plugin deve ser desenvolvido com integração compatível com o padrão LTI, assegurando interoperabilidade eficaz com outras ferramentas educacionais que suportem esse padrão;
-
-\vspace{12pt}
-
-\textbf{RNF07 – Documentação do Plugin:} Deve ser fornecida uma documentação completa e clara, incluindo README, CHANGES e outros arquivos necessários, facilitando a instalação, configuração e utilização do plugin por parte dos administradores e usuários;
-
-\vspace{12pt}
-
-\textbf{RNF08 – Compatibilidade com Versões do Moodle:} O plugin deve ser compatível com as versões específicas do Moodle, conforme indicado nas diretrizes de suporte e requisitos do sistema, para garantir a funcionalidade em ambientes Moodle diversos;
-
-\vspace{12pt}
-
-\textbf{RNF09 – Segurança:} O plugin deve incorporar medidas de segurança adequadas para proteger contra vulnerabilidades conhecidas;
-
-\vspace{12pt}
-
-\textbf{RNF10 – Desempenho:} O plugin deve ser otimizado para garantir desempenho eficiente, minimizando tempo de carregamento e consumo de recursos do sistema, proporcionando uma experiência rápida e responsiva;
-
-\vspace{12pt}
-
-\textbf{RNF11 – Compatibilidade:} O plugin deve ser compatível com os principais navegadores (Chrome, Firefox, Safari) e dispositivos (desktop, tablet, mobile) para garantir uma experiência consistente.
-
-\subsection{Requisitos Funcionais}
-
-\textbf{RF01 – Importação de Notas do Beecrowd para o Moodle:} O sistema deve permitir a importação automática das notas dos alunos no Beecrowd para o Moodle;
-
-\vspace{12pt}
-
-\textbf{RF02 – Cadastro Automático no Beecrowd via Moodle:} Os alunos devem ter a opção de realizar o cadastro automaticamente no Beecrowd por meio do Moodle;
-
-\vspace{12pt}
-
-\textbf{RF03 – Criação Automática de Disciplina no Beecrowd:} Ao habilitar o uso do Beecrowd no Moodle para uma disciplina, o sistema deve criar automaticamente a correspondente disciplina no Beecrowd;
-
-\vspace{12pt}
-
-\textbf{RF04 – Visualização de Submissões no Beecrowd pelo Moodle:} Os professores devem ser capazes de visualizar as submissões dos alunos no Beecrowd, juntamente com os feedbacks fornecidos pelo Beecrowd, diretamente no Moodle;
-
-\vspace{12pt}
-
-\textbf{RF05 – Criação de Listas e Competições no Beecrowd pelo Moodle:} Professores devem poder criar listas de exercícios e competições no Beecrowd diretamente através do ambiente Moodle;
-
-\vspace{12pt}
-
-\textbf{RF06 – Submissão de Solução no Beecrowd via Moodle:} Alunos devem ser capazes de submeter suas soluções para as listas de exercícios do Beecrowd diretamente através do Moodle;
-
-\vspace{12pt}
-
-\textbf{RF07 – Acompanhamento do Progresso no Beecrowd pelo Moodle:} Professores devem conseguir visualizar o progresso de cada aluno, tanto de forma geral na disciplina quanto em relação a cada lista de exercícios, no Beecrowd, pelo Moodle;
-
-\vspace{12pt}
-
-\textbf{RF08 – Acompanhamento do Próprio Progresso pelo Aluno:} Alunos devem poder visualizar seu próprio progresso geral na disciplina, assim como o desempenho em cada lista de exercícios e em cada exercício específico, no Beecrowd, pelo Moodle;
-
-\vspace{12pt}
-
-\textbf{RF09 – Acesso às Listas de Exercícios e Questões no Moodle:} Alunos e professores devem conseguir abrir as listas de exercícios do Beecrowd, incluindo o acesso aos enunciados das questões, diretamente no Moodle;
-
-\vspace{12pt}
-
-\textbf{RF10 – Definição de Linguagem de Programação no Moodle:} Professores devem poder definir a linguagem de programação para submissão das questões no Beecrowd, diretamente no Moodle, a fim de minimizar erros na seleção de versões inadequadas do Python;
-
-\vspace{12pt}
-
-\textbf{RF11 – Visualização do Feedback de cada submissão de exercício do Beecrowd pelo Moodle:} Deve ser possível ao aluno visualizar o feedback do Beecrowd para cada submissão de exercício diretamente pelo Moodle.
+\subsection{Elementos do Frontend}
 
 \end{otherlanguage*}
 
