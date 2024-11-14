@@ -39,7 +39,7 @@
 
 Neste capítulo, são apresentados os conceitos fundamentais necessários para a compreensão da proposta. Serão mostrados tópicos como: juízes online, destacando o impacto dessa tecnologia na formação dos estudantes; Beecrowd, e, logo após, Moodle, a fim de detalhar características destas plataformas; Plugin, abordando sua definição e características; BOCA Online Contest Administrator, ambiente com o recurso juíz online, mas que, ao possuir algumas vantagens para avaliação de soluções, possui diversas desvantagens para seu uso em sala de aula. Em seguida, será feito uma breve introdução aos conceitos de API e LTI, os quais serão usados no decorrer do desenvolvimento da solução proposta.
 
-\section{JUÍZES ONLINE}
+\section{Juízes Online}
 Os autores \textcite{wasik} definem os juízes on-line como “sistemas projetados para a avaliação confiável do código-fonte do algoritmo enviado pelos usuários, que é compilado e testado em seguida em um ambiente homogêneo”. Da mesma forma, \textcite[p.~1]{santosribeiro} explicam a principal função dos juízes online: “avaliar códigos fonte que foram enviados em uma determinada linguagem de programação”. Essa avaliação automática é feita a partir de casos de teste, ou seja, cada caso de teste possui um conjunto de entradas e saídas, e verifica-se as respostas aos casos de teste da solução do usuário, com as respostas cadastradas para aquela questão no site \cite[p.~12]{franciscojuniorambrosio}. 
 
 Diversos juízes online podem ser encontrados na Internet, dentre eles estão o Beecrowd \cite{cruz2022} e o Codebench \cite[p.~806]{ribeirofernandescarvalho}, plataformas online com problemas de programação competitiva, e que aceitam soluções para esses desafios, avaliando-as quanto à sua eficácia e eficiência. Também há o BOCA Online Contest Administrator, um sistema que visa apoiar as competições de programação na correção de soluções apresentadas pelos competidores \cite{camposferreira}. 
@@ -59,7 +59,7 @@ Outrossim, \textcite[p.~2]{camposferreira} mostram as vantagens do incentivo à 
 Portanto, além de seu papel essencial em competições de maratona de programação, os juízes online têm se destacado como ferramentas valiosas no ensino de programação básica. Como exposto acima, a integração dessas plataformas no ambiente educacional proporciona vantagens significativas, como a aprendizagem no ritmo do aluno, a promoção da participação em maratonas de programação e a facilidade dos professores em gerenciar uma turma. Portanto, essas ferramentas desempenham uma função fundamental na promoção do engajamento dos estudantes e no aprimoramento de seu desempenho em disciplinas gerais de programação, contribuindo significativamente para o campo educacional.
 
 
-\section{BEECROWD}
+\section{Beecrowd}
 
 O Beecrowd, desde janeiro de 2013 até outubro de 2021 conhecido como URI Online Judge \cite[p.~5]{piekarski}, é um portal online criado com o objetivo principal de tornar a prática de programação mais dinâmica, interessante e estimulante para aqueles que acabaram de ingressar na arte de programar \cite[p.~1]{beztonin2012}.
 
@@ -172,7 +172,7 @@ Por fim, o Beecrowd oferece suporte a várias linguagens de programação e vers
         \fonte{\cite{beecrowd}}
 \end{figure}
 
-\section{BOCA ONLINE CONTEST ADMINISTRATOR}
+\section{Boca Online Contest Administrator}
 
 O BOCA Online Contest Administrator é um ambiente utilizado para gerenciar competições que envolvem programação de computadores \cite[p.~22]{galasso}, e foi desenvolvido para ser usado na Maratona de Programação da Sociedade Brasileira de Computação \cite[p.~2]{camposferreira}.
 
@@ -198,7 +198,7 @@ Ao concluir o preenchimento do formulário de configuração básica, o criador 
 
 Assim, sempre que o professor desejar apresentar novas tarefas de programação para suas turmas a cada semestre, será necessário criar uma nova atividade utilizando o VPL, preenchendo integralmente o formulário de configuração básica e incluindo os casos de teste necessários.
 
-\section{CODERUNNER}
+\section{CodeRunner}
 
 O CodeRunner é um plugin de código aberto gratuito para o Moodle, projetado para avaliar respostas de programação em várias linguagens. Utilizado principalmente em cursos de programação de computadores, permite que os alunos enviem código em resposta a perguntas específicas e visualizem os resultados dos testes imediatamente. Os professores podem executar programas para avaliar as respostas dos alunos, utilizando uma abordagem adaptativa \cite{coderunner}. Assim, os alunos desenvolvem e testam seu código usando um ambiente de desenvolvimento normal e enviam o código ao CodeRunner por meio de um navegador da Web somente quando acreditam que ele está correto \cite[p.~47]{lobbharlow}.
 
@@ -216,7 +216,7 @@ Assim como no VPL, é necessário que o criador da pergunta configure seus detal
 
 A Universidade de Canterbury utiliza o CodeRunner para ministrar cursos de programação em Python, C, Octave e Matlab. Esse plugin é especialmente eficaz em cursos introdutórios de programação, proporcionando prática intensiva com pequenos problemas de programação que ensinam diversas construções e técnicas de linguagem. No entanto, o CodeRunner também é aplicável em níveis mais avançados, sendo utilizado em cursos teóricos de ciência da computação, inteligência artificial (com programação em Clojure) e programação na web para avaliação de sites desenvolvidos pelos alunos \cite[p.~48]{lobbharlow}.
 
-\section{MOODLE}
+\section{Moodle}
 
 “Moodle é uma plataforma de aprendizagem projetada para fornecer a educadores, administradores e alunos um único sistema robusto, seguro e integrado para criar ambientes de aprendizagem personalizados” \cite{moodle}. Ou seja, o Moodle é um Sistema de Gerenciamento de Aprendizagem (LMS) poderoso e altamente extensível \cite{moodle}. 
 
@@ -234,11 +234,11 @@ Contando com forte apoio de uma comunidade global ativa, equipe de desenvolvedor
 
 Atualmente, diversas instituições educacionais buscam modernizar seus sistemas de aprendizagem para facilitar o acesso ao conhecimento. Nesse contexto, o ambiente Moodle tem se destacado como uma escolha frequente. O Moodle adota o conceito construcionista social de educação, conforme destacado por \cite[p.~22]{galasso}. Esse enfoque pedagógico enfatiza as demandas contemporâneas por métodos de ensino mais dinâmicos e participativos.
 
-\subsection{\textbf{Características Gerais do Moodle}}
+\subsection{Características Gerais do Moodle}
 
 O Moodle, flexível e de fácil instalação em plataformas que suportam PHP, exige apenas uma base de dados, de qualquer marca. Destaca-se por sua ênfase na segurança, implementando verificações rigorosas em formulários, validação de dados, e codificação de cookies. Também permite que um site Moodle suporte milhares de cursos, estes podendo ser categorizados e pesquisados.
 
-\subsubsection{\textbf{\textit{Administração do site}}}
+\subsubsection{Administração do site}
 
 \begin{itemize}
     \item O site é administrado por um usuário administrador, permitindo ajustes de aparência por meio de extensões (plug-ins) de temas;
@@ -246,7 +246,7 @@ O Moodle, flexível e de fácil instalação em plataformas que suportam PHP, ex
     \item O código PHP, licenciado sob GPL, é claro e facilmente modificado para atender às necessidades individuais.
 \end{itemize}
 
-\subsubsection{\textbf{\textit{Administração dos usuários}}}
+\subsubsection{Administração dos usuários}
 
 \begin{itemize}
     \item Objetiva reduzir a intervenção do administrador, suportando diversos mecanismos de autenticação, como email, LDAP, IMAP, POP3, NNTP, e base de dados externa;
@@ -258,7 +258,7 @@ O Moodle, flexível e de fácil instalação em plataformas que suportam PHP, ex
     \item Cada usuário pode especificar faixas de horário para que cada compromisso seja ajustado a esses horários, e escolher o idioma de interface.
 \end{itemize}
 
-\subsubsection{\textbf{\textit{Administração do Curso}}}
+\subsubsection{Administração do Curso}
 
 \begin{itemize}
     \item Professores têm controle total sobre os parâmetros do curso, podendo restringir outros professores;
@@ -267,7 +267,7 @@ O Moodle, flexível e de fácil instalação em plataformas que suportam PHP, ex
     \item Rastreamento detalhado dos usuários, relatórios de atividade com gráficos, e história detalhada do envolvimento de cada aluno, como postagens.
 \end{itemize}
 
-\subsection{\textbf{LTI External tools}}
+\subsection{LTI External tools}
 
 Ferramentas Externas LTI do Moodle são aplicativos adicionais que você pode integrar curso, como conteúdo interativo, atividades ou avaliações. Os professores podem vincular essas atividades diretamente na página do curso no Moodle, e os alunos podem acessá-las sem sair do curso no Moodle ou precisar fazer login em um sistema diferente. Onde disponível, e dependendo de cada ferramenta, os professores também podem fazer com que as notas sejam enviadas de volta ao Moodle \cite{moodle}.
 
@@ -303,7 +303,7 @@ A especificação Learning Tools Interoperability (LTI) foi inicialmente introdu
 
 Assim, o padrão LTI permite uma troca segura de dados entre o LMS e ferramentas de aprendizagem externas, centralizando o acesso a conteúdo interno e externo, oferecendo uma experiência de aprendizado consistente, eliminando a necessidade de múltiplos logins para diferentes plataformas \cite{verdaguer}.
 
-\section{SISTEMA ESPECIALISTA}
+\section{Sistema Especialista}
 
 De acordo com \textcite{jimmysingla}, um sistema especialista é um conjunto de programas que manipula conhecimento para resolver problemas em um domínio especializado que exige a expertise humana. Já \textcite{markobohanec} definem sistemas especialistas como sistemas inteligentes de informação que imitam, em certo grau, o comportamento de um especialista humano no domínio em questão.
 
@@ -313,7 +313,7 @@ Assim, a base de conhecimento contém o conhecimento do domínio necessário par
 
 O autor \textcite{jimmysingla} ressaltou que as principais características de um sistema especialista incluem interface com o usuário, representação de dados, inferência, capacidade de explicação e habilidade de lidar com incertezas. Entre as vantagens, esse tipo de sistema oferece resposta rápida, maior confiabilidade, redução de custos e de erros, uso de múltiplas expertises, banco de dados inteligente e mitigação de riscos. Contudo, o sistema apresenta algumas limitações, como a ausência de senso comum, a incapacidade de responder a casos excepcionais e a dificuldade de adaptação a ambientes em constante mudança \cite{jimmysingla}. 
 
-\subsubsection{\textbf{\textit{Prolog}}}
+\subsubsection{Prolog}
 
 De acordo com \textcite{keithclark}, o Prolog, uma linguagem de programação baseada na lógica de predicados proposta por Kowalski, foi desenvolvida pelo grupo de Alain Colmerauer em Marselha. Sua implementação mais conhecida é o compilador DEC-10 de Edimburgo, que apresenta eficiência comparável à de LISP, mas com maior suporte a inferências, essencial em sistemas especialistas. Em Marselha, é aplicada no processamento de linguagem natural, enquanto em Edimburgo é usada para planejamento, resolução de problemas e desenvolvimento de compiladores \cite{keithclark}.
 
@@ -325,7 +325,7 @@ Além disso, o Prolog é ideal para desenvolver serviços Web robustos devido à
 
 Programas em Prolog consistem em conjuntos de cláusulas escritas com a seguinte notação:  as variáveis são indicadas por letras maiúsculas, enquanto as constantes são escritas em letras minúsculas; e  a estrutura das cláusulas, ao invés de A ∧ B ⇒ C, utiliza-se C :- A, B, com vírgulas separando os elementos da conjunção \cite{stuartrussel}.
 
-\subsubsection{\textbf{\textit{SWI-Prolog}}}
+\subsubsection{SWI-Prolog}
 
 O SWI-Prolog é uma implementação de Prolog baseada em um subconjunto da WAM (Warren Abstract Machine), que possui um ambiente robusto de desenvolvimento, priorizando compatibilidade, portabilidade, escalabilidade e estabilidade \cite{wielemakerswiprolog}. 
 

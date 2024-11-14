@@ -12,7 +12,7 @@
 
 Nesta seção, será abordada a LTI do Beecrowd, que simplifica a integração entre o Moodle e a plataforma Beecrowd. Serão apresentados também os detalhes da implementação da aplicação web do sistema especialista, desenvolvida para auxiliar professores e alunos no esclarecimento de dúvidas recorrentes sobre as questões do Beecrowd, facilitando a adaptação de ambos ao uso da plataforma.
 
-\section{LTI BEECROWD}
+\section{LTI Beecrowd}
 
 Com a disponibilização de uma ferramenta LTI pelo Beecrowd, visando facilitar sua integração com o Moodle, foi elaborado um manual detalhado para orientar o administrador do Moodle na configuração dessa LTI (Apêndice A).
 
@@ -56,7 +56,7 @@ A segunda atividade, acessível aos estudantes (Imagem 25), redireciona-os diret
         \fonte{Produzido pela autora.}
 \end{figure}
 
-\section{SISTEMA ESPECIALISTA WEB}
+\section{Sistema Especialista Web}
 
 O objetivo do sistema especialista é oferecer suporte na resolução de dúvidas recorrentes dos estudantes em relação a questões do Beecrowd. A proposta é desenvolver uma aplicação acessível aos alunos via navegador, com um sistema de chat onde o aluno pode informar a questão sobre a qual necessita orientação. O sistema, então, conduz o aluno por meio de perguntas binárias (sim ou não) e, conforme as respostas, fornece dicas relevantes relacionadas ao exercício em questão.
 
@@ -64,7 +64,7 @@ Para viabilizar essa funcionalidade, o sistema especialista será estruturado co
 
 Assim, a primeira etapa deste trabalho consistiu na coleta de dados sobre as questões, visando identificar e catalogar as dúvidas mais comuns.
 
-\subsection{\textbf{Coleta de Dados}}
+\subsection{Coleta de Dados}
 
 Nesta fase, foram realizadas duas coletas de dados: uma com dicas de resolução fornecidas pelo professor para uma lista de exercícios, e outra com as dúvidas dos alunos sobre o uso de listas em Python, com foco em questões específicas.
 
@@ -88,25 +88,25 @@ A questão 1715 gerou dúvidas sobre a multiplicação dos elementos das linhas 
 
 Por fim, a questão 2465 também gerou dúvidas em relação ao uso do comando while True para verificar os vizinhos da matriz. A principal dificuldade foi evitar que o robô retornasse à posição anterior após avançar para um vizinho com valor '1', sendo sugerido que a posição fosse marcada como zero antes de seguir para o próximo vizinho. As orientações permitiram que os alunos avançassem na resolução do problema, superando as dificuldades iniciais.
 
-\subsection{\textbf{Tecnologias Usadas}}
+\subsection{Tecnologias Usadas}
 
-\subsubsection{\textbf{\textit{Prolog e SWI-Prolog}}}
+\subsubsection{Prolog e SWI-Prolog}
 
 Para o desenvolvimento do backend da aplicação, utilizou-se a linguagem Prolog, com o auxílio da implementação SWI-Prolog. O SWI-Prolog é uma versão amplamente utilizada do Prolog, que inclui uma série de bibliotecas essenciais para a manipulação de requisições HTTP e dados JSON, como http/thread\_httpd, http/http\_dispatch, http/json, http/http\_session, entre outras. Essas bibliotecas permitem a configuração de um servidor HTTP para o processamento de requisições web e a manipulação de dados JSON. Além disso, elas possibilitam o gerenciamento de sessões, o que viabiliza a integração com aplicações externas e permite o uso simultâneo da aplicação por diferentes usuários \cite{swiprologhttp}.
 
-\subsubsection{\textbf{\textit{API REST}}}
+\subsubsection{API REST}
 
 O servidor definiu os endpoints HTTP (/server e /diagnosis) para o recebimento de requisições POST e GET, permitindo a interação com o backend por meio de uma arquitetura baseada em REST. 
 
 O termo REST (Representational State Transfer) é um estilo de comunicação baseado em padrões e protocolos da web, como HTTP, que permite a troca de dados entre sistemas de forma escalável e eficiente. Nesse modelo, as requisições são realizadas utilizando os métodos HTTP padrão (como GET, POST, PUT e DELETE), facilitando a comunicação entre sistemas de maneira eficiente e escalável \cite{whatisrest}.
 
-\subsubsection{\textbf{\textit{JSON}}}
+\subsubsection{JSON}
 
 JSON (JavaScript Object Notation) é um formato leve e baseado em texto para intercâmbio de dados, independente de linguagem de programação. Derivado do padrão ECMAScript, o JSON define um conjunto simples de regras de formatação para a representação portátil de dados estruturados. Ele busca remover inconsistências com outras especificações e oferece orientações para melhorar a interoperabilidade entre sistemas \cite{whatisjson}.
 
 A biblioteca http/http\_json do SWI-Prolog é utilizada para formatar as respostas no formato JSON, possibilitando que o backend envie dados estruturados para o frontend em um formato amplamente compatível com diversos frameworks web, incluindo o React. Essa abordagem facilita a troca de informações entre o servidor e a interface do usuário, garantindo a interoperabilidade e a eficiência na comunicação entre as camadas da aplicação.
 
-\subsubsection{\textbf{\textit{HTTP e CORS}}}
+\subsubsection{HTTP e CORS}
 
 CORS (Cross-Origin Resource Sharing) é um mecanismo que permite que requisições do lado do cliente acessem recursos de origens diferentes. Ele define algoritmos que possibilitam que uma API faça requisições a recursos de outra origem, controlando o acesso por meio de cabeçalhos de resposta, como o \textit{Access-Control-Allow-Origin} \cite{whatiscors}.
 
@@ -114,13 +114,13 @@ HTTP (Hypertext Transfer Protocol) é um protocolo de aplicação para sistemas 
 
 As bibliotecas http/thread\_httpd, http/http\_dispatch e http/http\_cors, do SWI-Prolog, configuram um servidor HTTP básico, sendo responsáveis pelo tratamento de requisições e respostas. Elas também gerenciam as permissões de CORS, permitindo que o frontend (React) acesse o backend Prolog, mesmo quando este está hospedado em uma origem diferente.
 
-\subsubsection{\textbf{\textit{Sessões HTTP}}}
+\subsubsection{Sessões HTTP}
 
 Uma sessão HTTP é mantida por meio do uso de cookies, que são pequenos arquivos de dados armazenados nos agentes de usuário (como navegadores) pelos servidores HTTP. Os cabeçalhos Cookie e Set-Cookie permitem que os servidores mantenham o estado de uma sessão, mesmo em um protocolo essencialmente sem estado como o HTTP. Isso significa que, através das sessões, os servidores podem armazenar informações sobre o usuário, como preferências ou dados de autenticação, e usá-las em requisições subsequentes, garantindo uma experiência contínua. Embora os cookies tenham questões históricas relacionadas à segurança e privacidade, os cabeçalhos Cookie e Set-Cookie são amplamente utilizados para gerenciar sessões de usuário, permitindo, por exemplo, o login persistente em sites ou a manutenção de um carrinho de compras em uma loja online \cite{whatissession}.
 
 A biblioteca http/http\_session do SWI-Prolog possibilita o gerenciamento de sessões de usuário, permitindo o armazenamento de variáveis de sessão, como questionNumber e answers. Esse recurso viabiliza a persistência de informações entre requisições subsequentes de um mesmo usuário, assegurando a continuidade do estado da aplicação ao longo da interação.
 
-\subsubsection{\textbf{\textit{React e Typescript (Frontend)}}}
+\subsubsection{React e Typescript (Frontend)}
 
 O frontend foi feito em React\footnote{\url{https://react.dev/}} e Typescript\footnote{\url{https://www.typescriptlang.org/}}, interagindo com o backend por meio de requisições HTTP, acessando endpoints para enviar as respostas do usuário e buscar o resultado final da questão.
 
@@ -128,7 +128,7 @@ React é uma biblioteca para a construção de interfaces de usuário, tanto par
 
 TypeScript é uma linguagem de programação que é um superconjunto do JavaScript, adicionando tipagem estática. Isso permite que os desenvolvedores definam tipos para variáveis e funções, ajudando a identificar erros antes da execução do código. TypeScript melhora a manutenção e segurança do código, especialmente em projetos grandes, e é amplamente utilizado com frameworks como React para criar aplicações mais escaláveis e robustas.
 
-\section{ARQUITETURA DE SOFTWARE}
+\section{Arquitetura de Software}
 
 A aplicação propõe uma interação dinâmica em que o usuário, ao informar o número da questão sobre a qual deseja obter orientações, inicia um diálogo com o sistema de chat. O chat responde com perguntas específicas para compreender melhor as necessidades do usuário, permitindo direcionar as orientações de forma mais precisa. Conforme o usuário responde com "sim" ou "não" a cada pergunta, o sistema adapta as próximas questões e sugestões, guiando-o progressivamente até fornecer uma orientação final ajustada ao contexto das respostas acumuladas.
 
@@ -142,7 +142,7 @@ A Figura 27 apresenta o diagrama de atividades que detalha o fluxo de interaçã
         \fonte{Produzido pela autora.}
 \end{figure}
 
-A Figura 28 representa a estrutura da aplicação, mostrando a interação entre o frontend e o backend através de requisições. No frontend, o arquivo ActionProvider gerencia as mensagens enviadas pelo usuário no chat, processando tanto o número da questão informada (Imagem 29) quanto as respostas de "sim" ou "não" (Imagem 30). Por meio dessas requisições, o frontend envia esses dados ao backend, que, em resposta, fornece perguntas e dicas relacionadas à questão solicitada. Caso o usuário peça uma nova dica e o backend não tenha mais sugestões para aquela questão, ele notifica o frontend. Em resposta, o frontend faz uma nova requisição ao backend para obter a orientação final da questão, que é então apresentada ao usuário.
+A Figura 28 representa a estrutura da aplicação, mostrando a interação entre o frontend e o backend através de requisições. No frontend, o arquivo \textit{ActionProvider.tsx} gerencia as mensagens enviadas pelo usuário no chat, processando tanto o número da questão informada, quanto as respostas de "sim" ou "não". Por meio dessas requisições, o \textit{frontend} envia esses dados ao \textit{backend}, que, em resposta, fornece perguntas e dicas relacionadas à questão solicitada. Caso o usuário peça uma nova dica e o \textit{backend} não tenha mais sugestões para aquela questão, ele envia a orientação final da questão, que é então apresentada ao usuário.
 
 \begin{figure}[h!]
     \centering
@@ -152,7 +152,31 @@ A Figura 28 representa a estrutura da aplicação, mostrando a interação entre
         \fonte{Produzido pela autora.}
 \end{figure}
 
-\begin{lstlisting}
+
+\subsection{Comunicação Frontend-Backend}
+
+O Código 1 representa como o arquivo \textit{ActionProvider.tsx} informa para o backend o número da questão. Ele define duas funções assíncronas: \texttt{fetchData} e \texttt{handleFirstMessage}, usadas para interagir com um \textit{backend} via requisições HTTP. A função \texttt{fetchData} recebe uma URL e um corpo de dados (\texttt{URLSearchParams}) para fazer uma requisição \texttt{POST}. Ela define cabeçalhos para enviar os dados como \texttt{application/x-www-form-urlencoded}, garantindo que o backend receba os dados em um formato compatível e de fácil manipulação, especialmente em linguagens que interpretam parâmetros de URL de forma nativa. Além disso, a função inclui cookies nas requisições com \texttt{credentials: 'include'} para permitir que a sessão seja mantida entre as requisições, o que é crucial para a continuidade da comunicação com o backend. Caso a resposta não tenha o status 200, a função trata o erro, retornando uma mensagem de erro em vez do JSON da resposta. 
+
+A função \texttt{handleFirstMessage} constrói um corpo de dados contendo \texttt{questionNumber} e chama \texttt{fetchData} para enviar esses dados ao \textit{backend} no endpoint \texttt{"http://localhost:6358/server"}. Em seguida, cria uma estrutura de mensagens adicionais vazia e invoca \texttt{handleMessageResponse} para manipular a resposta, preenchendo essa estrutura conforme a resposta recebida.
+
+\begin{lstlisting}[style=ufscthesisx_style, caption={Funções assíncronas para requisição HTTP}]
+    const fetchData = async (url: string, body: URLSearchParams) => {
+        try {
+            const response = await fetch(url, {
+            method: "POST",
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+            credentials: 'include',
+            body,
+            });
+    
+            if (response.status !== 200) throw new Error("Erro ao consultar o backend.");
+    
+            return await response.json();
+        } catch (error) {
+            return { error: "Erro ao consultar o backend." };
+        }
+    };
+
 const handleFirstMessage = async (questionNumber?: string) => {
     const body = new URLSearchParams({ questionNumber: questionNumber?.toString() || '' });
     const data = await fetchData("http://localhost:6358/server", body);
@@ -168,118 +192,210 @@ const handleFirstMessage = async (questionNumber?: string) => {
         }[];
     }[] = [];
 
-    await handleMessageResponse(data, additionalMessages);    
+    await handleMessageResponse(data, additionalMessages);
+};
+\end{lstlisting}
+
+\subsection{Elementos do Backend}
+
+Pela Figura 28 também observa-se que o \textit{backend} é composto pelo arquivo principal \textit{server.pl} e por arquivos específicos para cada questão, nomeados no formato \textit{questao\_\{numeroDaQuestao\}.pl}, onde cada um contém dicas voltadas para uma questão particular. Por exemplo, o arquivo \textit{questao\_1234.pl} armazena as orientações para a questão 1234 do Beecrowd.
+
+\subsubsection{Arquivos no formato questao\_\{numeroDaQuestao\}.pl}
+
+O Código 2 apresenta o arquivo \textit{questao\_1181.pl} como um exemplo de estrutura para arquivos do tipo \textit{questao\_\{numeroDaQuestao\}.pl}.
+
+\begin{lstlisting}[style=ufscthesisx_style, caption={Arquivo \textit{questao\_1181.pl}}]
+    :- module(questao_1181, [questao/3, diagnostico/3]).
     
-    setState((prev: {
-        messages: {
-        message: string;
-        type: string;
-        id: number;
-        loading?: boolean;
-        widget?: string | undefined;
-        delay?: number | undefined;
-        payload?: any;
-        }[];
-    }) => ({
-        ...prev,
-        messages: [...prev.messages, ...additionalMessages],
-    }));
-};
-\end{lstlisting}
-
-\begin{lstlisting}
-const handleFirstMessage = async (questionNumber?: string) => {
-    const body = new URLSearchParams({ questionNumber: questionNumber?.toString() || '' });
-    const data = await fetchData("http://localhost:6358/server", body);
-    let additionalMessages: {
-        messages: {
-        message: string;
-        type: string;
-        id: number;
-        loading?: boolean;
-        widget?: string | undefined;
-        delay?: number | undefined;
-        payload?: any;
-        }[];
-    }[] = [];
-
-    await handleMessageResponse(data, additionalMessages);    
+    % Predicado para fornecer perguntas com base na sequência de respostas
+    questao(1181, [], "Você já desenvolveu sua solução, mas não está saíndo a resposta correta?").
+    questao(1181, ["sim"], "Tome cuidado que a questão quer todos os elementos da linha, e não da coluna! Verifique \ccomo você está iterando sobre a matriz: se está pegando todos os elementos de uma linha \c ou todos os elementos de uma coluna. Mais uma dica sobre isso?").
+    questao(1181, ["sim", "sim"], "Se sua matriz é feita de forma que é iterada assim: matriz[linha][coluna], verifique \cse o 'for' está correto. Quer saber como o for fica?").
+    questao(1181, ["sim", "sim", "sim"], "considerando que l é a entrada do usuário que indica a linha que será a \cconsiderada para operação: \nfor i in range(0, 12): soma += matriz[l][i]. \n\cPróxima dica?").
+    questao(1181, ["sim", "sim", "sim", "sim"], "Verifique se o número pelo qual você está tentando dividir para \cpara conseguir a média está correto. Próxima pergunta?").
     
-    setState((prev: {
-        messages: {
-        message: string;
-        type: string;
-        id: number;
-        loading?: boolean;
-        widget?: string | undefined;
-        delay?: number | undefined;
-        payload?: any;
-        }[];
-    }) => ({
-        ...prev,
-        messages: [...prev.messages, ...additionalMessages],
-    }));
-};
+    
+    questao(1181, Respostas, "Deu Presentation Error?") :-
+        Respostas = ["não"];
+        Respostas = ["sim", "não"];
+        Respostas = ["sim", "sim", "não"];
+        Respostas = ["sim", "sim", "sim", "não"];
+        Respostas = ["sim", "sim", "sim", "sim", "sim"].
+    
+    questao(1181, Respostas, "Perceba que a formatação que a questão pede é: Imprima o resultado solicitado \c(a soma ou média), com 1 casa após o ponto decimal. Ou seja, '%.1f'. Deu certo?") :-
+        Respostas = ["não", "sim"];
+        Respostas = ["sim", "não", "sim"];
+        Respostas = ["sim", "sim", "não", "sim"];
+        Respostas = ["sim", "sim", "sim", "não", "sim"];
+        Respostas = ["sim", "sim", "sim", "sim", "sim", "sim"].
+    
+    
+    % Diagnóstico com base nas respostas completas
+    diagnostico(1181, Respostas, "Legal! Parabéns!") :-
+        Respostas = ["não", "sim", "sim"];
+        Respostas = ["sim", "não", "sim", "sim"];
+        Respostas = ["sim", "sim", "não", "sim", "sim"];
+        Respostas = ["sim", "sim", "sim", "não", "sim", "sim"];
+        Respostas = ["sim", "sim", "sim", "sim", "não", "sim", "sim"].
+    
+    diagnostico(1181, _, "Atente-se bem às dicas já enviadas ou pergunte novamente! Além disso, você pode \cusar o udebug para verificar a diferença entre as saídas do seu código, e as \csaídas esperadas pela questão! Também é uma boa ideia debugar seu código no Thonny, \crevisando linha por linha, ou usando prints para entender o que ele está executando!").
+\end{lstlisting}    
+
+Esse arquivo Prolog define um módulo especializado para auxiliar usuários na resolução da questão 1181 por meio de um sistema especialista baseado em regras. O módulo \textit{questao\_1181} implementa dois predicados principais: \textit{questao/3} e \textit{diagnostico/3}, que são responsáveis por operacionalizar a lógica de suporte do sistema.
+
+\begin{itemize}
+    \item \textbf{Predicado \textit{questao/3}:} Este predicado orienta o usuário de maneira sequencial, adaptando as instruções com base nas respostas fornecidas. Ele recebe três parâmetros: o identificador da questão, uma lista de respostas (que mantém o histórico de interações), e uma mensagem de orientação. A matriz de decisões, implementada neste predicado, direciona o fluxo de perguntas e respostas com base no histórico de interações do usuário, promovendo uma progressão lógica que facilita a resolução da questão. Essa matriz está estruturada de forma que cada combinação de respostas leva a uma nova instrução, que oferece dicas cada vez mais específicas até que o usuário obtenha a solução correta.
+
+    A tabela 2 apresenta a matriz de decisões para o predicado \textit{questao/3}, em formato de tabela, representando as combinações de respostas possíveis e as respectivas instruções emitidas:
+
+    \begin{longtable}{|c|p{5cm}|p{8cm}|}
+        \caption{Matriz de Decisões para o Predicado \textit{questao/3} na Questão 1181} \\
+        \hline
+        \textbf{Questão} & \textbf{Respostas} & \textbf{Instrução} \\
+        \hline
+        \endfirsthead
+        \multicolumn{3}{|c|}{\textbf{Continuação da Tabela}} \\
+        \hline
+        \textbf{Questão} & \textbf{Respostas} & \textbf{Instrução} \\
+        \hline
+        \endhead
+        \hline
+        \endfoot
+        \hline
+        \endlastfoot
+        
+        1181 & [] & Você já desenvolveu sua solução, mas não está saindo a resposta correta? \\
+        \hline
+        1181 & [sim] & Tome cuidado que a questão quer todos os elementos da linha, e não da coluna! Verifique como você está iterando sobre a matriz: se está pegando todos os elementos de uma linha ou todos os elementos de uma coluna. Mais uma dica sobre isso? \\
+        \hline
+        1181 & [sim, sim] & Se sua matriz é feita de forma que é iterada assim: matriz[linha][coluna], verifique se o 'for' está correto. Quer saber como o for fica? \\
+        \hline
+        1181 & [sim, sim, sim] & Considerando que l é a entrada do usuário que indica a linha que será considerada para operação: \texttt{for i in range(0, 12): soma += matriz[l][i]} \newline Próxima dica? \\
+        \hline
+        1181 & [sim, sim, sim, sim] & Verifique se o número pelo qual você está tentando dividir para calcular a média está correto. Próxima pergunta? \\
+        \hline
+        1181 & [não], [sim, não], [sim, sim, não], [sim, sim, sim, não], [sim, sim, sim, sim, sim] & Deu Presentation Error? \\
+        \hline
+        1181 & [não, sim], [sim, não, sim], [sim, sim, não, sim], [sim, sim, sim, não, sim], [sim, sim, sim, sim, sim, sim] & Perceba que a formatação que a questão pede é: Imprima o resultado solicitado (a soma ou média), com 1 casa após o ponto decimal. Ou seja, \%.1f. Deu certo? \\
+      \end{longtable}
+    
+    \item \textbf{Predicado \textit{diagnostico/3}:} Este predicado fornece um diagnóstico final com base nas respostas acumuladas ao longo da interação. Atuando como feedback conclusivo, ele emite uma mensagem de sucesso caso as respostas indiquem que o usuário compreendeu e solucionou a questão. Caso contrário, sugere ferramentas como o \textit{udebug} e o depurador \textit{Thonny}, de modo que o usuário possa inspecionar o comportamento do seu código em detalhes.
+\end{itemize}
+
+Dessa forma, arquivos do formato \textit{questao\_\{numeroDaQuestao\}.pl} devem seguir essa estrutura, onde cada questão contém um predicado \textit{questao/3} para fornecer orientações sequenciais e um predicado \textit{diagnostico/3} para avaliação final. A matriz de decisões implementada no predicado \textit{questao/3} permite um processo dinâmico e adaptativo de interação, guiando o usuário de forma direcionada e progressiva na resolução da questão específica.
+
+\subsubsection{Arquivo server.pl}
+
+\subsubsubsection{Configurando servidor HTTP}
+
+O arquivo \textit{server.pl} configura e inicializa um servidor HTTP, definindo rotas para processar requisições e habilitando o CORS, permitindo conexões da porta do \textit{frontend}. Ele recebe requisições \textit{POST} para iniciar ou continuar uma questão, associando cada sessão ao usuário correspondente, e também aceita requisições \textit{GET} para fornecer o diagnóstico final com base nas respostas acumuladas durante a interação.
+
+O Código 3 exemplifica a configuração de um servidor HTTP em Prolog utilizando o módulo \texttt{http\_dispatch}, no qual as rotas são definidas por meio de \texttt{http\_handler} para manipular requisições \textit{GET}, \textit{POST} e \textit{OPTIONS}. Especificamente, a requisição \textit{POST} é tratada pela rota \texttt{server}, sendo manipulada pela função \texttt{handle\_post\_request}.
+
+\begin{lstlisting}[style=ufscthesisx_style, caption={Arquivo \textit{server.pl} - \textit{Handlers} e Manipuladores de requisições}]
+% Define o handler para receber as requisições HTTP POST
+:- http_handler(root(server), handle_post_request, [method(post)]).
+:- http_handler(root(.), handle_options, [method(options)]).
+
+% Manipulador de requisições POST
+handle_post_request(Request) :-
+    member(method(post), Request), !,
+    
+    % Garante que a sessão está ativa para o cliente
+    http_session_id(_SessionID),
+
+    % Lê os dados da requisição
+    http_read_data(Request, Data, [encoding(utf8)]),
+
+    % Definindo os headers para permitir CORS
+    format('Access-Control-Allow-Origin: http://localhost:5173~n'),
+    format('Access-Control-Allow-Credentials: true~n'),
+    format('Content-Type: application/json; charset=UTF-8'),
+    cors_enable(Request, [methods([post])]),
+
+    (   % Caso seja a primeira requisição da questão
+        member(questionNumber=QN, Data) 
+    ->  % Inicializa a sessão e a questão
+        http_session_retractall(questionNumber(_)),
+        http_session_retractall(answers("Answers", _)),
+        http_session_assert(answers("Answers", [])),
+        
+        http_session_assert(questionNumber(QN)),
+        start_question(QN, FirstQuestion),
+
+        reply_json_dict(FirstQuestion)
+
+    ;   % Caso receba respostas subsequentes
+        member(answer=Answer, Data),
+        
+        % Garante que a sessão tenha a variável questionNumber
+        ( http_session_data(questionNumber(QN)) ->
+            continue_question(QN, Answer, NextQuestionOrResult),
+            reply_json_dict(NextQuestionOrResult)
+        ;   % Erro caso a sessão não tenha um questionNumber
+            reply_json_dict(_{error: "Número da questão não encontrado na sessão"})
+        )
+    ).
+\end{lstlisting}    
+
+O \textbf{manipulador de requisições POST} (\texttt{handle\_post\_request}) tem como função processar requisições \textit{POST} enviadas ao servidor, gerenciando o fluxo de perguntas e respostas entre o cliente e o servidor. Inicialmente, ele habilita o CORS, permitindo requisições provenientes do frontend no endereço \texttt{http://localhost:5173}, além de configurar os cabeçalhos necessários para o envio de credenciais, como cookies de sessão. A função verifica se a sessão está ativa, garantindo a associação com um ID de sessão único.
+
+Dependendo do tipo de requisição, a função processa a primeira pergunta ou continua a sequência de perguntas baseadas nas respostas anteriores. Se for a primeira requisição, o número da questão é extraído, e a sessão é inicializada com os dados necessários. Além disso, o arquivo correspondente à questão é carregado dinamicamente. 
+
+Caso seja uma resposta subsequente, a função valida a presença do número da questão na sessão, atualiza as respostas e retorna a próxima pergunta ou o resultado final. Se os dados da sessão estiverem faltando, um erro é enviado indicando que o número da questão não foi encontrado.
+
+\subsubsubsection{Carregando os arquivos das questões}
+
+Os arquivos de questões são carregados dinamicamente no \textit{server.pl} com base no número da questão recebido nas requisições \textit{POST}. Se o usuário alterna para uma nova questão, por exemplo, a questão Y, o \textit{backend} carrega o arquivo \textit{questao\_Y.pl} e passa a conduzir a interação de acordo com suas informações. 
+
+No Código 4, é mostrado o trecho do \texttt{server.pl} que realiza esse carregamento dinâmico. O predicado \texttt{start\_question/2} tem como objetivo inicializar uma nova questão dentro de um sistema interativo, baseado no número da questão fornecido. O primeiro passo do código é construir o caminho para o arquivo que contém a definição da questão, concatenando o prefixo \texttt{questao\_} com o número da questão \texttt{(QuestionNumber)} e adicionando a extensão \texttt{.pl} para formar o nome completo do arquivo. Isso é realizado através do predicado \texttt{atom\_concat\/3}, que concatena átomos (strings) para formar o caminho completo do arquivo a ser carregado.
+
+\begin{lstlisting}[style=ufscthesisx_style, caption={Arquivo \textit{server.pl} - \textit{Handlers} e Manipuladores de requisições}]
+start_question(QuestionNumber, FirstQuestion) :-
+    atom_concat('questao_', QuestionNumber, FileName),
+    atom_concat(FileName, '.pl', FilePath),
+
+    % Verifica se o arquivo existe antes de tentar carregá-lo
+    (   exists_file(FilePath)
+    ->  % Carrega dinamicamente o arquivo da questão
+        abolish(questao/3),
+        abolish(diagnostico/3),
+
+        ensure_loaded(FilePath)
+    ).
 \end{lstlisting}
 
+Depois, o código verifica se o arquivo gerado existe no sistema de arquivos utilizando o predicado \texttt{exists\_file\/1}. Caso o arquivo exista, o sistema prossegue para carregá-lo dinamicamente com o predicado \texttt{ensure\_loaded\/1}. Antes de carregar o arquivo, o predicado \texttt{abolish\/1} é utilizado para garantir que qualquer definição anterior dos predicados \texttt{questao\/3} e \texttt{diagnostico\/3} seja removida da memória, evitando conflitos ou sobrecarga de definições antigas.
 
-\begin{lstlisting}
-const handleMessageResponse = async (data: any, additionalMessages: any[]) => {
-    const { question, result, error } = data;
+\subsubsubsection{Recebe respostas}
 
-    if (error) {
-        additionalMessages.push(createChatBotMessage(error, {}));
-    } else if (question) {
-        /* Exemplo de atualização do messages-slice, caso precise no futuro
-        dispatch(addQuestion(question));
-        setTimeout(() => dispatch(startCount(question.length)), 5000);
-        */
+O arquivo \textit{server.pl} também armazena na sessão do usuário as informações fornecidas, como número da questão e respostas, para garantir a continuidade da interação. O Código 5 apresenta a função \textbf{continue\_question}, responsável por processar respostas subsequentes enviadas pelo usuário para uma questão em andamento, armazenando a resposta na sessão e determinando o próximo passo com base nas respostas acumuladas. Inicialmente, a função adiciona a nova resposta à lista de respostas da sessão, atualizando a variável de sessão \texttt{answers("Answers")}. Em seguida, tenta gerar a próxima pergunta por meio da chamada ao predicado \texttt{questao/3}. Se \texttt{questao/3} retornar uma nova pergunta (\texttt{NextQuestion}), esta é enviada ao cliente para dar continuidade à interação. Caso contrário, a função verifica se uma resposta final pode ser gerada utilizando o predicado \texttt{diagnostico/3}. O resultado final, seja uma nova pergunta ou uma conclusão, é então enviado ao cliente no formato JSON, permitindo que a interação prossiga ou seja concluída de acordo com o progresso da sessão.
 
-        const lines = question.split('\n');
-        lines.forEach((line: string, index: number) => {
-            if (line.trim() !== "") {
-                const isLastLine = index === lines.length - 1;
-                const message = isLastLine
-                    ? createChatBotMessage(line, { widget: "yesNo" })
-                    : createChatBotMessage(line, {});
+\begin{lstlisting}[style=ufscthesisx_style, caption={Arquivo \textit{server.pl} - \textit{Handlers} e Manipuladores de requisições}]
+continue_question(QuestionNumber, Answer, Response) :-
+    (   string(Answer) -> AW = Answer
+    ;   atom(Answer) -> atom_string(Answer, AW)
+    ;   term_string(Answer, AW)
+    ),
+    atom_number(QuestionNumber, QN), 
 
-                additionalMessages.push(message);
-            }
-        });
+    % Salva a resposta na sessão
+    http_session_data(answers("Answers", AnswerList)),
+    append(AnswerList, [AW], UpdatedAnswers),
+    http_session_retractall(answers("Answers", _)),
+    http_session_assert(answers("Answers", UpdatedAnswers)),
 
-    } else if (result || error) {
-        additionalMessages.push(createChatBotMessage(error || result || "Mensagem inválida recebida.", {}));
-        const diagnosis = await handleEnd();
-        if (diagnosis) additionalMessages.push(createChatBotMessage(diagnosis, {}));
-        additionalMessages.push(createChatBotMessage("Gostaria de tirar dúvidas novamente?", { widget: "exerciseDropdown" }));
-    }
-};
+    % Chama a questão correspondente com a lista atualizada de respostas
+    (   questao(QN, UpdatedAnswers, NextQuestion)
+    ->  Response = _{question: NextQuestion}
+    ;   (   diagnostico(QN, UpdatedAnswers, Result)
+        ->  true
+        ;   Result = "Sem conclusão final."
+        ),
+        Response = _{result: Result}
+    ).
+
 \end{lstlisting}
-
-
-\begin{lstlisting}
-const fetchData = async (url: string, body: URLSearchParams) => {
-    try {
-        const response = await fetch(url, {
-        method: "POST",
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-        credentials: 'include',
-        body,
-        });
-
-        if (response.status !== 200) throw new Error("Erro ao consultar o backend.");
-
-        return await response.json();
-    } catch (error) {
-        return { error: "Erro ao consultar o backend." };
-    }
-};
-\end{lstlisting}
-
-
-Também observa-se que o \textit{backend} é composto pelo arquivo principal \textit{server.pl} e por arquivos de questões nomeados no formato \textit{questao\_\{numeroDaQuestão\}.pl}, contendo as dicas para cada questão específica. Por exemplo, o arquivo \textit{questao\_1234.pl} armazena as dicas da questão 1234 do Beecrowd. O \textit{server.pl} inicia um servidor HTTP, configurando rotas para processar requisições e habilitando CORS para aceitar conexões da porta do \textit{frontend}. Ele recebe requisições \textit{POST} para iniciar ou continuar uma questão, associando cada sessão ao usuário que fez a requisição, além de aceitar requisições \textit{GET} para obter o diagnóstico final com base nas respostas acumuladas.
-
-Os arquivos de questões são carregados dinamicamente no \textit{server.pl} com base no número da questão recebido nas requisições \textit{POST}, e as informações fornecidas pelo usuário — como número da questão e respostas — são armazenadas na sessão do usuário para garantir a continuidade da interação. Se o usuário alterna para uma nova questão, por exemplo, a questão Y, o \textit{backend} carrega o arquivo \textit{questao\_Y.pl} e passa a conduzir a interação de acordo com suas informações. No final do processo, ao esgotarem-se as perguntas para o usuário, o \textit{backend} notifica o \textit{frontend}, que solicita então o resultado final, completando a interação com a entrega da orientação ao usuário.
 
 \section{REQUISITOS DA APLICAÇÃO}
 

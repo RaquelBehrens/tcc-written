@@ -1077,23 +1077,6 @@
 \usepackage{multirow}
 \usepackage{listings}
 
-\lstset{frame=tb,
-  language=Prolog,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
-}
-
 % Para incluir links
 \usepackage{url}
 

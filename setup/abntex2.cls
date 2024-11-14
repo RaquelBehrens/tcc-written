@@ -58,16 +58,19 @@
 \newboolean{ABNTEXuppersubsection}  %true=titles of subsections in uppercase
 \newboolean{ABNTEXuppersubsubsection}  %true=titles of subsubsections in uppercase
 \newboolean{ABNTEXuppersubsubsubsection}  %true=titles of subsubsubsections in uppercase
+\newboolean{ABNTEXuppersubsubsubsubsection}  %true=titles of subsubsubsections in uppercase
 \setboolean{ABNTEXupperchapter}{false}
 \setboolean{ABNTEXuppersection}{false}
 \setboolean{ABNTEXuppersubsection}{false}
 \setboolean{ABNTEXuppersubsubsection}{false}
 \setboolean{ABNTEXuppersubsubsubsection}{false}
+\setboolean{ABNTEXuppersubsubsubsubsection}{false}
 \DeclareOption{chapter=TITLE}{\setboolean{ABNTEXupperchapter}{true}}
 \DeclareOption{section=TITLE}{\setboolean{ABNTEXuppersection}{true}}
 \DeclareOption{subsection=TITLE}{\setboolean{ABNTEXuppersubsection}{true}}
 \DeclareOption{subsubsection=TITLE}{\setboolean{ABNTEXuppersubsubsection}{true}}
 \DeclareOption{subsubsubsection=TITLE}{\setboolean{ABNTEXuppersubsubsubsection}{true}}
+\DeclareOption{subsubsubsubsection=TITLE}{\setboolean{ABNTEXuppersubsubsubsubsection}{true}}
 %
 % Opções de diagramação de sumários
 % sumario=tradicional    : Sumário tradicional do LaTeX/Memoir
@@ -119,6 +122,7 @@
 \newcommand{\ABNTEXsubsectionupperifneeded}{\ifthenelse{\boolean{ABNTEXuppersubsection}}{\MakeTextUppercase}{}}
 \newcommand{\ABNTEXsubsubsectionupperifneeded}{\ifthenelse{\boolean{ABNTEXuppersubsubsection}}{\MakeTextUppercase}{}}
 \newcommand{\ABNTEXsubsubsubsectionupperifneeded}{\ifthenelse{\boolean{ABNTEXuppersubsubsubsection}}{\MakeTextUppercase}{}}
+\newcommand{\ABNTEXsubsubsubsubsectionupperifneeded}{\ifthenelse{\boolean{ABNTEXuppersubsubsubsubsection}}{\MakeTextUppercase}{}}
 % ---
 
 % ------------------------------------------------------------------------
@@ -260,6 +264,7 @@
   \renewcommand{\subsectionautorefname}{subsection}
   \renewcommand{\subsubsectionautorefname}{subsubsection}
   \renewcommand{\paragraphautorefname}{subsubsubsection}
+  \renewcommand{\subsubsubsubsectionautorefname}{subsubsubsubsection}
 }
 % ---
 
@@ -318,6 +323,9 @@
 
 \newcommand{\ABNTEXsubsubsubsectionfont}{\ABNTEXsubsectionfont}
 \newcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
+
+\newcommand{\ABNTEXsubsubsubsubsectionfont}{\ABNTEXsubsectionfont}
+\newcommand{\ABNTEXsubsubsubsubsectionfontsize}{\normalsize}
 % ---
 
 % ------------------------------------------------------------------------
@@ -628,6 +636,7 @@
   \setsubsecheadstyle{\ABNTEXsubsectionfont\ABNTEXsubsectionfontsize\ABNTEXsubsectionupperifneeded}
   \setsubsubsecheadstyle{\ABNTEXsubsubsectionfont\ABNTEXsubsubsectionfontsize\ABNTEXsubsubsectionupperifneeded}
   \setsubsubsubsecheadstyle{\ABNTEXsubsubsubsectionfont\ABNTEXsubsubsubsectionfontsize\ABNTEXsubsubsubsectionupperifneeded}
+  \setsubsubsubsubsecheadstyle{\ABNTEXsubsubsubsubsectionfont\ABNTEXsubsubsubsubsectionfontsize\ABNTEXsubsubsubsubsectionupperifneeded}
 
   % impressao do numero do capitulo
   \renewcommand{\chapternamenum}{}
