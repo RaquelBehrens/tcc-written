@@ -518,5 +518,7 @@ continue_question(QuestionNumber, Answer, Response) :-
 
 Em seguida, tenta gerar a próxima pergunta por meio da chamada ao predicado \texttt{questao/3}. Se \texttt{questao/3} retornar uma nova pergunta (\texttt{NextQuestion}), esta é enviada ao cliente para dar continuidade à interação. Caso contrário, a função verifica se uma resposta final pode ser gerada utilizando o predicado \texttt{diagnostico/3}. O resultado final, seja uma nova pergunta ou uma conclusão, é então enviado ao cliente no formato JSON, permitindo que a interação prossiga ou seja concluída de acordo com o progresso da sessão, como consta no Requisito Não Funcional \textbf{RNF6}, descrito na seção \ref{sec:requisitos-aplicacao}.
 
+\subsection{Expert Bee: Sistema Especialista de Apoio à Resolução de Dúvidas nos Exercícios do Beecrowd}
+
 \end{otherlanguage*}
 
