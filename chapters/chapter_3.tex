@@ -62,7 +62,7 @@ O objetivo do sistema especialista é oferecer suporte na resolução de dúvida
 
 Para viabilizar essa funcionalidade, o sistema especialista será estruturado com um conjunto de dados contendo perguntas direcionadas aos alunos e respostas predefinidas que orientam o aluno na resolução das atividades específicas da disciplina. Em disciplinas como Programação Orientada a Objetos I, onde as listas de exercícios frequentemente incluem questões já utilizadas em semestres anteriores, observa-se uma repetição de problemas e, consequentemente, de dúvidas recorrentes dos alunos.
 
-Assim, a primeira etapa deste trabalho consistiu na coleta de dados sobre as questões, visando identificar e catalogar as dúvidas mais comuns.
+A primeira etapa deste trabalho foi dedicada à coleta de dados sobre as questões, com o objetivo de identificar e catalogar as dúvidas mais recorrentes. Na segunda etapa, foram definidos os requisitos funcionais, os requisitos não funcionais e as regras de negócio da aplicação. Em seguida, na terceira etapa, realizou-se uma pesquisa sobre as tecnologias que seriam utilizadas no desenvolvimento. Na quarta etapa, foram elaborados os diagramas que definiram a estrutura e o funcionamento da aplicação. Por fim, a partir da quinta etapa, deu-se início ao desenvolvimento propriamente dito.
 
 \subsection{Coleta de Dados}
 
@@ -87,46 +87,6 @@ A questão 1383, sobre as regras do Sudoku, suscitou dúvidas sobre como validar
 A questão 1715 gerou dúvidas sobre a multiplicação dos elementos das linhas para identificar jogadores que marcaram gols em todas as partidas. Os alunos tiveram dificuldades em entender como aplicar esse método corretamente e como garantir que o contador fosse atualizado. A depuração no udebug e Thonny foi útil para a maioria dos alunos, que ajustaram seus códigos após o feedback.
 
 Por fim, a questão 2465 também gerou dúvidas em relação ao uso do comando while True para verificar os vizinhos da matriz. A principal dificuldade foi evitar que o robô retornasse à posição anterior após avançar para um vizinho com valor '1', sendo sugerido que a posição fosse marcada como zero antes de seguir para o próximo vizinho. As orientações permitiram que os alunos avançassem na resolução do problema, superando as dificuldades iniciais.
-
-\subsection{Tecnologias Usadas}
-
-\subsubsection{Prolog e SWI-Prolog}
-
-Para o desenvolvimento do \textit{backend} da aplicação, utilizou-se a linguagem Prolog, com o auxílio da implementação SWI-Prolog. O SWI-Prolog é uma versão amplamente utilizada do Prolog, que inclui uma série de bibliotecas essenciais para a manipulação de requisições HTTP e dados JSON, como http/thread\_httpd, http/http\_dispatch, http/json, http/http\_session, entre outras. Essas bibliotecas permitem a configuração de um servidor HTTP para o processamento de requisições web e a manipulação de dados JSON. Além disso, elas possibilitam o gerenciamento de sessões, o que viabiliza a integração com aplicações externas e permite o uso simultâneo da aplicação por diferentes usuários \cite{swiprologhttp}.
-
-\subsubsection{API REST}
-
-O servidor definiu os endpoints HTTP (/server e /diagnosis) para o recebimento de requisições POST e GET, permitindo a interação com o \textit{backend} por meio de uma arquitetura baseada em REST. 
-
-O termo REST (Representational State Transfer) é um estilo de comunicação baseado em padrões e protocolos da web, como HTTP, que permite a troca de dados entre sistemas de forma escalável e eficiente. Nesse modelo, as requisições são realizadas utilizando os métodos HTTP padrão (como GET, POST, PUT e DELETE), facilitando a comunicação entre sistemas de maneira eficiente e escalável \cite{whatisrest}.
-
-\subsubsection{JSON}
-
-JSON (JavaScript Object Notation) é um formato leve e baseado em texto para intercâmbio de dados, independente de linguagem de programação. Derivado do padrão ECMAScript, o JSON define um conjunto simples de regras de formatação para a representação portátil de dados estruturados. Ele busca remover inconsistências com outras especificações e oferece orientações para melhorar a interoperabilidade entre sistemas \cite{whatisjson}.
-
-A biblioteca http/http\_json do SWI-Prolog é utilizada para formatar as respostas no formato JSON, possibilitando que o \textit{backend} envie dados estruturados para o \textit{frontend} em um formato amplamente compatível com diversos frameworks web, incluindo o React. Essa abordagem facilita a troca de informações entre o servidor e a interface do usuário, garantindo a interoperabilidade e a eficiência na comunicação entre as camadas da aplicação.
-
-\subsubsection{HTTP e CORS}
-
-CORS (Cross-Origin Resource Sharing) é um mecanismo que permite que requisições do lado do cliente acessem recursos de origens diferentes. Ele define algoritmos que possibilitam que uma API faça requisições a recursos de outra origem, controlando o acesso por meio de cabeçalhos de resposta, como o \textit{Access-Control-Allow-Origin} \cite{whatiscors}.
-
-HTTP (Hypertext Transfer Protocol) é um protocolo de aplicação para sistemas distribuídos e colaborativos de informações hipermídia. É um protocolo genérico e sem estado, utilizado em diversas tarefas além do hipertexto, como servidores de nomes e sistemas de gerenciamento de objetos distribuídos. O HTTP permite a negociação e tipificação da representação dos dados, possibilitando a construção de sistemas independentes dos dados transferidos \cite{whatishttp}.
-
-As bibliotecas http/thread\_httpd, http/http\_dispatch e http/http\_cors, do SWI-Prolog, configuram um servidor HTTP básico, sendo responsáveis pelo tratamento de requisições e respostas. Elas também gerenciam as permissões de CORS, permitindo que o \textit{frontend} (React) acesse o \textit{backend} Prolog, mesmo quando este está hospedado em uma origem diferente.
-
-\subsubsection{Sessões HTTP}
-
-Uma sessão HTTP é mantida por meio do uso de cookies, que são pequenos arquivos de dados armazenados nos agentes de usuário (como navegadores) pelos servidores HTTP. Os cabeçalhos Cookie e Set-Cookie permitem que os servidores mantenham o estado de uma sessão, mesmo em um protocolo essencialmente sem estado como o HTTP. Isso significa que, através das sessões, os servidores podem armazenar informações sobre o usuário, como preferências ou dados de autenticação, e usá-las em requisições subsequentes, garantindo uma experiência contínua. Embora os cookies tenham questões históricas relacionadas à segurança e privacidade, os cabeçalhos Cookie e Set-Cookie são amplamente utilizados para gerenciar sessões de usuário, permitindo, por exemplo, o login persistente em sites ou a manutenção de um carrinho de compras em uma loja online \cite{whatissession}.
-
-A biblioteca http/http\_session do SWI-Prolog possibilita o gerenciamento de sessões de usuário, permitindo o armazenamento de variáveis de sessão, como questionNumber e answers. Esse recurso viabiliza a persistência de informações entre requisições subsequentes de um mesmo usuário, assegurando a continuidade do estado da aplicação ao longo da interação.
-
-\subsubsection{React e Typescript (Frontend)}
-
-O \textit{frontend} foi feito em React\footnote{\url{https://react.dev/}} e Typescript\footnote{\url{https://www.typescriptlang.org/}}, interagindo com o \textit{backend} por meio de requisições HTTP, acessando endpoints para enviar as respostas do usuário e buscar o resultado final da questão.
-
-React é uma biblioteca para a construção de interfaces de usuário, tanto para a web quanto para aplicativos nativos. Ela permite criar interfaces a partir de unidades individuais chamadas componentes, que podem ser reutilizados e combinados para formar interfaces complexas e interativas. Cada componente em React gerencia seu próprio estado e pode ser renderizado de forma eficiente conforme as mudanças nos dados, facilitando o desenvolvimento de aplicações dinâmicas e de fácil manutenção. React pode ser utilizado com outras linguagens que compilam para JavaScript\footnote{\url{https://www.javascript.com/}}, como TypeScript.
-
-TypeScript é uma linguagem de programação que é um superconjunto do JavaScript, adicionando tipagem estática. Isso permite que os desenvolvedores definam tipos para variáveis e funções, ajudando a identificar erros antes da execução do código. TypeScript melhora a manutenção e segurança do código, especialmente em projetos grandes, e é amplamente utilizado com frameworks como React para criar aplicações mais escaláveis e robustas.
 
 \subsection{Requisitos da Aplicação}
 \label{sec:requisitos-aplicacao}
@@ -191,6 +151,46 @@ Esta seção descreve os requisitos essenciais para o desenvolvimento da aplica�
     \end{itemize}
 \end{enumerate}
 
+\subsection{Tecnologias Usadas}
+
+\subsubsection{Prolog e SWI-Prolog}
+
+Para o desenvolvimento do \textit{backend} da aplicação, utilizou-se a linguagem Prolog, com o auxílio da implementação SWI-Prolog. O SWI-Prolog é uma versão amplamente utilizada do Prolog, que inclui uma série de bibliotecas essenciais para a manipulação de requisições HTTP e dados JSON, como http/thread\_httpd, http/http\_dispatch, http/json, http/http\_session, entre outras. Essas bibliotecas permitem a configuração de um servidor HTTP para o processamento de requisições web e a manipulação de dados JSON. Além disso, elas possibilitam o gerenciamento de sessões, o que viabiliza a integração com aplicações externas e permite o uso simultâneo da aplicação por diferentes usuários \cite{swiprologhttp}.
+
+\subsubsection{API REST}
+
+O servidor definiu os \textit{endpoints} HTTP (/server e /diagnosis) para o recebimento de requisições POST e GET, permitindo a interação com o \textit{backend} por meio de uma arquitetura baseada em REST. 
+
+O termo REST (Representational State Transfer) é um estilo de comunicação baseado em padrões e protocolos da web, como HTTP, que permite a troca de dados entre sistemas de forma escalável e eficiente. Nesse modelo, as requisições são realizadas utilizando os métodos HTTP padrão (como GET, POST, PUT e DELETE), facilitando a comunicação entre sistemas de maneira eficiente e escalável \cite{whatisrest}.
+
+\subsubsection{JSON}
+
+JSON (JavaScript Object Notation) é um formato leve e baseado em texto para intercâmbio de dados, independente de linguagem de programação. Derivado do padrão ECMAScript, o JSON define um conjunto simples de regras de formatação para a representação portátil de dados estruturados. Ele busca remover inconsistências com outras especificações e oferece orientações para melhorar a interoperabilidade entre sistemas \cite{whatisjson}.
+
+A biblioteca http/http\_json do SWI-Prolog é utilizada para formatar as respostas no formato JSON, possibilitando que o \textit{backend} envie dados estruturados para o \textit{frontend} em um formato amplamente compatível com diversos frameworks web, incluindo o React. Essa abordagem facilita a troca de informações entre o servidor e a interface do usuário, garantindo a interoperabilidade e a eficiência na comunicação entre as camadas da aplicação.
+
+\subsubsection{HTTP e CORS}
+
+CORS (Cross-Origin Resource Sharing) é um mecanismo que permite que requisições do lado do cliente acessem recursos de origens diferentes. Ele define algoritmos que possibilitam que uma API faça requisições a recursos de outra origem, controlando o acesso por meio de cabeçalhos de resposta, como o \textit{Access-Control-Allow-Origin} \cite{whatiscors}.
+
+HTTP (Hypertext Transfer Protocol) é um protocolo de aplicação para sistemas distribuídos e colaborativos de informações hipermídia. É um protocolo genérico e sem estado, utilizado em diversas tarefas além do hipertexto, como servidores de nomes e sistemas de gerenciamento de objetos distribuídos. O HTTP permite a negociação e tipificação da representação dos dados, possibilitando a construção de sistemas independentes dos dados transferidos \cite{whatishttp}.
+
+As bibliotecas http/thread\_httpd, http/http\_dispatch e http/http\_cors, do SWI-Prolog, configuram um servidor HTTP básico, sendo responsáveis pelo tratamento de requisições e respostas. Elas também gerenciam as permissões de CORS, permitindo que o \textit{frontend} (React) acesse o \textit{backend} Prolog, mesmo quando este está hospedado em uma origem diferente.
+
+\subsubsection{Sessões HTTP}
+
+Uma sessão HTTP é mantida por meio do uso de cookies, que são pequenos arquivos de dados armazenados nos agentes de usuário (como navegadores) pelos servidores HTTP. Os cabeçalhos Cookie e Set-Cookie permitem que os servidores mantenham o estado de uma sessão, mesmo em um protocolo essencialmente sem estado como o HTTP. Isso significa que, através das sessões, os servidores podem armazenar informações sobre o usuário, como preferências ou dados de autenticação, e usá-las em requisições subsequentes, garantindo uma experiência contínua. Embora os cookies tenham questões históricas relacionadas à segurança e privacidade, os cabeçalhos Cookie e Set-Cookie são amplamente utilizados para gerenciar sessões de usuário, permitindo, por exemplo, o login persistente em sites ou a manutenção de um carrinho de compras em uma loja online \cite{whatissession}.
+
+A biblioteca http/http\_session do SWI-Prolog possibilita o gerenciamento de sessões de usuário, permitindo o armazenamento de variáveis de sessão, como questionNumber e answers. Esse recurso viabiliza a persistência de informações entre requisições subsequentes de um mesmo usuário, assegurando a continuidade do estado da aplicação ao longo da interação.
+
+\subsubsection{React e Typescript (Frontend)}
+
+O \textit{frontend} foi feito em React\footnote{\url{https://react.dev/}} e Typescript\footnote{\url{https://www.typescriptlang.org/}}, interagindo com o \textit{backend} por meio de requisições HTTP, acessando \textit{endpoints} para enviar as respostas do usuário e buscar o resultado final da questão.
+
+React é uma biblioteca para a construção de interfaces de usuário, tanto para a web quanto para aplicativos nativos. Ela permite criar interfaces a partir de unidades individuais chamadas componentes, que podem ser reutilizados e combinados para formar interfaces complexas e interativas. Cada componente em React gerencia seu próprio estado e pode ser renderizado de forma eficiente conforme as mudanças nos dados, facilitando o desenvolvimento de aplicações dinâmicas e de fácil manutenção. React pode ser utilizado com outras linguagens que compilam para JavaScript\footnote{\url{https://www.javascript.com/}}, como TypeScript.
+
+TypeScript é uma linguagem de programação que é um superconjunto do JavaScript, adicionando tipagem estática. Isso permite que os desenvolvedores definam tipos para variáveis e funções, ajudando a identificar erros antes da execução do código. TypeScript melhora a manutenção e segurança do código, especialmente em projetos grandes, e é amplamente utilizado com frameworks como React para criar aplicações mais escaláveis e robustas.
+
 \subsection{Arquitetura de Software}
 
 A aplicação propõe uma interação dinâmica em que o usuário, ao informar o número da questão sobre a qual deseja obter orientações, inicia um diálogo com o sistema de chat. O chat responde com perguntas específicas para compreender melhor as necessidades do usuário, permitindo direcionar as orientações de forma mais precisa. Conforme o usuário responde com "sim" ou "não" a cada pergunta, o sistema adapta as próximas questões e sugestões, guiando-o progressivamente até fornecer uma orientação final ajustada ao contexto das respostas acumuladas.
@@ -223,7 +223,7 @@ Conforme o requisito funcional \textbf{RF1} e a regra de negócio \textbf{RN1}, 
 
 O desenvolvimento do \textit{frontend} foi baseado em bibliotecas e repositórios existentes que facilitaram a criação e configuração do sistema de chatbot. Especificamente, foi utilizado o repositório \textit{react-chatbot-kit} de FredrikOseberg\footnote{\url{https://github.com/FredrikOseberg/react-chatbot-kit}} como estrutura principal para a criação do chatbot, combinado com o repositório \textit{Chatbot-using-React-Chatbot-Kit} de Subid Das\footnote{\url{https://github.com/devsubid/Chatbot-using-React-Chatbot-Kit}}, que forneceu recursos adicionais para personalização da interface e integração do chatbot com o fluxo de mensagens interativo. Esses repositórios foram adaptados para atender às necessidades específicas da aplicação, garantindo que o \textit{frontend} fosse capaz de processar interações dinâmicas e personalizadas, conforme os requisitos estabelecidos.
 
-Pelo Código 1 é possível observar que, para a construção do compontente \texttt{Chat}, foi usado o componente \texttt{Chatbot} da biblioteca \texttt{react-chatbot-kit}.
+Pelo Código 1 é possível observar que, para a construção do compontente \texttt{Chat}, foi usado o componente \texttt{Chatbot} da biblioteca \texttt{react-chatbot-kit}. O \texttt{Chatbot} recebe o \texttt{MessageProvider}, responsável por processar as respostas do usuário e acionar as funções do \texttt{ActionProvider}, que gerencia o envio das requisições ao backend.
 
 \begin{lstlisting}[style=ufscthesisx_style, caption={Componente Chat}]
 import { useState } from "react";
@@ -259,7 +259,7 @@ const Chat = () => {
 export default Chat;    
 \end{lstlisting}
 
-Para atender ao Requisito Funcional \textbf{RF5}, descrito na seção \ref{sec:requisitos-aplicacao}, foi criado um componente \texttt{Details} para a rota \text{\details} para mostrar as descrições das mensagens de resposta das questões do Beecrowd (Código 2).
+Para atender ao Requisito Funcional \textbf{RF5}, descrito na seção \ref{sec:requisitos-aplicacao}, foi criado um componente \texttt{Details} para a rota \text{details} para mostrar as descrições das mensagens de resposta das questões do Beecrowd (Código 2).
 
 \begin{lstlisting}[style=ufscthesisx_style, caption={Rotas do frontend}]
 <Routes location={location} key={location.pathname}>
@@ -275,7 +275,7 @@ O Código 3 representa como o arquivo \textit{ActionProvider.tsx}, do \textit{fr
 
 A função \texttt{fetchData} recebe uma URL e um corpo de dados (\texttt{URLSearchParams}) para fazer uma requisição \texttt{POST}. Ela define cabeçalhos para enviar os dados como \texttt{application/x-www-form-urlencoded}, garantindo que o \textit{backend} receba os dados em um formato compatível e de fácil manipulação, especialmente em linguagens que interpretam parâmetros de URL de forma nativa. Além disso, a função inclui cookies nas requisições com \texttt{credentials: 'include'} para permitir que a sessão seja mantida entre as requisições, o que é crucial para a continuidade da comunicação com o \textit{backend} e possibilita cumprir o Requisito Não Funcional \textbf{RNF4} descrito na seção \ref{sec:requisitos-aplicacao}. Caso a resposta não tenha o status 200, a função trata o erro, retornando uma mensagem de erro em vez do JSON da resposta. 
 
-A função \texttt{handleFirstMessage} constrói um corpo de dados contendo \texttt{questionNumber} e chama \texttt{fetchData} para enviar esses dados ao \textit{backend} no endpoint \texttt{"{endereço}/server"}. Em seguida, cria uma estrutura de mensagens adicionais vazia e invoca \texttt{handleMessageResponse} para manipular a resposta, preenchendo essa estrutura conforme a resposta recebida.
+A função \texttt{handleFirstMessage} constrói um corpo de dados contendo \texttt{questionNumber} e chama \texttt{fetchData} para enviar esses dados ao \textit{backend} no \textit{endpoint} \texttt{"{endereço}/server"}. Em seguida, cria uma estrutura de mensagens adicionais vazia e invoca \texttt{handleMessageResponse} para manipular a resposta, preenchendo essa estrutura conforme a resposta recebida.
 
 \begin{lstlisting}[style=ufscthesisx_style, caption={Funções assíncronas para requisição HTTP}]
     const fetchData = async (url: string, body: URLSearchParams) => {
@@ -334,7 +334,6 @@ O Código 4 apresenta o arquivo \textit{questao\_1181.pl} como um exemplo de est
     questao(1181, ["sim", "sim", "sim"], "considerando que l é a entrada do usuário que indica a linha que será a \cconsiderada para operação: \nfor i in range(0, 12): soma += matriz[l][i]. \n\cPróxima dica?").
     questao(1181, ["sim", "sim", "sim", "sim"], "Verifique se o número pelo qual você está tentando dividir para \cpara conseguir a média está correto. Próxima pergunta?").
     
-    
     questao(1181, Respostas, "Deu Presentation Error?") :-
         Respostas = ["não"];
         Respostas = ["sim", "não"];
@@ -348,7 +347,6 @@ O Código 4 apresenta o arquivo \textit{questao\_1181.pl} como um exemplo de est
         Respostas = ["sim", "sim", "não", "sim"];
         Respostas = ["sim", "sim", "sim", "não", "sim"];
         Respostas = ["sim", "sim", "sim", "sim", "sim", "sim"].
-    
     
     % Diagnóstico com base nas respostas completas
     diagnostico(1181, Respostas, "Legal! Parabéns!") :-
