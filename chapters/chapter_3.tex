@@ -520,5 +520,105 @@ Em seguida, tenta gerar a próxima pergunta por meio da chamada ao predicado \te
 
 \subsection{Expert Bee: Sistema Especialista de Apoio à Resolução de Dúvidas nos Exercícios do Beecrowd}
 
+A aplicação foi desenvolvida para ser acessada via navegador e tem como objetivo ajudar os usuários com dúvidas na resolução dos exercícios do Beecrowd. Por meio de um chat interativo, o usuário pode informar qual questão precisa de orientação. A partir disso, o sistema especialista realiza perguntas específicas para compreender melhor as necessidades do usuário e, com base nas respostas, fornece dicas e orientações personalizadas. Ou seja, à medida que o usuário responde "sim" ou "não" a cada pergunta, o sistema ajusta as questões subsequentes e as sugestões, guiando o usuário de forma progressiva até fornecer uma solução ajustada ao contexto das respostas acumuladas.
+
+Nesta seção, serão apresentadas imagens que ilustram o resultado final da aplicação.
+
+\begin{figure}[H]
+    \centering
+            \caption{Expert Bee: Tela Inicial}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.41]{pictures/desenvolvimento/expert_bee_tela_inicial.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
+A Figura 29 exibe a tela inicial da aplicação Web, que contém dois botões. Ao clicar no botão "Clique aqui para ler sobre os tipos de resposta do Beecrowd!", o usuário é redirecionado para a tela mostrada na Figura 30. Nessa tela, são apresentados detalhes sobre cada tipo de resposta do Beecrowd, atendendo ao Requisito Funcional RF5, descrito na seção \ref{sec:requisitos-aplicacao}. Além disso, caso o usuário clique no botão "Voltar para a página inicial", ele retorna à tela inicial.
+
+\begin{figure}[H]
+    \centering
+            \caption{Expert Bee: Detalhes das Respostas do Juíz Online do Beecrowd}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.41]{pictures/desenvolvimento/expert_bee_detalhes_respostas.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
+Na página inicial, ao clicar no botão "Comece agora!", é aberto o chat, conforme o Requisito Funcional RF1, ilustrado na Figura 31. Através deste chat, o usuário deve inicialmente informar o número da questão sobre a qual deseja tirar dúvidas, atendendo ao Requisito Funcional RF2. O usuário pode selecionar o número da questão a partir da lista apresentada (Figura 32) ou optar por digitá-lo manualmente (Figura 33). Caso o número informado não corresponda a uma questão existente no sistema, uma mensagem informando que a questão não foi encontrada será exibida (Figura 34).
+
+\begin{figure}[H]
+    \centering
+            \caption{Expert Bee: Chat}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.41]{pictures/desenvolvimento/expert_bee_chat.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+            \caption{Expert Bee: Escolhendo a Questão}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.63]{pictures/desenvolvimento/expert_bee_escolha_de_questoes.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+            \caption{Expert Bee: Digitando o Número da Questão}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.63]{pictures/desenvolvimento/expert_bee_digita_numero.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+            \caption{Expert Bee: Questão não encontrada}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.63]{pictures/desenvolvimento/exepert_bee_questao_nao_encontrada.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
+Se a questão for localizada, o chat começa a enviar as perguntas do sistema especialista (Figura 35), com opções de resposta "sim" ou "não", conforme o Requisito Funcional RF3. O usuário deve responder clicando no botão "sim" ou "não". Se a resposta for "sim", a resposta adequada para aquela pergunta é exibida junto com a próxima pergunta (Figura 36). Se a resposta for "não", uma nova pergunta será apresentada (Figura 37). Assim, o Requisito Funcional RF4 é atendido, pois o sistema adapta as perguntas conforme as respostas fornecidas pelo usuário.
+
+\begin{figure}[H]
+    \centering
+            \caption{Expert Bee: Primeira Pergunta}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.63]{pictures/desenvolvimento/expert_bee_primeira_pergunta.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+            \caption{Expert Bee: Sim para a Primeira Pergunta}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.63]{pictures/desenvolvimento/expert_bee_primeira_pergunta_sim.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+            \caption{Expert Bee: Não para a Primeira Pergunta}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.63]{pictures/desenvolvimento/expert_bee_primeira_pergunta_nao.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
+A Figura 38 mostra a resposta final, caso o usuário indique que conseguiu resolver a questão. Já a Figura 39 exibe a resposta com uma dica final, caso o usuário informe que não conseguiu resolver o problema. Em ambos os casos, o usuário tem a opção de inserir um novo número de questão, para iniciar uma nova sessão de dúvidas.
+
+\begin{figure}[H]
+    \centering
+            \caption{Expert Bee: Usuário conseguiu}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.63]{pictures/desenvolvimento/expert_bee_final_deu_certo.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+            \caption{Expert Bee: Usuário não conseguiu}
+            \label{fig:ModeloConceitual}
+        \includegraphics[scale=0.63]{pictures/desenvolvimento/expert_bee_final_nao_deu_certo.png}
+        \fonte{Produzido pela autora.}
+\end{figure}
+
 \end{otherlanguage*}
 
