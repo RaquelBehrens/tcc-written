@@ -8,8 +8,54 @@
 % https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
 \begin{otherlanguage*}{brazil}
 
-    \chapter{Validação}
-    
+\chapter{Validação}
+
+\section{Seção de Validação}
+
+Na presente seção, será realizada uma análise crítica da proposta, abordando as vantagens e desvantagens da integração entre o Moodle e o Beecrowd via LTI (Learning Tools Interoperability), bem como da aplicação da aplicação com sistema especialista desenvolvida. Além disso, será apresentada uma avaliação prática sobre o uso da aplicação pelos alunos da disciplina \textit{Programação Orientada a Objetos I} da Universidade Federal de Santa Catarina (UFSC) no segundo semestre de 2024, com o objetivo de verificar se o sistema especialista conseguiu resolver efetivamente as dúvidas dos estudantes.
+
+\subsection{Integração LTI entre o Moodle e o Beecrowd}
+
+\subsubsection{Vantagens}
+\begin{itemize}
+    \item \textbf{Vantagens do Beecrowd:} O Beecrowd oferece uma plataforma robusta para a resolução de problemas de programação, com uma grande variedade de questões que permitem aos alunos praticar e desenvolver habilidades de programação em diversos níveis de dificuldade. A plataforma também facilita o acompanhamento do progresso dos alunos, oferecendo métricas e feedback instantâneo sobre o desempenho nas questões.
+    \item \textbf{Facilidade de acesso através da integração LTI:} A integração LTI simplifica o acesso ao Beecrowd, pois tanto o professor quanto o aluno podem acessar a plataforma diretamente do Moodle com um único clique.
+\end{itemize}
+
+\subsubsection{Desvantagens}
+\begin{itemize}
+    \item \textbf{Desenvolvimento externo e curva de aprendizado:} O desenvolvimento dos códigos e a criação das listas de exercícios ainda ocorre fora do Moodle, no Beecrowd, o que significa que o professor precisa aprender a usar o Beecrowd Academic, embora o processo seja relativamente simples. Isso pode exigir um tempo adicional de adaptação, especialmente para aqueles que não estão familiarizados com a plataforma.
+\end{itemize}
+
+\subsection{Sistema Especialista para Resolução de Dúvidas no Beecrowd}
+
+\subsubsection{Benefícios}
+\begin{itemize}
+    \item \textbf{Atendimento automatizado:} O sistema especialista pode fornecer respostas rápidas e precisas para questões frequentes ou comuns, permitindo que os alunos resolvam suas dúvidas sem a necessidade de intervenção humana constante.
+    \item \textbf{Apoio no aprendizado:} O sistema pode ser configurado para fornecer explicações detalhadas sobre questões específicas do Beecrowd, ajudando os alunos a entender melhor os problemas e as soluções.
+    \item \textbf{Escalabilidade:} Como o sistema é automatizado, ele pode lidar com um grande volume de dúvidas de maneira eficiente.
+    \item \textbf{Redução da sobrecarga para os professores:} Ao automatizar o atendimento às dúvidas mais comuns, o sistema especialista permite que os professores se concentrem em questões mais complexas e em atividades pedagógicas, sem se sobrecarregar com um grande volume de perguntas repetitivas.
+    \item \textbf{Auxílio para professores não familiarizados com o Beecrowd:} Para professores que ainda não estão familiarizados com as questões do Beecrowd, o sistema especialista oferece uma ferramenta valiosa para auxiliá-los a responder dúvidas dos alunos de maneira eficiente, sem a necessidade de um profundo conhecimento prévio sobre a plataforma ou as questões.
+\end{itemize}
+
+\subsubsection{Limitações}
+\begin{itemize}
+	\item \textbf{Limitação nas respostas para questões complexas:} O sistema especialista é eficiente para lidar com questões simples ou frequentes, mas pode encontrar dificuldades ao lidar com questões mais complexas ou específicas. Para adicionar suporte a novas questões, o professor precisa criar uma matriz de decisões detalhada, o que pode tornar o processo demorado e propenso a erros, especialmente quando se trata de questões que exigem uma análise mais aprofundada. Sem a devida cautela, o sistema pode acabar gerando respostas imprecisas ou inadequadas, comprometendo a qualidade das interações e a efetividade do suporte oferecido.
+    \item \textbf{Dependência da qualidade da base de conhecimento:} O desempenho do sistema especialista depende diretamente da qualidade das regras e conhecimentos que foram programados nele. Se a base de dados for limitada ou desatualizada, o sistema pode fornecer respostas inadequadas.
+    \item \textbf{Falta de interação humana:} Em casos onde o aluno necessita de uma explicação mais personalizada ou de orientação emocional, o sistema especialista pode não ser suficiente, criando uma experiência impessoal que pode não atender completamente às necessidades do aluno.
+\end{itemize}
+
+\subsection{Avaliação Prática}
+
+A avaliação prática foi conduzida por meio da utilização do sistema especialista pelos alunos da disciplina \textit{Programação Orientada a Objetos I} da UFSC, durante o segundo semestre de 2024. Para isso, foram realizados os seguintes passos:
+
+\begin{enumerate}
+    \item \textbf{Aplicação do sistema:} Os alunos foram incentivados a usar o sistema especialista para resolver dúvidas relacionadas às questões do Beecrowd. Durante esse período, o uso do sistema foi monitorado para avaliar sua eficácia em termos de resolução de dúvidas.
+    \item \textbf{Análise de resultados:} Foi feita uma análise qualitativa e quantitativa dos dados coletados, incluindo o número de dúvidas resolvidas e o número de dúvidas não esclarecidas. 
+    \item \textbf{Considerações finais:} Com base na análise dos resultados, foi possível determinar se o sistema especialista atingiu seus objetivos de resolver as dúvidas dos alunos.
+\end{enumerate}
+
+É importante destacar que as questões para as quais os alunos utilizaram a aplicação desenvolvida foram aquelas para as quais o professor forneceu dicas de resolução durante a primeira coleta de dados, descrita na seção \ref{sec:coleta-dados}, antes de a lista de exercícios ser repassada aos alunos. Não foi possível obter dúvidas diretamente dos alunos sobre essas questões antes da avaliação prática da plataforma, pois, caso contrário, o teste de eficácia da ferramenta não poderia ser realizado — os alunos já teriam resolvido a lista para que suas dúvidas pudessem ser recolhidas, e não utilizariam a plataforma para esclarecê-las. Assim, para possibilitar o teste da eficácia da ferramenta, foi necessário criar os arquivos dessas questões no sistema antes que os alunos começassem a resolvê-las. Caso contrário, as dúvidas surgiriam naturalmente apenas depois que os alunos iniciassem as resoluções, comprometendo a avaliação da aplicação.
 
 \end{otherlanguage*}
 
