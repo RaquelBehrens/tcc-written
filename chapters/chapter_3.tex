@@ -14,13 +14,13 @@ Nesta seção, será abordada a LTI do Beecrowd, que simplifica a integração e
 
 \section{LTI Beecrowd}
 
-Com a disponibilização de uma ferramenta LTI pelo Beecrowd, visando facilitar sua integração com o Moodle, foi elaborado um manual detalhado para orientar o administrador do Moodle na configuração dessa LTI (Apêndice A).
+Com a disponibilização de uma ferramenta LTI pelo Beecrowd, visando facilitar sua integração com o Moodle, foi elaborado um manual detalhado para orientar o administrador do Moodle na configuração dessa LTI (Apêndice \ref{manual:config-lti}).
 
-Para configurar uma LTI externa, o administrador deve acessar "Administração do site", selecionar "Plugins" e, em "Módulos de atividade", escolher "Ferramenta externa" e clicar em "Gerenciar ferramentas". Em seguida, deve clicar em "Configurar uma ferramenta manualmente" e preencher os campos conforme as instruções especificadas no Manual de Configuração da LTI Beecrowd no Moodle (Apêndice A). Após a configuração, será possível visualizar os detalhes da ferramenta, os quais deverão ser enviados ao Beecrowd para estabelecer a comunicação entre as plataformas.
+Para configurar uma LTI externa, o administrador deve acessar "Administração do site", selecionar "Plugins" e, em "Módulos de atividade", escolher "Ferramenta externa" e clicar em "Gerenciar ferramentas". Em seguida, deve clicar em "Configurar uma ferramenta manualmente" e preencher os campos conforme as instruções especificadas no Manual de Configuração da LTI Beecrowd no Moodle (Apêndice \ref{manual:config-lti}). Após a configuração, será possível visualizar os detalhes da ferramenta, os quais deverão ser enviados ao Beecrowd para estabelecer a comunicação entre as plataformas.
 
-Além disso, foi desenvolvido um manual de uso da LTI Beecrowd (Apêndice B), direcionado aos professores que desejam utilizar o Beecrowd como suporte educacional em sala de aula. Esse manual instrui os docentes sobre como criar uma atividade do Beecrowd no Moodle, orientar o acesso dos estudantes e transferir as notas obtidas no Beecrowd para o Moodle.
+Além disso, foi desenvolvido um manual de uso da LTI Beecrowd (Apêndice \ref{manual:uso-lti}), direcionado aos professores que desejam utilizar o Beecrowd como suporte educacional em sala de aula. Esse manual instrui os docentes sobre como criar uma atividade do Beecrowd no Moodle, orientar o acesso dos estudantes e transferir as notas obtidas no Beecrowd para o Moodle.
 
-Após seguir o guia do Manual de Uso da LTI Beecrowd (Apêndice B), duas atividades ficam disponíveis na página do curso, apresentadas como "botões" visuais. A primeira atividade, que é ocultada para os estudantes (Imagem 23), permite ao professor acessar o Beecrowd Academic (Imagem 24) para configurar disciplinas, criar listas de exercícios para os alunos e enviar as notas para o Moodle.
+Após seguir o guia do Manual de Uso da LTI Beecrowd (Apêndice \ref{manual:uso-lti}), duas atividades ficam disponíveis na página do curso, apresentadas como "botões" visuais. A primeira atividade, que é ocultada para os estudantes (Imagem 23), permite ao professor acessar o Beecrowd Academic (Imagem 24) para configurar disciplinas, criar listas de exercícios para os alunos e enviar as notas para o Moodle.
 
 \begin{figure}[H]
     \centering
@@ -532,7 +532,7 @@ Nesta seção, serão apresentadas imagens que ilustram o resultado final da apl
         \fonte{Produzido pela autora.}
 \end{figure}
 
-A Figura 29 exibe a tela inicial da aplicação Web, que contém dois botões. Ao clicar no botão "Clique aqui para ler sobre os tipos de resposta do Beecrowd!", o usuário é redirecionado para a tela mostrada na Figura 30. Nessa tela, são apresentados detalhes sobre cada tipo de resposta do Beecrowd, atendendo ao Requisito Funcional RF5, descrito na seção \ref{sec:requisitos-aplicacao}. Além disso, caso o usuário clique no botão "Voltar para a página inicial", ele retorna à tela inicial.
+A Figura 29 exibe a tela inicial da aplicação Web, que contém dois botões. Ao clicar no botão "Clique aqui para ler sobre os tipos de resposta do Beecrowd!", o usuário é redirecionado para a tela mostrada na Figura 30. Nessa tela, são apresentados detalhes sobre cada tipo de resposta do Beecrowd, atendendo ao Requisito Funcional \textbf{RF5}, descrito na seção \ref{sec:requisitos-aplicacao}. Além disso, caso o usuário clique no botão "Voltar para a página inicial", ele retorna à tela inicial.
 
 \begin{figure}[H]
     \centering
@@ -542,7 +542,7 @@ A Figura 29 exibe a tela inicial da aplicação Web, que contém dois botões. A
         \fonte{Produzido pela autora.}
 \end{figure}
 
-Na página inicial, ao clicar no botão "Comece agora!", é aberto o chat, conforme o Requisito Funcional RF1, ilustrado na Figura 31. Através deste chat, o usuário deve inicialmente informar o número da questão sobre a qual deseja tirar dúvidas, atendendo ao Requisito Funcional RF2. O usuário pode selecionar o número da questão a partir da lista apresentada (Figura 32) ou optar por digitá-lo manualmente (Figura 33). Caso o número informado não corresponda a uma questão existente no sistema, uma mensagem informando que a questão não foi encontrada será exibida (Figura 34).
+Na página inicial, ao clicar no botão "Comece agora!", é aberto o chat, conforme o Requisito Funcional \textbf{RF1}, ilustrado na Figura 31. Através deste chat, o usuário deve inicialmente informar o número da questão sobre a qual deseja tirar dúvidas, atendendo ao Requisito Funcional \textbf{RF2}. O usuário pode selecionar o número da questão a partir da lista apresentada (Figura 32) ou optar por digitá-lo manualmente (Figura 33). Caso o número informado não corresponda a uma questão existente no sistema, uma mensagem informando que a questão não foi encontrada será exibida (Figura 34).
 
 \begin{figure}[H]
     \centering
@@ -572,11 +572,11 @@ Na página inicial, ao clicar no botão "Comece agora!", é aberto o chat, confo
     \centering
             \caption{Expert Bee: Questão não encontrada}
             \label{fig:ModeloConceitual}
-        \includegraphics[scale=0.63]{pictures/desenvolvimento/exepert_bee_questao_nao_encontrada.png}
+        \includegraphics[scale=0.63]{pictures/desenvolvimento/expert_bee_questao_nao_encontrada.png}
         \fonte{Produzido pela autora.}
 \end{figure}
 
-Se a questão for localizada, o chat começa a enviar as perguntas do sistema especialista (Figura 35), com opções de resposta "sim" ou "não", conforme o Requisito Funcional RF3. O usuário deve responder clicando no botão "sim" ou "não". Se a resposta for "sim", a resposta adequada para aquela pergunta é exibida junto com a próxima pergunta (Figura 36). Se a resposta for "não", uma nova pergunta será apresentada (Figura 37). Assim, o Requisito Funcional RF4 é atendido, pois o sistema adapta as perguntas conforme as respostas fornecidas pelo usuário.
+Se a questão for localizada, o chat começa a enviar as perguntas do sistema especialista (Figura 35), com opções de resposta "sim" ou "não", conforme o Requisito Funcional \textbf{RF3}. O usuário deve responder clicando no botão "sim" ou "não". Se a resposta for "sim", a resposta adequada para aquela pergunta é exibida junto com a próxima pergunta (Figura 36). Se a resposta for "não", uma nova pergunta será apresentada (Figura 37). Assim, o Requisito Funcional \textbf{RF4} é atendido, pois o sistema adapta as perguntas conforme as respostas fornecidas pelo usuário.
 
 \begin{figure}[H]
     \centering
@@ -619,6 +619,18 @@ A Figura 38 mostra a resposta final, caso o usuário indique que conseguiu resol
         \includegraphics[scale=0.63]{pictures/desenvolvimento/expert_bee_final_nao_deu_certo.png}
         \fonte{Produzido pela autora.}
 \end{figure}
+
+\subsection{Adicionar novas questões no Expert Bee}
+
+Para adicionar novas questões ao sistema, deve-se criar um arquivo Prolog no diretório \texttt{/backend}, nomeado conforme o formato \texttt{questao\_{numeroDaQuestao}.pl}. Cada arquivo deve seguir uma estrutura padrão contendo dois predicados principais: \texttt{questao/3} e \texttt{diagnostico/3}.
+
+O predicado \texttt{questao/3} associa uma sequência de respostas do usuário a uma nova pergunta, enquanto o predicado \texttt{diagnostico/3} fornece um diagnóstico ou feedback final com base nas respostas completas. O sistema utiliza essas definições para iterar sobre as perguntas e fornecer respostas progressivas ou um diagnóstico final, de acordo com as respostas fornecidas até o momento. A consistência das respostas e do número da questão é essencial para o funcionamento adequado do sistema.
+
+Ao adicionar uma nova questão, é fundamental que o arquivo siga corretamente essa estrutura, permitindo que o sistema integre automaticamente a questão ao fluxo de interações. As respostas parciais devem ser tratadas de forma coerente, e qualquer sequência de respostas não mapeada deve ser considerada com um curinga no predicado \texttt{diagnostico/3}.
+
+Com essa estrutura, o sistema será capaz de processar novas questões de forma automática, bastando apenas adicionar o arquivo correspondente ao diretório. Essa abordagem atende e completa o Requisito Não Funcional \textbf{RNF5}, conforme descrito na seção \ref{sec:requisitos-aplicacao}.
+
+Além disso, foi criado um manual (Apêndice \ref{manual:adicionar-respostas}) que auxilia o professor, passo a passo, em como adicionar dicas para uma nova questão no Bee Expert. Este manual proporciona uma abordagem prática para garantir que as questões sejam adicionadas de forma correta e eficiente, facilitando a inclusão de novas questões e o fornecimento de orientações adequadas aos usuários do sistema.
 
 \end{otherlanguage*}
 

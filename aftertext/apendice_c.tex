@@ -1,0 +1,87 @@
+
+
+
+%
+% How to fix the Underfull \vbox badness has occurred while \output is active on my memoir chapter style?
+% https://tex.stackexchange.com/questions/387881/how-to-fix-the-underfull-vbox-badness-has-occurred-while-output-is-active-on-m
+%
+
+% ---
+
+\lang
+% {\chapter[Page not filled]{Since this page is not being completely filled, it is generating the bottom bottom of the page}}
+% {\chapter[Página não gerada]{Como esta página não está sendo completamente preenchida, ele está gerando a caixa inferior inferior da página}}
+% ---
+
+
+% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
+% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
+\begin{otherlanguage*}{brazil}
+
+\chapter{Como adicionar respostas para novas questões}
+\label{manual:adicionar-respostas}
+
+Basta adicionar um arquivo dentro do diretório \texttt{\/backend}, com o nome no formato \texttt{questao\_{numeroDaQuestao}.pl}. Cada arquivo deve seguir o seguinte padrão:
+
+\section{Estrutura do arquivo}
+
+\subsection{Definição do módulo}
+O arquivo deve começar com a declaração do módulo. O nome do módulo deve ser igual ao nome do arquivo (sem a extensão \texttt{.pl}). Além disso, o módulo deve exportar dois predicados principais:  
+\begin{itemize}
+    \item \texttt{questao/3}
+    \item \texttt{diagnostico/3}
+\end{itemize}
+
+Exemplo:
+\begin{verbatim}
+:- module(questao_2465, [questao/3, diagnostico/3]).
+\end{verbatim}
+
+\subsection{Predicado \texttt{questao/3}}
+O predicado \texttt{questao/3} deve ser usado para mapear uma sequência de respostas a uma nova pergunta. Ele segue o formato:
+\begin{verbatim}
+questao(NumeroDaQuestao, RespostasAteAgora, Pergunta).
+\end{verbatim}
+
+\begin{itemize}
+    \item \texttt{NumeroDaQuestao}: Número da questão a que o arquivo se refere.
+    \item \texttt{RespostasAteAgora}: Lista de respostas fornecidas pelo usuário até o momento.
+    \item \texttt{Pergunta}: Pergunta a ser exibida com base nas respostas recebidas.
+\end{itemize}
+
+Exemplo:
+\begin{verbatim}
+questao(2465, [], "Você quer uma dica de qual solução adotar pra esse problema?").
+questao(2465, ["sim"], "Você pode usar um while True para verificar, a partir da posição (a, b) na matriz, qual vizinho...").
+\end{verbatim}
+
+\subsection{Predicado \texttt{diagnostico/3}}
+O predicado \texttt{diagnostico/3} deve ser usado para fornecer um diagnóstico final ou mensagem de feedback com base nas respostas completas do usuário. Ele segue o formato:
+\begin{verbatim}
+diagnostico(NumeroDaQuestao, RespostasCompletas, Diagnostico).
+\end{verbatim}
+
+\begin{itemize}
+    \item \texttt{NumeroDaQuestao}: Número da questão.
+    \item \texttt{RespostasCompletas}: Lista de respostas fornecidas.
+    \item \texttt{Diagnostico}: Diagnóstico ou feedback final.
+\end{itemize}
+
+Exemplo:
+\begin{verbatim}
+diagnostico(2465, ["sim", "sim", "sim"], "Legal! Parabéns!").
+diagnostico(2465, _, "Atente-se bem às dicas já enviadas ou pergunte novamente!").
+\end{verbatim}
+
+\section{Considerações importantes}
+\begin{itemize}
+    \item Certifique-se de que todas as perguntas e diagnósticos estejam relacionados ao número da questão especificado.
+    \item O sistema utilizará a lista de respostas fornecida até o momento para determinar qual pergunta exibir em seguida. Portanto, as sequências de respostas devem ser consistentes.
+    \item Para mensagens genéricas ou casos em que as respostas não correspondam a nenhuma sequência específica, use \texttt{\_} como curinga no campo \texttt{RespostasCompletas} no predicado \texttt{diagnostico/3}.
+\end{itemize}
+
+Com essa estrutura, o sistema poderá processar novas questões automaticamente, bastando que o arquivo correspondente seja adicionado ao diretório.
+
+\end{otherlanguage*}
+
+
