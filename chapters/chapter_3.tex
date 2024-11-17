@@ -85,7 +85,7 @@ A questão 1187 gerou dúvidas relacionadas aos laços de repetição necessári
 
 A questão 1383, sobre as regras do Sudoku, suscitou dúvidas sobre como validar se uma solução estava correta, além de dificuldades na transformação da lógica para código. A orientação dada foi garantir a não repetição de números em cada linha, coluna, e bloco 3x3, com orientações sobre o uso de depuração com o udebug e Thonny.
 
-A questão 1715 gerou dúvidas sobre a multiplicação dos elementos das linhas para identificar jogadores que marcaram gols em todas as partidas. Os alunos tiveram dificuldades em entender como aplicar esse método corretamente e como garantir que o contador fosse atualizado. A depuração no udebug e Thonny foi útil para a maioria dos alunos, que ajustaram seus códigos após o feedback.
+A questão 1715 gerou dúvidas sobre a multiplicação dos elementos das linhas para identificar jogadores que marcaram gols em todas as partidas. Os alunos tiveram dificuldades em entender como aplicar esse método corretamente e como garantir que o contador fosse atualizado. A depuração no udebug e Thonny foi útil para a maioria dos alunos, que ajustaram seus códigos após o \textit{feedback}.
 
 Por fim, a questão 2465 também gerou dúvidas em relação ao uso do comando while True para verificar os vizinhos da matriz. A principal dificuldade foi evitar que o robô retornasse à posição anterior após avançar para um vizinho com valor '1', sendo sugerido que a posição fosse marcada como zero antes de seguir para o próximo vizinho. As orientações permitiram que os alunos avançassem na resolução do problema, superando as dificuldades iniciais.
 
@@ -398,7 +398,7 @@ Esse arquivo Prolog define um módulo especializado para auxiliar usuários na r
         1181 & [não, sim], [sim, não, sim], [sim, sim, não, sim], [sim, sim, sim, não, sim], [sim, sim, sim, sim, sim, sim] & Perceba que a formatação que a questão pede é: Imprima o resultado solicitado (a soma ou média), com 1 casa após o ponto decimal. Ou seja, \%.1f. Deu certo? \\
       \end{longtable}
     
-    \item \textbf{Predicado \textit{diagnostico/3}:} Este predicado fornece um diagnóstico final com base nas respostas acumuladas ao longo da interação. Atuando como feedback conclusivo, ele emite uma mensagem de sucesso caso as respostas indiquem que o usuário compreendeu e solucionou a questão. Caso contrário, sugere ferramentas como o \textit{udebug} e o depurador \textit{Thonny}, de modo que o usuário possa inspecionar o comportamento do seu código em detalhes.
+    \item \textbf{Predicado \textit{diagnostico/3}:} Este predicado fornece um diagnóstico final com base nas respostas acumuladas ao longo da interação. Atuando como \textit{feedback} conclusivo, ele emite uma mensagem de sucesso caso as respostas indiquem que o usuário compreendeu e solucionou a questão. Caso contrário, sugere ferramentas como o \textit{udebug} e o depurador \textit{Thonny}, de modo que o usuário possa inspecionar o comportamento do seu código em detalhes.
 \end{itemize}
 
 Dessa forma, arquivos do formato \textit{questao\_\{numeroDaQuestao\}.pl} devem seguir essa estrutura, onde cada questão contém um predicado \textit{questao/3} para fornecer orientações sequenciais e um predicado \textit{diagnostico/3} para avaliação final. A matriz de decisões implementada no predicado \textit{questao/3} permite um processo dinâmico e adaptativo de interação, guiando o usuário de forma direcionada e progressiva na resolução da questão específica.
@@ -625,7 +625,7 @@ A Figura 38 mostra a resposta final, caso o usuário indique que conseguiu resol
 
 Para adicionar novas questões ao sistema, deve-se criar um arquivo Prolog no diretório \texttt{/backend}, nomeado conforme o formato \texttt{questao\_{numeroDaQuestao}.pl}. Cada arquivo deve seguir uma estrutura padrão contendo dois predicados principais: \texttt{questao/3} e \texttt{diagnostico/3}.
 
-O predicado \texttt{questao/3} associa uma sequência de respostas do usuário a uma nova pergunta, enquanto o predicado \texttt{diagnostico/3} fornece um diagnóstico ou feedback final com base nas respostas completas. O sistema utiliza essas definições para iterar sobre as perguntas e fornecer respostas progressivas ou um diagnóstico final, de acordo com as respostas fornecidas até o momento. A consistência das respostas e do número da questão é essencial para o funcionamento adequado do sistema.
+O predicado \texttt{questao/3} associa uma sequência de respostas do usuário a uma nova pergunta, enquanto o predicado \texttt{diagnostico/3} fornece um diagnóstico ou \textit{feedback} final com base nas respostas completas. O sistema utiliza essas definições para iterar sobre as perguntas e fornecer respostas progressivas ou um diagnóstico final, de acordo com as respostas fornecidas até o momento. A consistência das respostas e do número da questão é essencial para o funcionamento adequado do sistema.
 
 Ao adicionar uma nova questão, é fundamental que o arquivo siga corretamente essa estrutura, permitindo que o sistema integre automaticamente a questão ao fluxo de interações. As respostas parciais devem ser tratadas de forma coerente, e qualquer sequência de respostas não mapeada deve ser considerada com um curinga no predicado \texttt{diagnostico/3}.
 
