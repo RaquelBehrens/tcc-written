@@ -49,11 +49,38 @@ A avaliação prática foi conduzida por meio da utilização do sistema especia
 
 \begin{enumerate}
     \item \textbf{Aplicação do sistema:} Os alunos foram incentivados a usar o sistema especialista para resolver dúvidas relacionadas às questões do Beecrowd. Durante esse período, o uso do sistema foi monitorado para avaliar sua eficácia em termos de resolução de dúvidas.
-    \item \textbf{Análise de resultados:} Foi feita uma análise qualitativa e quantitativa dos dados coletados, incluindo o número de dúvidas resolvidas e o número de dúvidas não esclarecidas. 
-    \item \textbf{Considerações finais:} Com base na análise dos resultados, foi possível determinar se o sistema especialista atingiu seus objetivos de resolver as dúvidas dos alunos.
+    \item \textbf{Análise de resultados:} Foram avaliados o número de dúvidas resolvidas, as dúvidas não esclarecidas e os feedbacks fornecidos pelos alunos.
+    \item \textbf{Melhorias das questões:} Com base na análise dos resultados, dúvidas não resolvidas pelo Bee Expert foram incluídas no sistema para futuras turmas.
 \end{enumerate}
 
-É importante destacar que as questões para as quais os alunos utilizaram a aplicação desenvolvida foram aquelas para as quais o professor forneceu dicas de resolução durante a primeira coleta de dados, descrita na seção \ref{sec:coleta-dados}, antes de a lista de exercícios ser repassada aos alunos. Não foi possível obter dúvidas diretamente dos alunos sobre essas questões antes da avaliação prática da plataforma, pois, caso contrário, o teste de eficácia da ferramenta não poderia ser realizado — os alunos já teriam resolvido a lista para que suas dúvidas pudessem ser recolhidas, e não utilizariam a plataforma para esclarecê-las. Assim, para possibilitar o teste da eficácia da ferramenta, foi necessário criar os arquivos dessas questões no sistema antes que os alunos começassem a resolvê-las. Caso contrário, as dúvidas surgiriam naturalmente apenas depois que os alunos iniciassem as resoluções, comprometendo a avaliação da aplicação.
+É importante destacar que, até o momento, o Expert Bee tinha apenas dicas de resoluções para essas questões da lista de exercícios fornecida, e não dicas para dúvidas reais coletadas de alunos. Essas dicas de resoluções tinham sido disponibilizadas pelo professor durante a primeira coleta de dados, descrita na seção \ref{sec:coleta-dados}, para que fosse possível testar a eficácia da ferramenta na hora em que as dúvidas dos alunos surgiriam. 
+
+Assim, um dos objetivos da avaliação prática também era identificar dúvidas não tratadas pelo Expert Bee, para que elas pudessem ser adicionadas à ferramenta.
+
+\subsection{Resultados}  
+
+Na Avaliação Prática realizada em 18 de novembro de 2024, foi disponibilizada aos alunos uma lista com as seguintes questões do Beecrowd: 1261, 1281, 1430, 1449, 1483, 1763, 1911, 1953, 2091, 2482, 2492, 2654, 2949 e 2987, para que começassem a resolver durante a aula. 12 alunos estiveram presente na sala de aula e, sempre que um aluno apresentava uma dúvida, ele utilizava primeiro o Expert Bee para tentar resolvê-la, e, caso não conseguisse, recorria ao professor. 
+
+As dúvidas relatadas pelos alunos foram as seguintes:  
+
+\begin{itemize}  
+    \item \textbf{Questão 1911:} 4 alunos apresentaram dúvidas, e todos conseguiram resolvê-las apenas com o auxílio do Bee Expert.  
+    \item \textbf{Questão 2654:} 2 alunos tiveram dúvidas, todas solucionadas pelo Bee Expert.  
+    \item \textbf{Questão 1430:} 1 aluno apresentou dúvida e conseguiu resolvê-la com o Bee Expert.  
+    \item \textbf{Questão 2949:} 1 aluno apresentou dúvida, solucionada pelo Bee Expert.  
+    \item \textbf{Questão 1483:} 1 aluno teve dúvida, também solucionada pelo Bee Expert.  
+    \item \textbf{Questão 1261:} 2 alunos apresentaram dúvidas específicas que não puderam ser resolvidas, pois o Bee Expert, à época, fornecia apenas uma ideia geral de resolução.  
+\end{itemize}  
+
+No total, de 11 dúvidas relatadas, o Bee Expert conseguiu resolver 9, resultando em uma taxa de sucesso de aproximadamente 81\%.  
+
+\subsection{Pontos de Melhoria}  
+
+\begin{itemize}  
+    \item \textbf{Questão 1261:} As dúvidas específicas dos alunos foram incorporadas ao sistema, enriquecendo o conteúdo da questão para turmas futuras.  
+    \item \textbf{Questões 1911 e 2654:} Apesar do sucesso na resolução, foi identificado um ponto de melhoria: o Bee Expert apresentava diretamente a solução completa após a primeira interação. No entanto, os alunos demonstraram interesse em orientações iniciais sobre como resolver as questões utilizando dicionários em Python. Esse ajuste foi implementado, permitindo ao usuário solicitar essas informações antes da solução.  
+    \item \textbf{Questão 1430:} A dúvida do aluno surgiu por falta de entendimento do método \texttt{split()} do Python. Como melhoria, o arquivo dessa questão no Bee Expert agora inclui uma explicação detalhada sobre o uso do método.  
+\end{itemize}  
 
 \end{otherlanguage*}
 
