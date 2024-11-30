@@ -36,26 +36,23 @@
         \imprimircoordenadorRotulo~\lang{of}{do} \imprimirprograma
     }
 
-    \vspace*{1cm}
-
     % \newpage
     \begin{flushleft}
         \textbf{\lang{Examination Board}{Banca Examinadora}:}
     \end{flushleft}
 
-    \vspace*{0.5cm}
-
     \begin{center}
         \assinatura{%
             \textbf{\imprimirorientador} \\ \imprimirorientadorRotulo\\
-            \imprimirinstituicao~--~\imprimirinstituicaosigla
+            \imprimirinstituicao
         }
+
         \vspace*{0.5cm}
 
         \ifnotempty{\imprimircoorientador}{%
             \assinatura{%
                 \textbf{\imprimircoorientador} \\ \imprimircoorientadorRotulo \\
-                \imprimirinstituicao~--~\imprimirinstituicaosigla
+                \imprimirinstituicao
             }
         }
 
@@ -64,20 +61,16 @@
         \assinatura{%
             \textbf{Prof. Álvaro Junio Pereira Franco, \lang{PhD.}{Dr.}} \\
             Avaliador \\
-            \imprimirinstituicao~--~\imprimirinstituicaosigla
+            \imprimirinstituicao
         }
-    
-    \end{center}
 
-    \vspace*{1cm}
+        \vspace*{0.5cm}
 
-    \begin{center}
         \assinatura{%
             \textbf{Profa. Luciana de Oliveira Rech, \lang{PhD.}{Dra.}} \\
             Avaliadora \\
-            \imprimirinstituicao~--~\imprimirinstituicaosigla
+            \imprimirinstituicao
         }
     \end{center}
-
 \end{folhadeaprovacao}
 
