@@ -12,7 +12,7 @@
 
 Nesta seção, será abordada a LTI do Beecrowd, que simplifica a integração entre o Moodle e a plataforma Beecrowd. Serão apresentados também os detalhes da implementação da aplicação web do sistema especialista, desenvolvida para auxiliar professores e alunos no esclarecimento de dúvidas recorrentes sobre as questões do Beecrowd, facilitando a adaptação de ambos ao uso da plataforma.
 
-\section{LTI Beecrowd}
+\section{Manuais de Configuração e Uso da LTI Beecrowd}
 
 Com a disponibilização de uma ferramenta LTI pelo Beecrowd, visando facilitar sua integração com o Moodle, foi elaborado um manual detalhado para orientar o administrador do Moodle na configuração dessa LTI (Apêndice \ref{manual:config-lti}).
 
@@ -69,7 +69,7 @@ A primeira etapa deste trabalho foi dedicada à coleta de dados sobre as questõ
 
 Nesta fase, foram realizadas duas coletas de dados: uma com dicas de resolução fornecidas pelo professor para uma lista de exercícios, e outra com as dúvidas dos alunos sobre o uso de listas em Python, com foco em questões específicas.
 
-Na primeira coleta, professor da disciplina de Programação Orientada a Objetos I, da Universidade Federal de Santa Catarina (UFSC), forneceu dicas de resoluções para cada questão de uma lista de exercícios que ainda não tinha sido repassada aos alunos, com o objetivo de avaliar a utilidade da aplicação após ela ser desenvolvida. Assim, quando os alunos fossem resolver a lista de exercícios, poderiam testar a aplicação para ser sua eficácia. As questões abordadas, que receberam as dicas de solução, incluem: 1261, 1281, 1430, 1449, 1483, 1763, 1991, 1953, 2091, 2482, 2492, 2654, 2949 e 2987.
+Na primeira coleta, professor da disciplina de Programação Orientada a Objetos I, da Universidade Federal de Santa Catarina (UFSC), forneceu dicas de resoluções para cada questão de uma lista de exercícios que ainda não tinha sido repassada aos alunos, com o objetivo de avaliar a utilidade da aplicação após ela ser desenvolvida. Assim, quando os alunos fossem resolver a lista de exercícios, poderiam testar a eficácia da aplicação. As questões abordadas, que receberam as dicas de solução, incluem: 1261, 1281, 1430, 1449, 1483, 1763, 1991, 1953, 2091, 2482, 2492, 2654, 2949 e 2987.
 
 Na segunda coleta, foram registradas as dúvidas dos alunos da disciplina de Programação Orientada a Objetos I, da UFSC, coletadas no dia 30 de outubro de 2024. Nessa data, os alunos estavam trabalhando em uma lista de exercícios sobre o uso de listas em Python. As questões abordadas incluíram os problemas de números 1187, 1435, 1715, 2436, 1383, 1184, 1181 e 1185. Um aspecto notável foi que, durante essa mesma aula, quatro alunos apresentaram a mesma dúvida em relação à questão 1435, especificamente perguntando: "Como resolvo essa questão?"
 
@@ -228,7 +228,7 @@ O \textit{frontend} da aplicação foi desenvolvido utilizando as tecnologias Re
 
 Conforme o requisito funcional \textbf{RF1} e a regra de negócio \textbf{RN1}, foi implementado um sistema de \textit{chat} como interface principal de interação com o usuário. Por meio deste \textit{chat}, o usuário pode informar o código da questão do Beecrowd que está tentando resolver \textbf{(RF2)}. Além disso, conforme a regra de negócio \textbf{RN2}, o sistema especialista se comunica com o usuário por meio do \textit{chat}, exibindo mensagens sequenciais baseadas nas respostas do sistema \textbf{(RF3)} em tempo real \textbf{(RNF1)}, e dicas finais \textbf{(RF4)}. O \textit{chat} também permite que o usuário forneça respostas binárias (sim/não), conforme o fluxo de perguntas definido para personalizar a orientação fornecida, conforme as regras de negócios \textbf{RN2} e \textbf{RN3}.
 
-O desenvolvimento do \textit{frontend} foi baseado em bibliotecas e repositórios existentes que facilitaram a criação e configuração do sistema de \extit{chatbot}. Especificamente, foi utilizado o repositório \textit{react-chatbot-kit} de FredrikOseberg\footnote{\url{https://github.com/FredrikOseberg/react-chatbot-kit}} como estrutura principal para a criação do \texiti{chatbot}, combinado com o repositório \textit{Chatbot-using-React-Chatbot-Kit} de Subid Das\footnote{\url{https://github.com/devsubid/Chatbot-using-React-Chatbot-Kit}}, que forneceu recursos adicionais para personalização da interface e integração do \textit{chatbot} com o fluxo de mensagens interativo. Esses repositórios foram adaptados para atender às necessidades específicas da aplicação, garantindo que o \textit{frontend} fosse capaz de processar interações dinâmicas e personalizadas, conforme os requisitos estabelecidos.
+O desenvolvimento do \textit{frontend} foi baseado em bibliotecas e repositórios existentes que facilitaram a criação e configuração do sistema de \textit{chatbot}. Especificamente, foi utilizado o repositório \textit{react-chatbot-kit} de FredrikOseberg\footnote{\url{https://github.com/FredrikOseberg/react-chatbot-kit}} como estrutura principal para a criação do \textit{chatbot}, combinado com o repositório \textit{Chatbot-using-React-Chatbot-Kit} de Subid Das\footnote{\url{https://github.com/devsubid/Chatbot-using-React-Chatbot-Kit}}, que forneceu recursos adicionais para personalização da interface e integração do \textit{chatbot} com o fluxo de mensagens interativo. Esses repositórios foram adaptados para atender às necessidades específicas da aplicação, garantindo que o \textit{frontend} fosse capaz de processar interações dinâmicas e personalizadas, conforme os requisitos estabelecidos.
 
 Pelo Código 1 é possível observar que, para a construção do compontente \texttt{Chat}, foi usado o componente \texttt{Chatbot} da biblioteca \texttt{react-chatbot-kit}. O \texttt{Chatbot} recebe o \texttt{MessageProvider}, responsável por processar as respostas do usuário e acionar as funções do \texttt{ActionProvider}, que gerencia o envio das requisições ao backend.
 
@@ -266,7 +266,7 @@ const Chat = () => {
 export default Chat;    
 \end{lstlisting}
 
-Para atender ao Requisito Funcional \textbf{RF5}, descrito na seção \ref{sec:requisitos-aplicacao}, foi criado um componente \texttt{Details} para a rota \text{details} para mostrar as descrições das mensagens de resposta das questões do Beecrowd (Código 2).
+Para atender ao Requisito Funcional \textbf{RF5}, descrito na seção \ref{sec:requisitos-aplicacao}, foi criado um componente \texttt{Details} para a rota \text{details}, a fim de mostrar as descrições dos possíveis resultados do juíz online do Beecrowd (Código 2).
 
 \begin{lstlisting}[style=ufscthesisx_style, caption={Rotas do frontend}]
 <Routes location={location} key={location.pathname}>
@@ -637,7 +637,7 @@ Ao adicionar uma nova questão, é fundamental que o arquivo siga corretamente e
 
 Com essa estrutura, o sistema será capaz de processar novas questões de forma automática, bastando apenas adicionar o arquivo correspondente ao diretório. Essa abordagem atende e completa o Requisito Não Funcional \textbf{RNF5}, conforme descrito na seção \ref{sec:requisitos-aplicacao}.
 
-Além disso, foi criado um manual (Apêndice \ref{manual:adicionar-respostas}) que auxilia o professor, passo a passo, em como adicionar dicas para uma nova questão no Bee Expert. Este manual proporciona uma abordagem prática para garantir que as questões sejam adicionadas de forma correta e eficiente, facilitando a inclusão de novas questões e o fornecimento de orientações adequadas aos usuários do sistema.
+Além disso, foi criado um manual (Apêndice \ref{manual:adicionar-respostas}) que auxilia o professor, passo a passo, em como adicionar dicas para uma nova questão no Expert Bee. Este manual proporciona uma abordagem prática para garantir que as questões sejam adicionadas de forma correta e eficiente, facilitando a inclusão de novas questões e o fornecimento de orientações adequadas aos usuários do sistema.
 
 \end{otherlanguage*}
 
