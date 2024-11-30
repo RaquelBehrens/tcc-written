@@ -44,7 +44,7 @@ O estudo de \textcite{galasso} explora a integração entre o sistema BOCA \text
 
 Na integração proposta, os professores podem criar questões de programação no Moodle, onde os alunos submetem códigos-fonte que são automaticamente avaliados pelo BOCA. Os algoritmos submetidos são compilados e executados com os dados de entrada predefinidos no Moodle, e suas saídas são comparadas com uma saída padrão para determinar se estão corretos. A resposta ao aluno é binária (correta ou incorreta), sem avaliação parcial, mas Moodle permite múltiplas tentativas, oferecendo a oportunidade de corrigir erros como problemas de compilação, formatação ou limite de tempo. Adicionalmente, o professor pode revisar manualmente os resultados, caso deseje realizar uma avaliação mais detalhada e parcial das respostas.
 
-A figura 10 representa uma edição da tela de cadastro da questão, proporcionando uma visão ilustrativa desta fase do processo, já a figura 11 oferece uma representação visual da avaliação de uma questão como correta.
+A Figura 10 representa uma edição da tela de cadastro da questão, proporcionando uma visão ilustrativa desta fase do processo, já a Figura 11 oferece uma representação visual da avaliação de uma questão como correta.
 
 \begin{figure}[h!]
 	   \centering
@@ -127,9 +127,9 @@ Apesar de o CodeRunner ter se revelado altamente eficaz em diversas atividades d
 
 \textcite{rodriguezdelpinoandroyo} descreveram neste artigo o módulo Virtual Programming Lab (VPL) para o Moodle, desenvolvido na Universidade de Las Palmas de Gran Canaria (ULPGC), e lançado para uso gratuito sob a licença GNU/GPL.
 
-Para empregar uma linguagem de programação específica no VPL, basta garantir que o compilador correspondente esteja devidamente instalado no sistema de execução. Atualmente, estão disponíveis sistemas de execução com instalações para diversas linguagens, incluindo Ada, C, C\+\+, C\#, FORTRAN, Haskell, Java, Octave, Pascal, Perl, PHP, Prolog, Python, Ruby, Scheme, SQL e VHDL.
+Para empregar uma linguagem de programação específica no VPL, basta garantir que o compilador correspondente esteja devidamente instalado no sistema de execução. Atualmente, estão disponíveis sistemas de execução com instalações para diversas linguagens, incluindo Ada, C, C++, C\#, FORTRAN, Haskell, Java, Octave, Pascal, Perl, PHP, Prolog, Python, Ruby, Scheme, SQL e VHDL.
  
-O VPL é composto por três elementos: um módulo do Moodle, um editor de código baseado em navegador e um componente Jail, mostrados na figura 16.
+O VPL é composto por três elementos: um módulo do Moodle, um editor de código baseado em navegador e um componente Jail, mostrados na Figura 16.
 
 \begin{figure}[h!]
 	   \centering
@@ -143,7 +143,7 @@ O editor de código, construído em Java, possibilita a edição, execução, de
 
 O VPL permite configurar, gerenciar e avaliar atividades de aprendizagem, classificadas por tipo (exemplos, exercícios de cloze, exercícios de desenvolvimento de código) e escopo (tarefas fora da sala de aula ou exames em sala).
 
-A criação de uma atividade VPL inicia-se com o preenchimento do formulário de configuração básica no Moodle, incluindo nome, descrição, período de disponibilidade, opções de avaliação e outras configurações. Além disso, é possível especificar detalhes como número máximo de arquivos, tamanho máximo, restrições de edição, rede e senha. Veja na imagem 18.
+A criação de uma atividade VPL inicia-se com o preenchimento do formulário de configuração básica no Moodle, incluindo nome, descrição, período de disponibilidade, opções de avaliação e outras configurações. Além disso, a Figura 17 mostra que é possível especificar detalhes como número máximo de arquivos, tamanho máximo, restrições de edição, rede e senha.
 
 \begin{figure}[h!]
 	   \centering
@@ -157,7 +157,7 @@ Após preencher o formulário básico, o instrutor pode ajustar cinco grupos adi
 
 Essas configurações são suficientes, mas a guia "Advanced" oferece recursos adicionais para testes mais elaborados, como testes de funcionalidade avançados e outros tipos de teste, possibilitando uma avaliação abrangente da qualidade do código.
 
-A figura 19 mostra um exemplo de configuração de casos de teste, e a figura 20 mostra a tela de configuração de casos de teste mais avançados.
+A Figura 18 mostra um exemplo de configuração de casos de teste, e a Figura 19 mostra a tela de configuração de casos de teste mais avançados.
 
 \begin{figure}[h!]
 	   \centering
@@ -179,7 +179,7 @@ O VPL oferece avaliação automática e assistida por computador, permitindo a p
 
 O plágio é abordado pelo VPL através de uma ferramenta de verificação de plágio no código-fonte. Essa ferramenta procura identificar plágio entre os envios de uma tarefa em um curso, considerando também fontes como envios anteriores ou tarefas similares de outros cursos. O processo de identificação de semelhanças entre os arquivos de origem envolve três etapas: tokenização, comparação e clusterização. 
 
-A tokenização visa obter uma assinatura normalizada para facilitar a comparação eficiente, envolvendo análise lexical, filtragem e normalização. Esse processo cria uma assinatura do programa, que é uma representação normalizada dos arquivos de código-fonte de um usuário, otimizando o processo de comparação, permitindo a detecção eficaz de plágio.
+A tokenização visa obter uma assinatura normalizada para facilitar a comparação eficiente, envolvendo análise léxica, filtragem e normalização. Esse processo cria uma assinatura do programa, que é uma representação normalizada dos arquivos de código-fonte de um usuário, otimizando o processo de comparação, permitindo a detecção eficaz de plágio.
 
 Em resumo, o Virtual Programming Lab (VPL) apresenta-se como uma ferramenta abrangente para o gerenciamento de atividades de programação. Com recursos que vão desde a configuração detalhada de atividades no Moodle até a execução de testes avançados e a detecção de plágio, o VPL oferece uma variedade de funcionalidades para apoiar a aprendizagem prática e avaliação de habilidades de programação. Destaca-se, além disso, a necessidade de configurar todos os exercícios e seus casos de teste, para disponibilização destes aos alunos.
 
@@ -259,6 +259,8 @@ A aplicação das metodologias propostas no estudo dos autores demonstrou um imp
 
 A Tabela 1 apresenta uma comparação detalhada das vantagens do Beecrowd em relação a outras ferramentas integradas ao Moodle, como BOCA, VPL e CodeRunner, conforme discutido nos trabalhos relacionados. O objetivo é analisar os benefícios específicos do uso do Beecrowd, oferecendo uma base sólida para este estudo. Vale ressaltar que este trabalho propõe o incentivo ao uso da integração entre Moodle e Beecrowd por meio de LTI. Em contraste, o BOCA e o CodeRunner funcionam como tipos de questões no Moodle, enquanto o VPL é um módulo próprio da plataforma.
 
+Também é importante lembrar que, enquanto o Beecrowd e o VPL foram desenvolvidos para apoiar o ensino, o BOCA foi desenvolvido para a avaliação de submissões de código em maratonas de programação.
+
 \begin{table}[htb]
         \IBGEtab{%
           \caption[Comparação entre quatro integrações de sistemas, que auxiliam no ensino da programação, com o Moodle: Beecrowd, BOCA, CodeRunner e VPL]{Comparação entre quatro integrações de sistemas, que auxiliam no ensino da programação, com o Moodle: Beecrowd, BOCA, CodeRunner e VPL}%
@@ -298,13 +300,13 @@ O trabalho de \textcite{rodriguezdelpinoandroyo} mostra que o módulo Virtual Pr
 
 Neste trabalho, a integração LTI fornecida pelo Beecrowd será utilizada, de modo que a criação de listas de exercícios, a resolução de exercícios pelos alunos e a correção das soluções pelo juiz online ocorrerão diretamente nos servidores do Beecrowd.
 
-Além disso, a prevenção contra plágio é uma característica crucial e distintiva tanto no Beecrowd quanto no VPL, destacando-se como um diferencial significativo dessas plataformas. Essa funcionalidade visa salvaguardar a integridade acadêmica, garantindo que os trabalhos submetidos pelos alunos sejam autênticos e originais.
+Além disso, a prevenção contra plágio é uma característica crucial e distintiva tanto no Beecrowd quanto no VPL, destacando-se como um diferencial significativo dessas plataformas. Essa funcionalidade tem a intenção de salvaguardar a integridade acadêmica, visando a autenticidade e a originalidade dos trabalhos submetidos pelos alunos.
 
 No contexto do Beecrowd, de acordo com \cite{cruz2022}, a prevenção contra plágio pode envolver mecanismos avançados de análise de código-fonte, identificando padrões suspeitos que indicam possível cópia indevida. Além disso, o sistema pode empregar algoritmos e técnicas que comparam soluções de diferentes alunos, buscando similaridades que ultrapassem limites aceitáveis de coincidência.
 
 No caso do VPL, de acordo com \textcite{rodriguezdelpinoandroyo}, a prevenção contra plágio pode ser implementada através de verificações rigorosas durante o processo de submissão. Isso pode incluir a comparação automática de códigos submetidos em busca de trechos idênticos ou substancialmente semelhantes. Além disso, o VPL pode adotar métodos de análise mais avançados, como a detecção de técnicas de programação específicas que são características de trabalhos plagiados.
 
-O projeto de \textcite{joseosvaldochaves} descreve o desenvolvimento do Módulo de Integração com Juízes Online (MOJO), uma ferramenta criada para integrar juízes online, como o Beecrowd (anteriormente URI Online Judge), ao Moodle. O MOJO visa delegar ao Moodle o gerenciamento da interface e do controle das atividades de programação, enquanto centraliza a comunicação e interação com os juízes online. Devido à ausência de APIs ou serviços web nos juízes à época, foram necessárias implementações específicas para cada plataforma, utilizando PHP (a mesma linguagem do Moodle) e JavaScript para a interface. O banco de dados PostgreSQL foi adotado por ser open-source e pela flexibilidade de criação de tabelas personalizadas para armazenamento de dados dos alunos, o que possibilita um \textit{feedback} direcionado e preciso.
+O projeto de \textcite{joseosvaldochaves} descreve o desenvolvimento do Módulo de Integração com Juízes Online (MOJO), uma ferramenta criada para integrar juízes \textit{online}, como o Beecrowd (anteriormente URI Online Judge), ao Moodle. O MOJO visa delegar ao Moodle o gerenciamento da interface e do controle das atividades de programação, enquanto centraliza a comunicação e interação com os juízes online. Devido à ausência de APIs ou serviços web nos juízes à época, foram necessárias implementações específicas para cada plataforma, utilizando PHP (a mesma linguagem do Moodle) e JavaScript para a interface. O banco de dados PostgreSQL foi adotado por ser \texit{open-source} e pela flexibilidade de criação de tabelas personalizadas para armazenamento de dados dos alunos, o que possibilita um \textit{feedback} direcionado e preciso.
 
 Este trabalho, contudo, utilizará a integração LTI fornecida pelo Beecrowd, a qual facilita a interação de docentes e alunos com a plataforma. Além disso, será disponibilizado um manual para orientar o uso da LTI, juntamente com um sistema especialista que auxiliará os alunos na resolução das questões e os docentes no esclarecimento de dúvidas dos estudantes.
 

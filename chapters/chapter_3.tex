@@ -20,7 +20,7 @@ Para configurar uma LTI externa, o administrador deve acessar "Administração d
 
 Além disso, foi desenvolvido um manual de uso da LTI Beecrowd (Apêndice \ref{manual:uso-lti}), direcionado aos professores que desejam utilizar o Beecrowd como suporte educacional em sala de aula. Esse manual instrui os docentes sobre como criar uma atividade do Beecrowd no Moodle, orientar o acesso dos estudantes e transferir as notas obtidas no Beecrowd para o Moodle.
 
-Após seguir o guia do Manual de Uso da LTI Beecrowd (Apêndice \ref{manual:uso-lti}), duas atividades ficam disponíveis na página do curso, apresentadas como "botões" visuais. A primeira atividade, que é ocultada para os estudantes (Imagem 23), permite ao professor acessar o Beecrowd Academic (Imagem 24) para configurar disciplinas, criar listas de exercícios para os alunos e enviar as notas para o Moodle.
+Após seguir o guia do Manual de Uso da LTI Beecrowd (Apêndice \ref{manual:uso-lti}), duas atividades ficam disponíveis na página do curso, apresentadas como "botões" visuais. A primeira atividade, que é ocultada para os estudantes (Figura 23), permite ao professor acessar o Beecrowd Academic (Figura 24) para configurar disciplinas, criar listas de exercícios para os alunos e enviar as notas para o Moodle.
 
 \begin{figure}[H]
     \centering
@@ -38,7 +38,7 @@ Após seguir o guia do Manual de Uso da LTI Beecrowd (Apêndice \ref{manual:uso-
         \fonte{Produzido pela autora.}
 \end{figure}
 
-A segunda atividade, acessível aos estudantes (Imagem 25), redireciona-os diretamente para a página no Beecrowd da lista de exercícios criada pelo professor (Imagem 26), sem necessidade de cadastro ou login. Assim, os estudantes podem resolver as atividades diretamente a partir dessa página. Esse botão também permite ao professor acessar a lista de exercícios criada, podendo verificar o progresso dos alunos, as tentativas realizadas e, quando desejado, enviar as notas para o Moodle.
+A segunda atividade, acessível aos estudantes (Figura 25), redireciona-os diretamente para a página no Beecrowd da lista de exercícios criada pelo professor (Figura 26), sem necessidade de cadastro ou login. Assim, os estudantes podem resolver as atividades diretamente a partir dessa página. Esse botão também permite ao professor acessar a lista de exercícios criada, podendo verificar o progresso dos alunos, as tentativas realizadas e, quando desejado, enviar as notas para o Moodle.
 
 \begin{figure}[H]
     \centering
@@ -58,7 +58,7 @@ A segunda atividade, acessível aos estudantes (Imagem 25), redireciona-os diret
 
 \section{Sistema Especialista Web}
 
-O objetivo do sistema especialista é oferecer suporte na resolução de dúvidas recorrentes dos estudantes em relação a questões do Beecrowd. A proposta é desenvolver uma aplicação acessível aos alunos via navegador, com um sistema de chat onde o aluno pode informar a questão sobre a qual necessita orientação. O sistema, então, conduz o aluno por meio de perguntas binárias (sim ou não) e, conforme as respostas, fornece dicas relevantes relacionadas ao exercício em questão.
+O objetivo do sistema especialista é oferecer suporte na resolução de dúvidas recorrentes dos estudantes em relação a questões do Beecrowd. A proposta é desenvolver uma aplicação acessível aos alunos via navegador, com um sistema de \textit{chat} onde o aluno pode informar a questão sobre a qual necessita orientação. O sistema, então, conduz o aluno por meio de perguntas binárias (sim ou não) e, conforme as respostas, fornece dicas relevantes relacionadas ao exercício em questão.
 
 Para viabilizar essa funcionalidade, o sistema especialista será estruturado com um conjunto de dados contendo perguntas direcionadas aos alunos e respostas predefinidas que orientam o aluno na resolução das atividades específicas da disciplina. Em disciplinas como Programação Orientada a Objetos I, onde as listas de exercícios frequentemente incluem questões já utilizadas em semestres anteriores, observa-se uma repetição de problemas e, consequentemente, de dúvidas recorrentes dos alunos.
 
@@ -96,6 +96,8 @@ Esta seção descreve os requisitos essenciais para o desenvolvimento da aplica�
 
 \subsubsection{Regras de Negócio}
 
+Esta subseção detalha as Regras de Negócio que definem os processos centrais e orientam o comportamento do sistema. Essas regras são essenciais para garantir que o sistema atenda aos objetivos específicos e forneça uma experiência funcional e direcionada aos usuários.
+
 \begin{enumerate}[label=RN\arabic* –]
     \item \textbf{Identificação da Questão}: O usuário deve informar o código da questão do Beecrowd que está tentando resolver para que o sistema possa fornecer dicas específicas.
     \item \textbf{Perguntas Binárias}: O sistema deve formular perguntas binárias (sim/não) para guiar o usuário, baseando-se em possíveis erros ou dificuldades comuns para cada questão.
@@ -105,8 +107,10 @@ Esta seção descreve os requisitos essenciais para o desenvolvimento da aplica�
 
 \subsubsection{Requisitos Funcionais}
 
+Os Requisitos Funcionais descrevem as funcionalidades que o sistema deve possuir para cumprir os objetivos propostos. Esses requisitos representam ações e processos que os usuários podem realizar na aplicação, garantindo que ela seja funcional e eficaz.
+
 \begin{enumerate}[label=RF\arabic* –]
-    \item \textbf{Comunicação por Chat}: usuário deve interagir com o sistema por uma interface de chat intuitiva, que apresente respostas sequenciais.
+    \item \textbf{Comunicação por Chat}: usuário deve interagir com o sistema por uma interface de \textit{chat} intuitiva, que apresente respostas sequenciais.
     \item \textbf{Busca e Seleção de Questão}: O sistema deve permitir que o usuário informe o código da questão do Beecrowd que deseja resolver.
     \item \textbf{Fluxo de Perguntas Binárias}: O sistema apresenta perguntas binárias adaptadas conforme as respostas do usuário.
     \item \textbf{Sistema de Dicas}:Após a análise das respostas, o sistema deve oferecer dicas relevantes para o problema informado.
@@ -115,15 +119,17 @@ Esta seção descreve os requisitos essenciais para o desenvolvimento da aplica�
 
 \subsubsection{Requisitos Não Funcionais}
 
+Nesta subseção, são apresentados os Requisitos Não Funcionais, que especificam características de qualidade e restrições que o sistema deve atender. Eles incluem aspectos como desempenho, usabilidade, segurança e arquitetura, garantindo que o sistema não apenas funcione, mas também ofereça uma experiência eficiente e confiável aos usuários.
+
 \begin{enumerate}[label=RNF\arabic* –]
     \item \textbf{Desempenho}:
     \begin{itemize}
-        \item O sistema deve responder em tempo real a cada interação do usuário, mantendo a fluidez do chat.
+        \item O sistema deve responder em tempo real a cada interação do usuário, mantendo a fluidez do \textit{chat}.
     \end{itemize}
     
     \item \textbf{Usabilidade}:
     \begin{itemize}
-        \item O sistema deve ser intuitivo e fácil de usar, com uma interface de chat amigável.
+        \item O sistema deve ser intuitivo e fácil de usar, com uma interface de \textit{chat} amigável.
         \item Deve ser compatível com os principais navegadores modernos.
     \end{itemize}
 
@@ -134,7 +140,7 @@ Esta seção descreve os requisitos essenciais para o desenvolvimento da aplica�
     
     \item \textbf{Segurança}:
     \begin{itemize}
-        \item As sessões de chat devem ser isoladas, para evitar vazamento de informações entre os usuários.
+        \item As sessões de \textit{chat} devem ser isoladas, para evitar vazamento de informações entre os usuários.
     \end{itemize}
     
     \item \textbf{Manutenibilidade}:
@@ -194,9 +200,9 @@ TypeScript é uma linguagem de programação que é um superconjunto do JavaScri
 
 \subsection{Arquitetura de Software}
 
-A aplicação propõe uma interação dinâmica em que o usuário, ao informar o número da questão sobre a qual deseja obter orientações, inicia um diálogo com o sistema de chat. O chat responde com perguntas específicas para compreender melhor as necessidades do usuário, permitindo direcionar as orientações de forma mais precisa. Conforme o usuário responde com "sim" ou "não" a cada pergunta, o sistema adapta as próximas questões e sugestões, guiando-o progressivamente até fornecer uma orientação final ajustada ao contexto das respostas acumuladas.
+A aplicação propõe uma interação dinâmica em que o usuário, ao informar o número da questão sobre a qual deseja obter orientações, inicia um diálogo com o sistema de \textit{chat}. O \textit{chat} responde com perguntas específicas para compreender melhor as necessidades do usuário, permitindo direcionar as orientações de forma mais precisa. Conforme o usuário responde com "sim" ou "não" a cada pergunta, o sistema adapta as próximas questões e sugestões, guiando-o progressivamente até fornecer uma orientação final ajustada ao contexto das respostas acumuladas.
 
-A Figura 27 apresenta o diagrama de atividades que detalha o fluxo de interação entre o usuário e o chat da aplicação. Após informar o número da questão sobre a qual deseja obter orientações, o usuário recebe uma pergunta inicial, respondendo com "sim" ou "não". Se houver mais perguntas, o chat continua a apresentá-las até que todas sejam respondidas, conduzindo o usuário a uma orientação final baseada nas respostas acumuladas. Ao final, o usuário pode iniciar o processo novamente com outro número de questão ou com o mesmo, caso deseje explorar outras sugestões e perguntas relacionadas.
+A Figura 27 apresenta o diagrama de atividades que detalha o fluxo de interação entre o usuário e o \textit{chat} da aplicação. Após informar o número da questão sobre a qual deseja obter orientações, o usuário recebe uma pergunta inicial, respondendo com "sim" ou "não". Se houver mais perguntas, o \textit{chat} continua a apresentá-las até que todas sejam respondidas, conduzindo o usuário a uma orientação final baseada nas respostas acumuladas. Ao final, o usuário pode iniciar o processo novamente com outro número de questão ou com o mesmo, caso deseje explorar outras sugestões e perguntas relacionadas.
 
 \begin{figure}[h!]
     \centering
@@ -206,7 +212,7 @@ A Figura 27 apresenta o diagrama de atividades que detalha o fluxo de interaçã
         \fonte{Produzido pela autora.}
 \end{figure}
 
-A Figura 28 representa a estrutura da aplicação, mostrando a interação entre o \textit{frontend} e o \textit{backend} através de requisições. No \textit{frontend}, o arquivo \textit{ActionProvider.tsx} gerencia as mensagens enviadas pelo usuário no chat, processando tanto o número da questão informada, quanto as respostas de "sim" ou "não". Por meio dessas requisições, o \textit{frontend} envia esses dados ao \textit{backend}, que, em resposta, fornece perguntas e dicas relacionadas à questão solicitada. Caso o usuário peça uma nova dica e o \textit{backend} não tenha mais sugestões para aquela questão, ele envia a orientação final da questão, que é então apresentada ao usuário.
+A Figura 28 representa a estrutura da aplicação, mostrando a interação entre o \textit{frontend} e o \textit{backend} através de requisições. No \textit{frontend}, o arquivo \textit{ActionProvider.tsx} gerencia as mensagens enviadas pelo usuário no \textit{chat}, processando tanto o número da questão informada, quanto as respostas de "sim" ou "não". Por meio dessas requisições, o \textit{frontend} envia esses dados ao \textit{backend}, que, em resposta, fornece perguntas e dicas relacionadas à questão solicitada. Caso o usuário peça uma nova dica e o \textit{backend} não tenha mais sugestões para aquela questão, ele envia a orientação final da questão, que é então apresentada ao usuário.
 
 \begin{figure}[h!]
     \centering
@@ -220,9 +226,9 @@ A Figura 28 representa a estrutura da aplicação, mostrando a interação entre
 
 O \textit{frontend} da aplicação foi desenvolvido utilizando as tecnologias React e TypeScript, conforme especificado no requisito não funcional \textbf{RNF6}, descrito na seção \ref{sec:requisitos-aplicacao}. Essas tecnologias foram escolhidas por sua capacidade de criar interfaces dinâmicas, escaláveis e de fácil manutenção, proporcionando uma experiência de usuário fluida e interativa \textbf{(RNF2)}.
 
-Conforme o requisito funcional \textbf{RF1} e a regra de negócio \textbf{RN1}, foi implementado um sistema de chat como interface principal de interação com o usuário. Por meio deste chat, o usuário pode informar o código da questão do Beecrowd que está tentando resolver \textbf{(RF2)}. Além disso, conforme a regra de negócio \textbf{RN2}, o sistema especialista se comunica com o usuário por meio do chat, exibindo mensagens sequenciais baseadas nas respostas do sistema \textbf{(RF3)} em tempo real \textbf{(RNF1)}, e dicas finais \textbf{(RF4)}. O chat também permite que o usuário forneça respostas binárias (sim/não), conforme o fluxo de perguntas definido para personalizar a orientação fornecida, conforme as regras de negócios \textbf{RN2} e \textbf{RN3}.
+Conforme o requisito funcional \textbf{RF1} e a regra de negócio \textbf{RN1}, foi implementado um sistema de \textit{chat} como interface principal de interação com o usuário. Por meio deste \textit{chat}, o usuário pode informar o código da questão do Beecrowd que está tentando resolver \textbf{(RF2)}. Além disso, conforme a regra de negócio \textbf{RN2}, o sistema especialista se comunica com o usuário por meio do \textit{chat}, exibindo mensagens sequenciais baseadas nas respostas do sistema \textbf{(RF3)} em tempo real \textbf{(RNF1)}, e dicas finais \textbf{(RF4)}. O \textit{chat} também permite que o usuário forneça respostas binárias (sim/não), conforme o fluxo de perguntas definido para personalizar a orientação fornecida, conforme as regras de negócios \textbf{RN2} e \textbf{RN3}.
 
-O desenvolvimento do \textit{frontend} foi baseado em bibliotecas e repositórios existentes que facilitaram a criação e configuração do sistema de chatbot. Especificamente, foi utilizado o repositório \textit{react-chatbot-kit} de FredrikOseberg\footnote{\url{https://github.com/FredrikOseberg/react-chatbot-kit}} como estrutura principal para a criação do chatbot, combinado com o repositório \textit{Chatbot-using-React-Chatbot-Kit} de Subid Das\footnote{\url{https://github.com/devsubid/Chatbot-using-React-Chatbot-Kit}}, que forneceu recursos adicionais para personalização da interface e integração do chatbot com o fluxo de mensagens interativo. Esses repositórios foram adaptados para atender às necessidades específicas da aplicação, garantindo que o \textit{frontend} fosse capaz de processar interações dinâmicas e personalizadas, conforme os requisitos estabelecidos.
+O desenvolvimento do \textit{frontend} foi baseado em bibliotecas e repositórios existentes que facilitaram a criação e configuração do sistema de \extit{chatbot}. Especificamente, foi utilizado o repositório \textit{react-chatbot-kit} de FredrikOseberg\footnote{\url{https://github.com/FredrikOseberg/react-chatbot-kit}} como estrutura principal para a criação do \texiti{chatbot}, combinado com o repositório \textit{Chatbot-using-React-Chatbot-Kit} de Subid Das\footnote{\url{https://github.com/devsubid/Chatbot-using-React-Chatbot-Kit}}, que forneceu recursos adicionais para personalização da interface e integração do \textit{chatbot} com o fluxo de mensagens interativo. Esses repositórios foram adaptados para atender às necessidades específicas da aplicação, garantindo que o \textit{frontend} fosse capaz de processar interações dinâmicas e personalizadas, conforme os requisitos estabelecidos.
 
 Pelo Código 1 é possível observar que, para a construção do compontente \texttt{Chat}, foi usado o componente \texttt{Chatbot} da biblioteca \texttt{react-chatbot-kit}. O \texttt{Chatbot} recebe o \texttt{MessageProvider}, responsável por processar as respostas do usuário e acionar as funções do \texttt{ActionProvider}, que gerencia o envio das requisições ao backend.
 
@@ -521,7 +527,7 @@ Em seguida, tenta gerar a próxima pergunta por meio da chamada ao predicado \te
 
 \subsection{Expert Bee: Sistema Especialista de Apoio à Resolução de Dúvidas nos Exercícios do Beecrowd}
 
-A aplicação foi desenvolvida para ser acessada via navegador e tem como objetivo ajudar os usuários com dúvidas na resolução dos exercícios do Beecrowd. Por meio de um chat interativo, o usuário pode informar qual questão precisa de orientação. A partir disso, o sistema especialista realiza perguntas específicas para compreender melhor as necessidades do usuário e, com base nas respostas, fornece dicas e orientações personalizadas. Ou seja, à medida que o usuário responde "sim" ou "não" a cada pergunta, o sistema ajusta as questões subsequentes e as sugestões, guiando o usuário de forma progressiva até fornecer uma solução ajustada ao contexto das respostas acumuladas.
+A aplicação foi desenvolvida para ser acessada via navegador e tem como objetivo ajudar os usuários com dúvidas na resolução dos exercícios do Beecrowd. Por meio de um \textit{chat} interativo, o usuário pode informar qual questão precisa de orientação. A partir disso, o sistema especialista realiza perguntas específicas para compreender melhor as necessidades do usuário e, com base nas respostas, fornece dicas e orientações personalizadas. Ou seja, à medida que o usuário responde "sim" ou "não" a cada pergunta, o sistema ajusta as questões subsequentes e as sugestões, guiando o usuário de forma progressiva até fornecer uma solução ajustada ao contexto das respostas acumuladas.
 
 Nesta seção, serão apresentadas imagens que ilustram o resultado final da aplicação.
 
@@ -543,7 +549,7 @@ A Figura 29 exibe a tela inicial da aplicação Web, que contém dois botões. A
         \fonte{Produzido pela autora.}
 \end{figure}
 
-Na página inicial, ao clicar no botão "Comece agora!", é aberto o chat, conforme o Requisito Funcional \textbf{RF1}, ilustrado na Figura 31. Através deste chat, o usuário deve inicialmente informar o número da questão sobre a qual deseja tirar dúvidas, atendendo ao Requisito Funcional \textbf{RF2}. O usuário pode selecionar o número da questão a partir da lista apresentada (Figura 32) ou optar por digitá-lo manualmente (Figura 33). Caso o número informado não corresponda a uma questão existente no sistema, uma mensagem informando que a questão não foi encontrada será exibida (Figura 34).
+Na página inicial, ao clicar no botão "Comece agora!", é aberto o \textit{chat}, conforme o Requisito Funcional \textbf{RF1}, ilustrado na Figura 31. Através deste \textit{chat}, o usuário deve inicialmente informar o número da questão sobre a qual deseja tirar dúvidas, atendendo ao Requisito Funcional \textbf{RF2}. O usuário pode selecionar o número da questão a partir da lista apresentada (Figura 32) ou optar por digitá-lo manualmente (Figura 33). Caso o número informado não corresponda a uma questão existente no sistema, uma mensagem informando que a questão não foi encontrada será exibida (Figura 34).
 
 \begin{figure}[H]
     \centering
@@ -577,7 +583,7 @@ Na página inicial, ao clicar no botão "Comece agora!", é aberto o chat, confo
         \fonte{Produzido pela autora.}
 \end{figure}
 
-Se a questão for localizada, o chat começa a enviar as perguntas do sistema especialista (Figura 35), com opções de resposta "sim" ou "não", conforme o Requisito Funcional \textbf{RF3}. O usuário deve responder clicando no botão "sim" ou "não". Se a resposta for "sim", a resposta adequada para aquela pergunta é exibida junto com a próxima pergunta (Figura 36). Se a resposta for "não", uma nova pergunta será apresentada (Figura 37). Assim, o Requisito Funcional \textbf{RF4} é atendido, pois o sistema adapta as perguntas conforme as respostas fornecidas pelo usuário.
+Se a questão for localizada, o \textit{chat} começa a enviar as perguntas do sistema especialista (Figura 35), com opções de resposta "sim" ou "não", conforme o Requisito Funcional \textbf{RF3}. O usuário deve responder clicando no botão "sim" ou "não". Se a resposta for "sim", a resposta adequada para aquela pergunta é exibida junto com a próxima pergunta (Figura 36). Se a resposta for "não", uma nova pergunta será apresentada (Figura 37). Assim, o Requisito Funcional \textbf{RF4} é atendido, pois o sistema adapta as perguntas conforme as respostas fornecidas pelo usuário.
 
 \begin{figure}[H]
     \centering
