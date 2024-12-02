@@ -1094,6 +1094,7 @@
 % the error `input stack size=5000`
 % https://tex.stackexchange.com/questions/403651/while-loading-fancyvrb-siunitx-and-bigfoot-i-got-input-stack-size-5000-tex-st
 \usepackage{fancyvrb}
+\usepackage{fvextra}
 
 % gives you the possibility to rotate any object of an arbitrary angle.
 \usepackage{rotating}
